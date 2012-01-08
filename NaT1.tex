@@ -305,7 +305,7 @@ Die \textbf{Bandbreite} berechnet sich dadurch wie folgt: $ \qquad W_B = 2 w_{\o
 Bei der Doppelseitenband AM wird das Nachrichtensignal mit dem sinusförmigen Trägersignal
 multipliziert, wodruch sich dank dem Modulationssatz folgendes Spektrum ergibt. \\
 $$ x_{DSB}(t) =
-m(t) \cos(w_c t) \quad \FT \quad X_{DSB} = \frac{1}{2}M(\omega - \omega_c) + \frac{1}{2}M(\omega + \omega_c)$$
+m(t) \cos(w_c t) \quad \laplace \quad X_{DSB} = \frac{1}{2}M(\omega - \omega_c) + \frac{1}{2}M(\omega + \omega_c)$$
 \end{minipage}
 
 \begin{minipage}[t]{9.5cm}
@@ -341,7 +341,7 @@ Die gewöhnliche AM wird generiert, indem man dem DSB-Signal ein grosses Träger
 \subsubsection{Modulation}
 
 $$x_{AM}(t) = A_C (1 + \mu \cdot m(t)) \cos(\omega_c t)
-	\quad \FT \quad X_{AM}(\omega) = \frac{1}{2}M(\omega - \omega_c) + \frac{1}{2}M(\omega + \omega_c)
+	\quad \laplace \quad X_{AM}(\omega) = \frac{1}{2}M(\omega - \omega_c) + \frac{1}{2}M(\omega + \omega_c)
 	+ \pi A [\delta (\omega - \omega_c) + \delta (\omega + \omega_c))]$$
 
 \begin{minipage}[]{9cm}
@@ -804,7 +804,7 @@ Fourier-Reihe. \\
 %$$ c_n = \frac{1}{T} \int\limits_{-T/2}^{T/2} \delta_{T_S}(t) e^{-j n \omega n t} dt = 
 %\frac{1}{T} \quad \Rightarrow \quad X(j \omega) = \sum\limits_{n = -\infty}^{+\infty} c_n
 %\delta(\omega - n \omega_0) \qquad 
-$$ \delta_{T_S}(t) = \sum\limits_{n=-\infty}^{+\infty} \delta(t-nT_S) \FT 
+$$ \delta_{T_S}(t) = \sum\limits_{n=-\infty}^{+\infty} \delta(t-nT_S) \laplace 
 \omega_S \delta_{\omega_S} (j \omega) = 
 \omega_S \sum\limits_{n=-\infty}^{+\infty} \delta(\omega - n \omega_S)$$
 	\begin{center}
@@ -1024,7 +1024,7 @@ $$ f_B = \frac{1 + \alpha}{2 T} Hz \qquad \qquad \frac{1}{T} = \frac{2 f_B}{1 + 
 $$ 
 h(t) = \frac{1}{T_s} = \left( \frac{\sin{W t}}{W t} \right) \left[ \frac{\cos{\alpha W t}}{1
 - (2 \alpha W t / \pi)^2}\right]
-\quad \FT \quad
+\quad \laplace \quad
 H(\omega) = \begin{cases}
 	1 			
 		&  	0 \leq | \omega | \leq (1-\alpha) W       \\
