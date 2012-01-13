@@ -844,7 +844,8 @@ $$ \frac{2 \cdot f_u}{n} \leq f_s \leq \frac{2 \cdot f_l}{n-1}$$
 	$f_s$ Samplingfrequenz, $[f_s] = Hz$ \\
 	$f_l$ Minimale (lower) Nachrichtenfrequenz, $[f_l] = Hz$ \\
 	$f_u$ Maximale (upper) Nachrichtenfrequenz, $[f_u] = Hz$ \\
-	$n$ Subsampling-Faktor, \textcolor{red}{ganzzahlig}
+	$n$ Subsampling-Faktor, \textcolor{red}{ganzzahlig} \\
+	$n \geq 2$ sonst kein Subsampling möglich
 \end{minipage}
 
 Ein weiterer Begriff bezüglich Sampling ist das \textbf{Oversampling}, welches bei \textbf{DAC}s
