@@ -1,27 +1,11 @@
 \begin{tikzpicture}[scale=1, transform shape]
-\tikzstyle{block} =	[draw, rectangle,
-	very thick,
-	node distance=3.8cm,
-	text width=2cm,
-	inner sep = 1ex,
-	text centered
-	]
-\tikzstyle{sum} = [draw, circle,
-	very thick,
-	node distance = 3.8cm,
-	text width=1.1cm, 
-	inner sep=1ex, 
-	text centered]
-\tikzstyle{pfeil} = [draw,
-	->, very thick, rounded corners, 
-]
     \node [sum]   (source) {Quelle Source};
     \node [block, right of=source]  (sender) {Sender Transmitter};
     \node [block, right of=sender]  (channel) {Kanal Channel}; 
     \node [block, right of=channel] (receiver) {Empfänger Receiver}; 
     \node [sum, right of=receiver]  (sink) {Senke Sink};
     
-    \node [block, above=5mm of sender] (noise) {Störung Noise};    
+    \node [block, above=5mm of sender.north east] (noise) {Störung Noise};    
     \draw [pfeil, to path={-| (\tikztotarget)}] 
     	(noise) to (channel);
     	
