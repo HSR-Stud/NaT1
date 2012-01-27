@@ -1,0 +1,151 @@
+\section{Grundbegriffe}
+\subsection{Einfaches Kommunikationsmodell}
+\begin{center}
+	\includegraphics[width=14cm]{../NaT1/bilder/kommunikationsmodell.png}
+\end{center}
+
+\subsection{Pegel (Dezibel)}
+\textbf{Mit Dezibel (dB) vergleicht man Leistungspegel, nicht Amplituden!}
+
+\subsubsection{Relative Pegel}
+	\begin{tabbing}
+	xxxxxxxxxxxxxxxxxxxxxxxxx \= xxxxxxxxxxxxxxxxxxxxxxx  \= xxxxxxxxxxxxxxxxxxxxxxx \=\kill
+	\textbf{Spannungspegel} \> $L_U = 20 \cdot \log_{10} \frac{U_x}{U_0}$ \> $U_x = U_0 \cdot
+	10^{\frac{L_U}{20}} $ \> $[L_U] = dB$ \\ 
+	\textbf{Strompegel} \> $L_I  = 20 \cdot \log_{10} \frac{I_x}{I_0}$ \> $I_x = I_0 \cdot
+	10^{\frac{L_I}{20}} $ \> $[L_I] = dB$ \\ 
+	\textbf{Leistungspegel} \> $L_P = 10 \cdot \log_{10} \frac{P_x}{P_0}$ \> $P_x = P_0 \cdot
+	10^{\frac{L_U}{10}} $ \> $[L_P] = dB$
+	\end{tabbing}
+
+\subsubsection{Absolute Pegel}
+	\begin{tabbing}
+	xxxxxxxxxxxxxxxxxxxxxxxxx \= xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx  \= xxxxxxxxxxxxxxxxxxxxxxx \=\kill
+	\textbf{dBW} \> Leistungspegel mit Bezugsgrösse $P_0 = $1W \> $\Longrightarrow \: 0 \: dBW = 1W$\\
+	\textbf{dBm} \> Leistungspegel mit Bezugsgrösse $P_0 = $1mW \> $\Longrightarrow \: 0 \: dBm = 1mW$\\
+	\textbf{dBV} \> Spannungspegel mit Bezugsgrösse $U_0 = $1V \> $\Longrightarrow \: 0 \: dBV = (1V)^2/R_{ref}$\\
+	\textbf{dB}$\mu$V \> Spannungspegel mit Bezugsgrösse $U_0 = $1$\mu$V \> $\Longrightarrow \: 0 \: dB \mu V = (1 \mu V)^2/R_{ref}$
+	\end{tabbing}
+Bei \textbf{Spannungspegeln} (dBV, dB$\mu$V) muss immer der \textbf{Referenz-Widerstand} ($R_{ref}$) berücksichtigt werden: \\
+In der \textbf{HF-Technik} üblich, $R_{ref} = 50 \Omega \Rightarrow 0 dBV = 20 mW \qquad $
+In der \textbf{Telefonie} üblich, $R_{ref} = 600  \Omega \Rightarrow 0 dBV =
+1.67 mW$ 
+
+\subsection{Signalklassifizierungen}
+Absoluter Werte des Signals sind irrelevant - Physikalische Dimension wird weggelassen. \\
+Signal $x(t)$ wird auf $|x(t)| \leq 1$ normiert.
+
+\renewcommand{\arraystretch}{2}
+\begin{tabular}[c]{ | p{9cm} | p{9cm} | }
+\hline
+	\begin{minipage}[t]{9cm}
+		\textbf{Leistung} \\
+		$ P = \lim \limits_{T \to \infty} {\frac{1}{T} \int\limits_{-T/2}^{T/2} {|x(t)|^2 dt}} 
+		= \frac{1}{2 \pi} \int\limits_{-\infty}^{\infty} \left( \lim\limits_{T
+	\rightarrow \infty} \frac{|X(j \omega)|^2}{T} \right) d \omega	$ \\
+	\end{minipage}
+	&
+	\begin{minipage}[t]{9cm}
+		\textbf{Energie} \\
+		$ E = W = \lim\limits_{T\rightarrow\infty}\int\limits_{-T/2}^{T/2} |x(t)|^2dt\label{SIG_FORM_01}
+		 = \frac{1}{2 \pi} \int\limits_{-\infty}^{\infty} |X(j \omega)|^2 d \omega$ \\
+	\end{minipage}
+\\
+\hline
+
+	\begin{minipage}[t]{9cm}
+		\textbf{Energiesignal} - \textit{''Impuls'' bspw. Nachrichtensignal}\\
+		$ E < \infty $ \\
+		\begin{center}
+			\includegraphics[width=6cm]{../NaT1/bilder/signal_energiesignal.png}
+       	\end{center}
+
+	\end{minipage}
+	&
+	\begin{minipage}[t]{9cm}
+		\textbf{Leistungssignal} - \textit{''Dauersignal '' bspw. Trägersignal} \\
+		$ E = \infty \text{ und } P < \infty$ \\
+		\begin{center}
+			\includegraphics[width=6cm]{../NaT1/bilder/signal_leistungssignal.png}
+       	\end{center}
+
+	\end{minipage} \\
+
+\hline
+
+	\begin{minipage}[t]{9cm}
+		\textbf{Aperiodisch} \\
+		$x(t) \neq x(t + n \cdot T)$
+	\end{minipage}
+	&
+	\begin{minipage}[t]{9cm}
+		\textbf{Periodisch} \\
+		$x(t) = x(t + n \cdot T) \qquad \text{ mit Periodendauer } T \text { und } n \in \mathbb{Z}$
+	\end{minipage}
+\\
+\hline
+
+	\begin{minipage}[t]{9cm}
+		\textbf{Deterministisch} - \textit{mit vorbestimmten Verlauf} \\
+		$x(t) = f(t)$
+	\end{minipage}
+	&
+	\begin{minipage}[t]{9cm}
+		\textbf{Stochastisch} - \textit{ohne vorbestimmten Verlauf} \\
+		$x(t) = ?$
+	\end{minipage}
+\\
+\hline
+\end{tabular}
+\newpage
+\begin{tabular}[c]{ | p{9cm} | p{9cm} | }
+\hline
+
+	\begin{minipage}[t]{9cm}
+		\textbf{Zeitkontinuierlich} \\
+		$x(t) \text{ ist definiert } \forall t \in \mathbb{R}$
+		\begin{center}
+			\includegraphics[width=6cm]{../NaT1/bilder/signal_zeitkontinuierlich.png}
+       	\end{center}
+	\end{minipage}
+	&
+	\begin{minipage}[t]{9cm}
+		\textbf{Zeitdiskret} \\
+		$x(t) \text{ nur definiert an Stellen } x(n \cdot T) $ \\
+		$  \text{ mit Abtastintervall } T \text { und } n \in \mathbb{Z}$
+		\begin{center}
+			\includegraphics[width=6cm]{../NaT1/bilder/signal_zeitdiskret.png}
+       	\end{center}
+	\end{minipage}
+\\
+\hline
+
+	\begin{minipage}[t]{9cm}
+		\textbf{Amplitudenkontinuierlich}
+		\begin{center}
+			\includegraphics[width=6cm]{../NaT1/bilder/signal_amplitudenkontinuierlich.png}
+       	\end{center}
+	\end{minipage}
+	&
+	\begin{minipage}[t]{9cm}
+		\textbf{Quantisiert}
+		\begin{center}
+			\includegraphics[width=6cm]{../NaT1/bilder/signal_quantisiert.png}
+       	\end{center}
+	\end{minipage}
+\\
+\hline
+
+	\begin{minipage}[t]{9cm}
+		\textbf{Analog} - \textit{zeit- und amplitudenkontinuierlich} \\
+
+	\end{minipage}
+	&
+	\begin{minipage}[t]{9cm}
+		\textbf{Digital} - \textit{zeitdiskret und quantisiert} \\
+
+	\end{minipage}
+\\
+\hline
+\end{tabular}
+\renewcommand{\arraystretch}{\arraystretchOriginal}

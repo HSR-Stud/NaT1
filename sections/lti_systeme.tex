@@ -1,0 +1,86 @@
+\skriptsection{LTI-Systeme}{25}
+\begin{center}
+	\includegraphics[width=10cm]{../NaT1/bilder/lti-system.png}
+\end{center}
+
+%\subsection{Eigenschaften von LTI-Systemen}
+$ y(t) = T [ x(t)] \qquad $ Operator T erzeugt aus dem Eingangssignal $ x(t) $ das Ausgangssignal $ y(t)$. \\
+\textbf{Linearität und Zeitinvarianz gelten!}
+
+\paragraph{Kausalität} Ein System ist kausal, wenn jedes Ausgangsignal durch ein vorhergehendes Eingangsignal gebildet wird.
+\\
+\hrule
+\subsection{Schrittfunktion - unit step}
+\begin{minipage}{10cm}
+	$u(t) =	\begin{cases}
+	  		 0 & \text{für } t < 0 \\
+	  		 \frac{1}{2} \text{(praxis)}  \text{ oder undef. (math.)} & \text{für } t = 0 \\
+	  		 1 & \text{für } t > 0
+	  	\end{cases}
+	$
+\end{minipage}
+\begin{minipage}{8cm}
+	\includegraphics[width=6cm]{../NaT1/bilder/unitstep.png}
+\end{minipage}
+
+
+\subsection{Impulsfunktion - dirac delta function}
+	\begin{minipage}{10cm}
+		$\delta (t)=\begin{cases} 0 & t\ne 0\\\infty & t=0\end{cases} \qquad
+		\text{und} \qquad \int\limits_{-\infty}^\infty \delta(t) \, \mathrm dt = 1 $\\
+		$$\frac{du(t)}{dt}=\delta(t) \qquad
+		\int\limits_{-\infty}^{\infty}\delta(t-t_0)f(t)dt=f(t_0)$$
+	\end{minipage}
+	\begin{minipage}{8cm}
+		\includegraphics[width=6cm]{../NaT1/bilder/diracimpulse.png}
+	\end{minipage}
+
+\hrule
+\skriptsubsection{Impulsantwort}{25-2.2B}
+Siehe Signale \& Systeme Zusammenfassung.\\
+%$h(t) = T[\delta(t)] \qquad $
+
+\hrule
+\skriptsubsection{Verzerrungen}{26}
+\subsubsection{Amplitudenverzerrung}
+Falls das Amplitudenspektrum $|H(\omega)|$ im gewünschten Frequenzband nicht konstant ist,
+resultieren Amplitudenverzerrungen.
+
+\subsubsection{Phasenverzerrung}
+Falls das Phasenspektrum $\Theta_h (\omega)$ nicht linear von der Frequenz abhängig ist, resultieren
+Phasenverzerrungen.\\
+\hrule
+\skriptsubsection{Filter}{27}
+\begin{list}{$\bullet$}{\setlength{\itemsep}{0cm} \setlength{\parsep}{0cm} \setlength{\topsep}{0cm}} 
+  \item Tiefpass - Lowpass Filter (LPF)
+  \item Hochpass - Highpass Filter (HPF)
+  \item Bandpass - Bandpass Filter (BPF)
+  \item Bandsperre - Bandstop Filter (BSF)
+\end{list}
+\paragraph{Ideale Filter} sind nicht realisierbar, da sie akausal sind.
+
+\skriptsubsubsection{Bandbreite}{28}
+\begin{minipage}{7cm}
+	\includegraphics[width=6cm]{../NaT1/bilder/filter_bandbreite.png}
+\end{minipage}
+\begin{minipage}{11cm}
+	Die Bandbreite ist nur für Tief- und Bandpassfilter definiert und bezieht sich auf das einseitige (reelle) Spektrum.
+	\paragraph{LPF}	Die Bandbreite $W_B = 2 \pi B$ eines LPF entspricht der Frequenz, bei der $|H(\omega)|$ gegenüber $|H(0)|$ um $3 dB$ gedämpft ist
+	\paragraph{BPF}	Filterbandbreite $W_B = 2 \pi B$ bei BPF entspricht der Differenz der (Kreis-) Frequenzen, bei denen Amplitudengang $|H(\omega)|$ gegenüber $|H(\omega_c)|$ um
+	$3 dB$ gedämpft ist
+\end{minipage}
+
+
+\skriptsubsubsection{Quadraturfilter}{29} \label{lti_quadratur}
+Ein Quadraturfilter ist ein Allpassfilter mit Phasendrehung um $-\frac{\pi}{2}\text{rad } (-90^\circ)$. \\
+$$H(\omega) = \begin{cases}
+             	e^{-j \frac{\pi}{2}} & \omega > 0 \\
+             	e^{j \frac{\pi}{2}} & \omega < 0
+             \end{cases} =
+-j \sgn(\omega)$$
+
+Dieses Filter ist technisch nur für einen beschränkten Bandbreitenbereich realisierbar.
+
+\skriptsubsubsection{Hilbert Transformation}{29} \label{lti_hilbert}
+Bewirkt eine $-90^\circ$ Phasendrehung des Signals $x(t)$.
+$$\qquad \hat{X}(\omega) = H(\omega)X(\omega) = [-j \sgn(\omega)] X(\omega)$$
