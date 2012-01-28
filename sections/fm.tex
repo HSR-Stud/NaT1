@@ -30,16 +30,20 @@ $$\boxed{ x_c(t) = A \cos(w_c t + \phi(t)) = A \cos(\theta(t)) }$$
 
 \hrule
 \subsection{Momentanfrequenz, Frequenzabweichung}
-\begin{minipage}[t]{10cm}
-	$$ w_i = \frac{d \theta(t)}{dt} = w_c + \frac{d \phi(t)}{dt} $$
-	$$ \Delta \omega = \left| \omega_i - \omega_c \right|_{max} $$
-\end{minipage}
-\begin{minipage}[t]{8cm}
+\begin{multicols}{2}
+	\begin{center}
+		$ w_i = \frac{d \theta(t)}{dt} = w_c + \frac{d \phi(t)}{dt} $\\
+		$ \Delta \omega = \left| \omega_i - \omega_c \right|_{max} $\\
+		$ \Delta f =  m_{pk} \cdot \frac{k_f}{2\pi}$\\
+	\end{center}
+\columnbreak
+
 	$\omega_i$ Momentanfrequenz, $[\omega_i] = \frac{rad}{s}$ \\
 	$\omega_c$ Trägerfrequenz, $[\omega_c] = \frac{rad}{s}$ \\
 	$\Delta \omega$ maximale Frequenzabweichung, $[\Delta \omega] = \frac{rad}{s}$ \\
-	$\theta(t)$ momentane Phasenabweichung, $[\theta(t)] = \frac{rad}{s}$\\
-\end{minipage}
+	$\theta(t)$ momentane Phasenabweichung, $[\theta(t)] = \frac{rad}{s}$
+	
+\end{multicols}
 
 \hrule
 \skriptsubsection{Klein- und Grosshub}{70-4.5}
@@ -110,7 +114,8 @@ $W_B \approx 2(\beta + 1) \omega_m =
   		\qquad \qquad \beta < 0.2 \text{ (NB)}: \quad W_{B} \approx 2 \omega_m
 $
 \end{center}
-
+F\"ur Frequenzen in Zeitbereich ($Hz$) kann $\omega_m$ mit $f_m$ und
+$\omega_{\Delta}$ mit $f_{\Delta}$ ersetzt werden.\\
 \subsubsection{Leistung \formelbuch{78-4.6}}
 $$P = \frac12 A_C^2$$
 \hrule
