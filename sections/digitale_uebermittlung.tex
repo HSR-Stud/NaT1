@@ -106,25 +106,30 @@ korrigiert werden.\\
 		\includegraphics[height=4cm]{../NaT1/bilder/dig_quant_ungleichfoermig.png} \hspace{0.5cm}
 		\includegraphics[height=4cm]{../NaT1/bilder/dig_quant_lulaw_ralaw.png}	
 	\end{center}
-	$\mu$-Law und A-Law sind vor allem bei Signalen mit niedrigem Crest-Faktor von Vorteil: $C = \frac{|x|_{pk}}{x_{RMS}}$
-
+	$\mu$-Law und A-Law sind vor allem bei Signalen mit niedrigem Crest-Faktor von
+	Vorteil: $C = \frac{\left|x\right|_{pk}}{x_{RMS}} =
+	\frac{\left|x\right|_{pk}}{\sqrt{x_{Leistung}}}$
+\renewcommand{\arraystretch}{1}
 \skriptsubsubsection{Gleichförmige(Uniform) Quantisierung}{93-5.4A}
-\begin{minipage}{9cm}
-	$$ \Delta = \frac{A_m}{2^{n-1}} = \frac{2 \cdot A_m}{L} \qquad \qquad L = 2^n$$ 
-	$$ - \frac{\Delta}{2} \leq q_e \leq \frac{\Delta}{2} \qquad \qquad <q_e^2> = \frac{\Delta^2}{12} =
-	\frac{(2 A_m)^2}{L^2 \cdot 12}$$ \vspace{0.1cm}
-	$$ \text{SNR} =\frac{S}{N_q}= \frac{S}{q_e^2}$$\\
-	$$\text{SNR}_{dB}=10 \log(\text{SNR}) \cdot dB \approx n \cdot 6dB$$
-\end{minipage}
-\begin{minipage}{9cm}
-	$\Delta$ Intervallbreite \\
-	$L$ Anzahl Intervalle \\
-	$n$ Wortlänge der Samples, [Anzahl Bit] \\
-	$A_m$ Amplitude des Nachrichtensignals \\
-	$q_e$ Quantisierungsfehler \\
-	$<q_e^2>$ Quantisierungsrauschen \\
-	SNR Signal-Geräusch Abstand, $[\text{SNR}] = dB$
-\end{minipage}
+\begin{multicols}{2}
+	$ \Delta = \frac{A_m}{2^{n-1}} = \frac{2 \cdot A_m}{L} \qquad \qquad L = 2^n$\\ 
+	$ N_q = \left< q_n^2 \right> = \frac{\Delta^2}{12} =
+	\frac{\left(2A_m\right)^2}{L^2 \cdot 12}$\\
+	$ \text{SNR} =\frac{S}{N_q}=\frac{S}{q_e^2}$\\
+	$\text{SNR}_{dB}=10 \log(\text{SNR}) \cdot dB \approx n \cdot 6dB$
+\columnbreak
+
+	\begin{tabular}{>{\boldmath}ll}
+		$\Delta$ & Intervallbreite \\
+		$L$ & Anzahl Intervalle \\
+		$n$ & Wortlänge der Samples, [Anzahl Bit] \\
+		$A_m$ & Amplitude des Nachrichtensignals \\
+		$q_e$ & Quantisierungsfehler \\
+		$<q_e^2>$ & Quantisierungsrauschen \\
+		$S$ & Signalleistung\\
+		$SNR$ & Signal-Geräusch Abstand, $[\text{SNR}] = dB$
+	\end{tabular}
+\end{multicols}
 
 
 \skriptsubsubsection{Ungleichförmige(Nonuniform) Quantisierung}{95-9.5C}
