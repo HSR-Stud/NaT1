@@ -50,14 +50,27 @@ resultieren Amplitudenverzerrungen.
 Falls das Phasenspektrum $\Theta_h (\omega)$ nicht linear von der Frequenz abhängig ist, resultieren
 Phasenverzerrungen.\\
 \hrule
+
+
 \skriptsubsection{Filter}{27}
-\begin{list}{$\bullet$}{\setlength{\itemsep}{0cm} \setlength{\parsep}{0cm} \setlength{\topsep}{0cm}} 
-  \item Tiefpass - Lowpass Filter (LPF)
-  \item Hochpass - Highpass Filter (HPF)
-  \item Bandpass - Bandpass Filter (BPF)
-  \item Bandsperre - Bandstop Filter (BSF)
-\end{list}
-\paragraph{Ideale Filter} sind nicht realisierbar, da sie akausal sind.
+\begin{multicols}{2}
+\begin{center}
+\begin{tabular}{|c|c|c|}
+\hline
+Tiefpass & Lowpass Filter & LPF \\
+\hline
+Hochpass & Heighpass Filter & HPF \\
+\hline
+Bandpass & Bandpass Filter & BPF \\
+\hline
+Bandsperre & Bandstop Filter & BSF \\
+\hline
+\end{tabular}
+\end{center}
+\columnbreak
+
+\textbf{Ideale Filter} sind nicht realisierbar, da sie akausal sind.
+\end{multicols}
 
 \skriptsubsubsection{Bandbreite}{28}
 \begin{minipage}{7cm}
@@ -72,14 +85,15 @@ Phasenverzerrungen.\\
 
 
 \skriptsubsubsection{Quadraturfilter}{29} \label{lti_quadratur}
-Ein Quadraturfilter ist ein Allpassfilter mit Phasendrehung um $-\frac{\pi}{2}\text{rad } (-90^\circ)$. \\
-$$H(\omega) = \begin{cases}
+Ein Quadraturfilter ist ein Allpassfilter mit Phasendrehung um
+$-\frac{\pi}{2}\text{rad } (-90^\circ)$. Dieses Filter ist technisch nur für einen beschränkten Bandbreitenbereich realisierbar.
+\[
+H(\omega) = \begin{cases}
              	e^{-j \frac{\pi}{2}} & \omega > 0 \\
              	e^{j \frac{\pi}{2}} & \omega < 0
              \end{cases} =
--j \sgn(\omega)$$
-
-Dieses Filter ist technisch nur für einen beschränkten Bandbreitenbereich realisierbar.
+-j \sgn(\omega)
+\]
 
 \skriptsubsubsection{Hilbert Transformation}{29} \label{lti_hilbert}
 Bewirkt eine $-90^\circ$ Phasendrehung des Signals $x(t)$.
