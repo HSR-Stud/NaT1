@@ -84,9 +84,12 @@ Bandsperre & Bandstop Filter & BSF \\
 \end{minipage}
 
 
-\skriptsubsubsection{Quadraturfilter}{29} \label{lti_quadratur}
-Ein Quadraturfilter ist ein Allpassfilter mit Phasendrehung um
-$-\frac{\pi}{2}\text{rad } (-90^\circ)$. Dieses Filter ist technisch nur für einen beschränkten Bandbreitenbereich realisierbar.
+\skriptsubsubsection{Quadraturfilter,
+Hilberttransformation}{29}\label{lti_quadratur}\label{lti_hilbert}
+Quadraturfilter und Hilberttransformation sind Allpassfilter mit
+Phasendrehung um $-\frac{\pi}{2}\text{rad } (-90^\circ)$. Ein
+Quadraturfilter ist technisch nur für einen beschränkten
+Bandbreitenbereich realisierbar.
 \[
 H(\omega) = \begin{cases}
              	e^{-j \frac{\pi}{2}} & \omega > 0 \\
@@ -95,6 +98,4 @@ H(\omega) = \begin{cases}
 -j \sgn(\omega)
 \]
 
-\skriptsubsubsection{Hilbert Transformation}{29} \label{lti_hilbert}
-Bewirkt eine $-90^\circ$ Phasendrehung des Signals $x(t)$.
-$$\qquad \hat{X}(\omega) = H(\omega)X(\omega) = [-j \sgn(\omega)] X(\omega)$$
+$\qquad \hat{X}(\omega) = H(\omega)X(\omega) = [-j \sgn(\omega)] X(\omega)$
