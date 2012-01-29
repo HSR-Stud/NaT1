@@ -2,7 +2,7 @@
 
 %\subsection{PCM - Pulse Code Modulation}
 \begin{center}
-	\includegraphics[width=10cm]{../NaT1/bilder/dig_pcm_blockdiagramm.png}
+	\includegraphics[width=10cm]{bilder/dig_pcm_blockdiagramm.png}
 \end{center}
 \begin{enumerate}
   \item Abtastung(Sampler): Zeitdiskretisierung 
@@ -25,7 +25,7 @@ $$ \delta_{T_S}(t) = \sum\limits_{n=-\infty}^{+\infty} \delta(t-nT_S) \laplace
 \omega_S \delta_{\omega_S} (j \omega) = 
 \omega_S \sum\limits_{n=-\infty}^{+\infty} \delta(\omega - n \omega_S)$$
 	\begin{center}
-		\includegraphics[width=10cm]{../NaT1/bilder/dig_sampler_ideal.png}
+		\includegraphics[width=10cm]{bilder/dig_sampler_ideal.png}
 	\end{center}
 
 \subsubsection{Abtasttheorem - Nyquist Theorem}
@@ -72,7 +72,7 @@ erhöhen.\\
 Folgende Vorteile resultieren daraus: \textbf{Originalgetreueres} Nachrichtensignal, kleinere
 \textbf{Filtersteilheit} notwendig.
 	\begin{center}
-		\includegraphics[width=10cm]{../NaT1/bilder/dig_oversampling.png}
+		\includegraphics[width=10cm]{bilder/dig_oversampling.png}
 	\end{center}
 
 \subsubsection{Natural Sampling\formelbuch{111-5.9}}
@@ -81,7 +81,7 @@ während Sample nicht konstant. \\
 %TODO : Checkliste berechnung des Spektrums für beliebiges Signal
 
 	\begin{center}
-		\includegraphics[width=10cm]{../NaT1/bilder/dig_naturalsampling.png}
+		\includegraphics[width=10cm]{bilder/dig_naturalsampling.png}
 	\end{center}
 
 \subsubsection{Flat-Top Sampling - Sample \& Hold\formelbuch{112-5.10}}
@@ -89,7 +89,7 @@ Das Sample hat die Breite $d$ und bleibt über diese Zeit konstant. \\
 Anwendungsbeispiel: A/D-Wandler, Sample \& Hold Schaltung. \\
 %TODO : Checkliste berechnung des Spektrums für beliebiges Signal
 	\begin{center}
-		\includegraphics[width=17.5cm]{../NaT1/bilder/dig_flattopsampling.png}
+		\includegraphics[width=17.5cm]{bilder/dig_flattopsampling.png}
 	\end{center}
 Das Spektrum des gesampelten Signals wird bei \textbf{höheren Frequenzen} gedämpft, dieses Phänomen
 wird als \textbf{Aperture Effect} bezeichnet. Dies kann mit entsprechenden Filtern wieder
@@ -102,9 +102,9 @@ korrigiert werden.\\
 		\textbf{Kompressor} \hspace{2.9cm}
 		\textbf{$\mu$-Law} \hspace{3cm}
 		\textbf{A-Law}  \\
-		\includegraphics[height=4cm]{../NaT1/bilder/dig_quant_gleichfoermig.png} \hspace{0.5cm}
-		\includegraphics[height=4cm]{../NaT1/bilder/dig_quant_ungleichfoermig.png} \hspace{0.5cm}
-		\includegraphics[height=4cm]{../NaT1/bilder/dig_quant_lulaw_ralaw.png}	
+		\includegraphics[height=4cm]{bilder/dig_quant_gleichfoermig.png} \hspace{0.5cm}
+		\includegraphics[height=4cm]{bilder/dig_quant_ungleichfoermig.png} \hspace{0.5cm}
+		\includegraphics[height=4cm]{bilder/dig_quant_lulaw_ralaw.png}	
 	\end{center}
 	$\mu$-Law und A-Law sind vor allem bei Signalen mit niedrigem Crest-Faktor von
 	Vorteil: $C = \frac{\left|x\right|_{pk}}{x_{RMS}} =
@@ -191,7 +191,7 @@ Bandbreitenbedarf, Erkennung von Übertragungsfehlern) wird das zu übertragende
 codiert.
 
 \begin{minipage}{9cm}
-	\includegraphics[width=8.7cm]{../NaT1/bilder/dig_leitungscodierung.png}
+	\includegraphics[width=8.7cm]{bilder/dig_leitungscodierung.png}
 \end{minipage}
 \begin{minipage}{9cm}
 	\textbf{Unipolar NRZ(Nonreturn-to-Zero)} \\
@@ -241,7 +241,7 @@ $$ f_B = \frac{1 + \alpha}{2 T} Hz \qquad \qquad \frac{1}{T} = \frac{2 f_B}{1 + 
 \end{minipage}
 
 \begin{center}  
-		\includegraphics[height=3.2cm]{../NaT1/bilder/dig_raisedcosinefilter.png}
+		\includegraphics[height=3.2cm]{bilder/dig_raisedcosinefilter.png}
 \end{center}
 
 
@@ -267,7 +267,7 @@ $$
 
 \skriptsubsubsection{Digitale Trägermodulation}{104-5.14}
 \begin{minipage}{9cm}
-	\includegraphics[width=8.7cm]{../NaT1/bilder/dig_traegermodulation.png}
+	\includegraphics[width=8.7cm]{bilder/dig_traegermodulation.png}
 \end{minipage}
 \begin{minipage}{9cm}
 	Weil Binäre Nachrichtensignale selbst zu kleine Frequenzen aufweisen, sind sie nicht geeignet um
