@@ -112,22 +112,25 @@ korrigiert werden.\\
 \renewcommand{\arraystretch}{1}
 \skriptsubsubsection{Gleichförmige(Uniform) Quantisierung}{93-5.4A}
 \begin{multicols}{2}
-	$ \Delta = \frac{A_m}{2^{n-1}} = \frac{2 \cdot A_m}{L} \qquad \qquad L = 2^n$\\ 
+	$ \Delta = \frac{A_{pk}}{2^{n-1}} = \frac{2 \cdot A_{pk}}{L} \qquad \qquad L =
+	2^n$\\
 	$ N_q = \left< q_n^2 \right> = \frac{\Delta^2}{12} =
-	\frac{\left(2A_m\right)^2}{L^2 \cdot 12}$\\
-	$ \text{SNR} =\frac{S}{N_q}=\frac{S}{q_e^2}$\\
-	$\text{SNR}_{dB}=10 \log(\text{SNR}) \cdot dB \approx n \cdot 6dB$
+	\frac{\left(2A_{pk}\right)^2}{L^2 \cdot 12}$\\
+	$ S = \left( \frac{ A_{pk} }{C} \right)^2$\\
+	$ \text{SNR}_{q} =\frac{S}{N_q}=\frac{S}{q_e^2}$\\
+	$\text{SNR}_{q} \left[dB\right] =10 \log(\text{SNR}) \cdot dB \approx n \cdot
+	6dB$
 \columnbreak
 
 	\begin{tabular}{>{\boldmath}ll}
 		$\Delta$ & Intervallbreite \\
 		$L$ & Anzahl Intervalle \\
 		$n$ & Wortlänge der Samples, [Anzahl Bit] \\
-		$A_m$ & Amplitude des Nachrichtensignals \\
+		$A_pk$ & Amplitude des Nachrichtensignals \\
 		$q_e$ & Quantisierungsfehler \\
 		$<q_e^2>$ & Quantisierungsrauschen \\
 		$S$ & Signalleistung\\
-		$SNR$ & Signal-Geräusch Abstand, $[\text{SNR}] = dB$
+		$\textbf{SNR}_{q}$ & Signal-Geräusch Abstand, $[\text{SNR}] = dB$
 	\end{tabular}
 \end{multicols}
 
