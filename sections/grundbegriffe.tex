@@ -39,18 +39,18 @@ Signal $x(t)$ wird auf $|x(t)| \leq 1$ normiert.
 \begin{tabular}[c]{ | p{9cm} | p{9cm} | }
 \hline
 	\begin{minipage}[t]{9cm}
+		\textbf{Energie} \\
+		$ E = W = \lim\limits_{T\rightarrow\infty}\int\limits_{-T/2}^{T/2} |x(t)|^2dt\label{SIG_FORM_01}
+		 = \frac{1}{2 \pi} \int\limits_{-\infty}^{\infty} |X(j \omega)|^2 d \omega$ \\
+	\end{minipage}
+	&
+	\begin{minipage}[t]{9cm}
 		\textbf{Leistung} \\
 		$ P = \lim \limits_{T \to \infty} {\frac{1}{T} \int\limits_{-T/2}^{T/2} {|x(t)|^2 dt}} 
 		= \frac{1}{2 \pi} \int\limits_{-\infty}^{\infty} \left( \lim\limits_{T
 	\rightarrow \infty} \frac{|X(j \omega)|^2}{T} \right) d \omega	$ \\
 	\end{minipage}
-	&
-	\begin{minipage}[t]{9cm}
-		\textbf{Energie} \\
-		$ E = W = \lim\limits_{T\rightarrow\infty}\int\limits_{-T/2}^{T/2} |x(t)|^2dt\label{SIG_FORM_01}
-		 = \frac{1}{2 \pi} \int\limits_{-\infty}^{\infty} |X(j \omega)|^2 d \omega$ \\
-	\end{minipage}
-\\
+	\\
 \hline
 
 	\begin{minipage}[t]{9cm}
