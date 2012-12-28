@@ -1,20 +1,21 @@
-\skriptsection{Digitale Uebermittlung analoger Signale}{90}
+\newpage
+\section{Digitale Uebermittlung analoger Signale}
 
 %\subsection{PCM - Pulse Code Modulation}
 \begin{center}
 	\includegraphics[width=10cm]{bilder/dig_pcm_blockdiagramm.png}
 \end{center}
 \begin{enumerate}
-  \item Abtastung(Sampler): Zeitdiskretisierung 
-  \item Quantisierung(Quantizer): Amplitudendiskretisierung
-  \item Encoder(Codierung)
+  \item Abtastung (Sampler): Zeitdiskretisierung 
+  \item Quantisierung (Quantizer): Amplitudendiskretisierung
+  \item Encoder (Codierung)
 \end{enumerate}
 
-Einige Vorteile der Digitalisierung: $\approx$ 100\% Störungsfrei, Algorithmen
+Einige Vorteile der Digitalisierung: bis 100\% Störungsfrei, Algorithmen
 einfach auf Signal anwendbar, Verschlüsselung leicht gemacht.\\
 
 
-\skriptsubsection{Abtastung (Sampling)}{91-5.4}
+\subsection{Abtastung (Sampling)}
 Ein ideale Abtastung besteht theoretisch aus einer periodischen Abfolge von Dirac-Pulsen
 $\delta_{T_S}$ mit dem Abstand $T_s = \frac{1}{f_s}$. Dieses Spektrum erhält man mittels der
 Fourier-Reihe. \\ 
@@ -48,6 +49,7 @@ $ T_N = \frac{1}{2\cdot B_M} = \frac{1}{f_N} $
 	$T_N$ Nyquistintervall, $[T_N] = s$ \\	
 \end{minipage}
 
+\subsubsection{Subsampling / Oversampling}
 Handelt es sich bei dem Nachrichtensignal um ein \textbf{Bandpasssignal}, so kann mit einer noch
 kleiner Samplingfrequenz abgetastet werden, dies nennt man \textbf{Subsampling}. \\
 Vorgehen: 1. Alle möglichen $n$ bestimmen (ganzzahlig). 2. Alle möglichen Frequenzintervalle für
@@ -75,7 +77,7 @@ Folgende Vorteile resultieren daraus: \textbf{Originalgetreueres} Nachrichtensig
 		\includegraphics[width=10cm]{bilder/dig_oversampling.png}
 	\end{center}
 
-\subsubsection{Natural Sampling\formelbuch{111-5.9}}
+\subsubsection{Natural Sampling}
 Signal mit Periodendauer $T_S$ wird für die Zeit $d$ geschlossen. Amplitude ist bleibt
 während Sample nicht konstant. \\
 %TODO : Checkliste berechnung des Spektrums für beliebiges Signal
@@ -84,7 +86,7 @@ während Sample nicht konstant. \\
 		\includegraphics[width=10cm]{bilder/dig_naturalsampling.png}
 	\end{center}
 
-\subsubsection{Flat-Top Sampling - Sample \& Hold\formelbuch{112-5.10}}
+\subsubsection{Flat-Top Sampling - Sample \& Hold}
 Das Sample hat die Breite $d$ und bleibt über diese Zeit konstant. \\
 Anwendungsbeispiel: A/D-Wandler, Sample \& Hold Schaltung. \\
 %TODO : Checkliste berechnung des Spektrums für beliebiges Signal
@@ -94,9 +96,11 @@ Anwendungsbeispiel: A/D-Wandler, Sample \& Hold Schaltung. \\
 Das Spektrum des gesampelten Signals wird bei \textbf{höheren Frequenzen} gedämpft, dieses Phänomen
 wird als \textbf{Aperture Effect} bezeichnet. Dies kann mit entsprechenden Filtern wieder
 korrigiert werden.\\
+\includegraphics[width=17.5cm]{bilder/dig_sampling_spec.png}
+\\
 
  
-\subsection{Quantisierung (Quantizing)\formelbuch{93-5.6}}
+\subsection{Quantisierung (Quantizing)}
 	\begin{center}	
 		\textbf{Gleichförmig} \hspace{3cm}
 		\textbf{Kompressor} \hspace{2.9cm}
@@ -110,27 +114,29 @@ korrigiert werden.\\
 	Vorteil: $C = \frac{\left|x\right|_{pk}}{x_{RMS}} =
 	\frac{\left|x\right|_{pk}}{\sqrt{x_{Leistung}}}$
 \renewcommand{\arraystretch}{1}
-\skriptsubsubsection{Gleichförmige(Uniform) Quantisierung}{93-5.4A}
+\subsubsection{Gleichförmige(Uniform) Quantisierung}
 \begin{multicols}{2}
 	$ \Delta = \frac{A_{pk}}{2^{n-1}} = \frac{2 \cdot A_{pk}}{L} \qquad \qquad L =
 	2^n$\\
-	$ N_q = \left< q_n^2 \right> = \frac{\Delta^2}{12} =
-	\frac{\left(2A_{pk}\right)^2}{L^2 \cdot 12}$\\
-	$ S = \left( \frac{ A_{pk} }{C} \right)^2$\\
-	$ \text{SNR}_{q} =\frac{S}{N_q}=\frac{S}{q_e^2}$\\
+	$ N_q = \left< q_e^2 \right> = \frac{\Delta^2}{12} =
+	\frac{\left(2A_{pk}\right)^2}{L^2 \cdot 12}$ \\
+	$ S = \left( \frac{ A_{pk} }{C} \right)^2$ \\
+	$ \text{SNR}_{q} =\frac{S}{N_q}=\frac{S}{q_e^2} = \frac{3}{2}L^2
+	\approx 1.76 + 6.02 \cdot n \: dB$ \\
 	$\text{SNR}_{q} \left[dB\right] =10 \log(\text{SNR}) \cdot dB \approx n \cdot
-	6dB$
+	6dB$ \\
 \columnbreak
 
-	\begin{tabular}{>{\boldmath}ll}
+	\begin{tabular}{l l}
 		$\Delta$ & Intervallbreite \\
 		$L$ & Anzahl Intervalle \\
 		$n$ & Wortlänge der Samples, [Anzahl Bit] \\
-		$A_pk$ & Amplitude des Nachrichtensignals \\
+		$A_{pk}$ & Amplitude des Nachrichtensignals \\
 		$q_e$ & Quantisierungsfehler \\
 		$<q_e^2>$ & Quantisierungsrauschen \\
 		$S$ & Signalleistung\\
-		$\textbf{SNR}_{q}$ & Signal-Geräusch Abstand, $[\text{SNR}] = dB$
+		$\text{SNR}_{q}$ & Signal-to-Noise Ratio, $[\text{SNR}] = dB$ \\
+		$C$ & Crestfaktor \\
 	\end{tabular}
 \end{multicols}
 
@@ -145,7 +151,8 @@ gleichförmigen Quantisierer realsiert.
 
 \begin{minipage}{9cm}
 $$ f_{\mu-Law}(x) = \sgn(x) \frac{\ln(1+\mu\cdot|x|)}{\ln(1+\mu)}$$
-$$\text{SNR}_{\mu-Law} \approx 10 \log \dfrac{3 L^2}{[\ln(1 + \mu)]^2}$$
+\begin{align*}\text{SNR}_{\mu-Law} &\approx 10 \log \dfrac{3 L^2}{[\ln(1 + \mu)]^2} \\
+	&\approx -10.1 + 6.20 \cdot n \: dB \end{align*}
 \end{minipage}
 \begin{minipage}{9cm}
 $$f_{A-Law}(x)=\begin{cases} \frac{A}{1+ \ln A} x & \mbox{wenn }0 \le x \le \frac{1}{A} \\
@@ -153,10 +160,9 @@ $$f_{A-Law}(x)=\begin{cases} \frac{A}{1+ \ln A} x & \mbox{wenn }0 \le x \le \fra
 $$\text{SNR}_{A-Law} \approx 10 \log \dfrac{3 L^2}{(1+\ln A)^2}$$
 \end{minipage}
 
+\subsection{Codierung (Encoding)}
 
-\skriptsubsection{Codierung (Encoding)}{96-5.7}
-
-\skriptsubsubsection{Bandbreitenbedarf von PCM-Signalen}{96-5.8}
+\subsubsection{Bandbreitenbedarf von PCM-Signalen}
 \begin{minipage}{9cm}
 	$$ f_s > 2 \cdot B_m  \qquad \qquad n = \log_2 L$$ 
 	$$ R_B = f_s \cdot n > 2 \cdot n \cdot B_m $$ 
@@ -171,7 +177,7 @@ $$\text{SNR}_{A-Law} \approx 10 \log \dfrac{3 L^2}{(1+\ln A)^2}$$
 \end{minipage}
 
 
-\skriptsubsubsection{Delta Modulation}{97-5.9}
+\subsubsection{Delta Modulation}
 \begin{minipage}{9cm}
 $$ \frac{\Delta}{T_s} = \Delta \cdot f_s > \left| \frac{d m(t)}{dt} \right|_{max}$$
 $$ (\text{SNR})_0 = 10 \cdot \log\left(\frac{3 f_s^3}{8 \pi^2 f_m^2 f_M}\right) \cdot dB$$ 
@@ -188,7 +194,7 @@ $$ <q_e^2> = \frac{\Delta^2}{3} $$
 	
 \end{minipage}
 
-\skriptsubsubsection{Leitungscodierung}{99-5.10}
+\subsubsection{Leitungscodierung}
 Je nach Anforderungen (DC-Freie Übertragung, Clock-Rückgewinnung, Störfestigkeit,
 Bandbreitenbedarf, Erkennung von Übertragungsfehlern) wird das zu übertragende Signal entsprechend
 codiert.
@@ -213,20 +219,20 @@ codiert.
 \end{minipage}
 
 
-\skriptsubsubsection{Pulse Shaping und ISI (Intersymbolic Interference)}{101-5.13A}
+\subsubsection{Pulse Shaping und ISI (Intersymbolic Interference)}
 Da Übertragungskanäle in der Praxis keine idealen Eigenschaften 
 (\textbf{limitierte Bandbreite}, Nichtlinearität, Verzerrungen) aufweisen,
 werden die - von uns als rechteckig
 angenommenen - Pulse verfälscht. Die Pulse werden \textbf{verbreitert} und \textbf{überlappen}
 benachbarte Pulse, sodass beim Empfänger eine Unterscheidung der verschiedenen Symbole schwer
-fällt. \\
-Das oben erwähnte Phänomen wird \textbf{intersymbolic interference} genannt. \\
+fällt. 
+Das oben erwähnte Phänomen wird \textbf{intersymbolic interference} genannt.
 Abhilfe schafft ein passendes Filter, welches dem Übertragungskanal vorgeschaltet wird. Das Filter
 weist eine spezielle Impulsantwort auf, welche bei \textbf{gleichmässigen Zeitabständen}
 (Abtastzeiten) Null ist, ausser zum Zeitpunkt Null. Dadurch kann die ISI umgangen werden, wenn dann
 genau zu diesen Zeiten abgetastet wird. \\ 
 
-\textbf{Raised-Cosine Filter \formelbuch{103}} \\
+\textbf{Raised-Cosine Filter} \\
 Dieses Filter schafft Abhilfe bei ISI. Obwohl dies auch mit einem Idealen Filter
 (Sinc-Frequenzgang) möglich wäre, wird ein Raised-Cosine mit folgenden Vorteilen eingesetzt:
 \begin{itemize}
@@ -263,12 +269,7 @@ H(\omega) = \begin{cases}
 $$
 
 
-% 
-% Vorteil Raised-Cosine zu Sinc: RCosine fällt schneller ab (wenn t gegen unendlich). \\
-% RCosine ist zwar auch akausal aber kann viel besser approximiert(praktisch realisiert) werden als
-% ein sinc, da er schneller abfällt!
-
-\skriptsubsubsection{Digitale Trägermodulation}{104-5.14}
+\subsubsection{Digitale Trägermodulation}
 \begin{minipage}{9cm}
 	\includegraphics[width=8.7cm]{bilder/dig_traegermodulation.png}
 \end{minipage}

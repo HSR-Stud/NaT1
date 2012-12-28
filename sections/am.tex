@@ -1,20 +1,22 @@
-\skriptsection{AM (Amplitudenmodulation)}{43}
+\section{AM (Amplitudenmodulation)}
 Bei der Amplitudenmodulation ist die Amplitude des Trägersignals $A(t)$ linear von der dem
 Nachrichtensignal $m(t)$ abhängig.
+\begin{tabular}{l l l}
+Trägersignal & carrier & $A(t)=A_c \cdot \cos(\omega_c t)$ \\
+Nachrichtensignal & message & $m(t)$ \\
+Moduliertes Signal & & $ x_c(t) = m(t) \cdot A_c \cdot \cos(\omega_c t) $ \\
+\end{tabular}
 
-$$ x_c(t) = A(t) \cos(w_c t) $$
 
-
-
-
-\skriptsubsection{DSB(-SC): Doppelseitenband (Double-Sideband)-AM}{44}
+\subsection{DSB(-SC): Doppelseitenband (Double-Sideband)-AM}
 Bei der Doppelseitenband-Amplitudenmodulation ist das untere Seitenband (Lower
 Sideband) sowie das
 obere Seitenband (Upper Sideband) präsent. Da der Träger im Spektrum nicht
 präsent ist, ist bei dieser Art von AM auch von \textbf{DSB-SC (Double-Sideband Suppressed Carrier)} die Rede. \\ 
-\textbf{Bandbreite}: $ \qquad W_B = 2 w_{\omega}$ \\
-\textbf{Leistung}: $P_{DSB-SC} = P_m \cdot \frac{A_c^2}{C} 
-\quad C=$Crest-Faktor \\
+\begin{tabular}{l l l}
+	\textbf{Bandbreite}: & $B_{X(\omega)} = 2 \cdot B_{M(\omega)}$ & \\
+	\textbf{Leistung}: & $P_{DSB-SC} = P_m \cdot \frac{A_c^2}{C}$ & $C$: Crest-Faktor d. \\
+\end{tabular}
 
 \subsubsection{Modulation}
 \begin{minipage}[c][2.7cm][t]{6.5cm}
@@ -23,8 +25,8 @@ präsent ist, ist bei dieser Art von AM auch von \textbf{DSB-SC (Double-Sideband
 \begin{minipage}[c][2.7cm][t]{11.5cm}
 Bei der Doppelseitenband AM wird das Nachrichtensignal mit dem sinusförmigen Trägersignal
 multipliziert, wodruch sich dank dem Modulationssatz folgendes Spektrum ergibt. \\
-$$ x_{DSB}(t) =
-m(t) \cos(w_c t) \quad \laplace \quad X_{DSB} = \frac{1}{2}M(\omega - \omega_c) + \frac{1}{2}M(\omega + \omega_c)$$
+	$ x_{DSB}(t) = \underbrace{m(t) \: A_c}_{A(t)} \: \cos(w_c t) \quad \laplace 
+	\quad X_{DSB} = \frac{A_c}{2}M(\omega - \omega_c) + \frac{A_c}{2}M(\omega + \omega_c)$
 \end{minipage}
 
 \begin{minipage}[t]{9.5cm}
@@ -45,16 +47,22 @@ m(t) \cos(w_c t) \quad \laplace \quad X_{DSB} = \frac{1}{2}M(\omega - \omega_c) 
 	multipliziert und anschliessend das Nachrichtensignal mittels einem Tiefpassfilter rausgefiltert.
 	\\ Weicht die Frequenz oder die Phase des lokalen Trägers von deren, des ursprünglichen Trägers ab, 
 	so ergeben sich Abschwächungen im demodulierten Nachrichtensignal.
-\end{minipage}
+\end{minipage} \\
+
+\begin{tabular}{l l l}
+	$d(t) = x_{DSB}(t) \cdot \cos(\omega_ct)$ & $\laplace$ &  
+	$D(\omega) = \frac{1}{2} A_c M(\omega) + \frac{1}{4} A_c (M(\omega-2\omega_c) + M(\omega+2\omega_c))$ \\
+	$y(t) = T_{TP}[d(t)] $&$ \laplace $&$ Y(\omega) = \frac{A_c}{2} M(\omega)$ \\
+\end{tabular} \\
 
 \paragraph{Auswirkungen einer Phasenabweichung um $\phi$:} $y_{TP}(t) = \frac{1}{2}
 m(t) \cos(-\phi)= \frac{1}{2} m(t) \cos(\phi) $
 \paragraph{Auswirkungen einer Frequenzabweichung um $\Delta \omega$:} $y_{TP}(t) =
 \frac{1}{2} m(t) \cos(\Delta \omega t)$\\
 
+\newpage
 
-
-\skriptsubsection{AM: Gewöhnliche(Ordinary)-AM}{45}
+\subsection{AM: Gewöhnliche(Ordinary)-AM}
 Die gewöhnliche AM wird generiert, indem man dem DSB-Signal ein grosses Trägersignal dazuaddiert.
 
 \subsubsection{Modulation}
@@ -94,7 +102,7 @@ $y(t) = \frac12 (A + m(t)) = \frac12 m(t) + \frac12 A$ mit nachfolgendem
 seriellem Kondensator (Hochpass).
 
 
-\skriptsubsubsection{Modulationsindex}{46}
+\subsubsection{Modulationsindex}
 Der Modulationsindex $\mu$ ist für AM wie folgt definiert.
 $$\mu = \frac{|min\{m(t)\}|}{A_c} = \frac{A_m}{A_c} $$
 Um eine Demodulation mit dem Envelope-Detektor zu ermöglichen, muss die Bedingung 
@@ -115,7 +123,7 @@ Anbei zwei Fälle zur Veranschaulichung dieser Problematik: Links ($\mu \ll 1$),
 	\end{center}
 \end{minipage}
 
-\skriptsubsubsection{Effizienz / Wirkungsgrad}{55-3.4}
+\subsubsection{Effizienz / Wirkungsgrad}
 Unter der Effizienz $ \eta $ der gewöhnlichen AM versteht man das Verhältnis von der Signalleistung
 $P_s$ der beiden Seitenbänder zur Gesamtleistung $P_t$ des AM-Signals.
 
@@ -127,7 +135,7 @@ $$ P_c = \frac{A_c^2}{2} \quad \text{und} \quad P_t = \frac{A_c^2}{2} + \frac{\m
 Die maximale Effizienz (bei $\mu = 100\% $) beträgt nur gerade $ \eta = 33\% $. Bei $\mu = 50\% $
 sind es noch bescheidene $\eta = 11.1\% $.
 
-\skriptsubsection{SSB: Einseitenband (Single-Sideband)-AM}{47}
+\subsection{SSB: Einseitenband (Single-Sideband)-AM}
 Sowohl Gewöhnliche AM als auch DSB verschwenden Bandbreite, weil diese immer beide Seitenbänder
 übermitteln. \\
 Ist dies nicht der Fall - wird also \textbf{nur ein Seitenband} übertragen - so spricht man von
@@ -165,7 +173,7 @@ Einseitenband-AM. Deren Vorteil liegt in der Reduktion der Bandbreite, was aber 
 Diese erfolgt wie bei DSB-AM \verweis{am_dsb_modulation}{Modulation DSB-AM}.\\
 
 
-\skriptsubsection{VSB: Restseitenband (Vestigial-Sideband)-AM)}{49}
+\subsection{VSB: Restseitenband (Vestigial-Sideband)-AM)}
 \subsubsection{Modulation}
 \begin{minipage}[t][2.2cm][c]{5.5cm}
     \includegraphics[width=5cm]{bilder/am_vsb_modulator.png}
@@ -189,7 +197,7 @@ Für eine verzerrungsfreie Demodulation ist erforderlich, dass $H(\omega +
 
 
 
-\skriptsubsection{QAM: Quadratur(Quadrature)-AM}{64-3.15}
+\subsection{QAM: Quadratur(Quadrature)-AM}
 Hierbei werden zwei orthogonale Träger ($\sin, \cos$) verwendet, sodass zwei Nachrichtensignale
 zusammen übertragen werden können. Dies ist zwar technisch aufwendiger, jedoch wird die Bandbreite
 doppelt genutzt. \\

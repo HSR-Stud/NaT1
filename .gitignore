@@ -1,5 +1,7 @@
-/*.aux
-/*.log
-/*.out
-/*.synctex.gz
-/NaT1.pdf
+.DS_STORE
+*.aux
+*.out
+*.log
+*.pdf
+*.synctex.gz
+NaT1.pdf

@@ -17,41 +17,40 @@ $ y(t) = T [ x(t)] \qquad $ Operator T erzeugt aus dem Eingangssignal $ x(t) $ d
 
 \subsection{Schrittfunktion - unit step}
 	\begin{minipage}{10cm}
-		$u(t) =	\begin{cases}
-	  		 0 & \text{für } t < 0 \\
-	  		 \frac{1}{2} \text{(praxis)}  \text{ oder undef. (math.)} & \text{für } t = 0 \\
-	  		 1 & \text{für } t > 0
-	  	\end{cases}
+		$u(t) = \sigma(t) =	\begin{cases}
+		  		 0 & \text{für } t < 0 \\
+		  		 \frac{1}{2} \text{(praxis)}  \text{ oder undef. (math.)} & \text{für } t = 0 \\
+		  		 1 & \text{für } t > 0
+		  	\end{cases}
 		$
+		$\sigma(t) \laplace \frac{1}{j\omega} + \pi\delta(\omega) = \Sigma(\omega)$
 	\end{minipage}
 	\begin{minipage}{8cm}
-		\includegraphics[width=6cm]{bilder/unitstep.png}
+		\includegraphics[width=6cm]{./bilder/unitstep.png}
 	\end{minipage}
-
 
 \subsection{Impulsfunktion - dirac delta function}
 	\begin{minipage}{10cm}
-		$\delta (t)=\begin{cases} 0 & t\ne 0\\\infty & t=0\end{cases} \qquad
-		\text{und} \qquad \int\limits_{-\infty}^\infty \delta(t) \, \mathrm dt = 1 $\\
-		\[
-			\frac{du(t)}{dt}=\delta(t) \qquad
-			\int\limits_{-\infty}^{\infty}\delta(t-t_0)f(t)dt=f(t_0)
-		\]
+		\begin{tabular}{l l}
+		Definition & $\delta (t)=\begin{cases} 0 & t\ne 0\\\infty & t=0\end{cases}$ \qquad $\int\limits_{-\infty}^\infty \delta(t) \, \mathrm dt = 1 $\\
+		\parbox{3cm}{Zusammenhang mit der $\sigma$-Funktion} & $\frac{d\sigma(t)}{dt}=\delta(t)$ \\
+		\end{tabular}
 		\[
 			1 \FT 2\pi \delta(\omega) \qquad \delta(t) \FT 1(\omega)
 		\]
-		 
 	\end{minipage}
 	\begin{minipage}{8cm}
-		\includegraphics[width=6cm]{bilder/diracimpulse.png}
+		\includegraphics[width=6cm]{./bilder/diracimpulse.png}
 	\end{minipage}
 
-
 	\subsection{Impulsantwort \schaum{25-2.2B}}
-		$h(t) = T[\delta(t)] \qquad $\\
-		Bei kausalen Systemen: $h(t) = 0$ für $t < 0$ \\   
-		Bei akausalen Systemen: $h(t) \neq 0$ für $t < 0$\\ 
+		Die Impulsantwort $h(t)$ ist definiert als: $h(t) = T[\delta(t)] $ \\
+		\hspace*{0.5cm} Bei kausalen Systemen: $h(t) = 0$ für $t < 0$ \\   
+		\hspace*{0.5cm} Bei akausalen Systemen: $h(t) \neq 0$ für $t < 0$\\ 
+		Die Antwort auf das Eingangssignal $x(t)$ berechnet sich: $y(t) = x(t) * h(t)$ \\
+		
 		Für weitere Details siehe Signale \& Systeme Zusammenfassung.
+		
 		\subsubsection{Filtereigenschaft von $H(\omega)$}
 			$ Y(\omega) = X(\omega) \cdot X(\omega)
 				\qquad |Y(\omega)| = |X(\omega)| \cdot |X(\omega)|
@@ -128,7 +127,6 @@ $ y(t) = T [ x(t)] \qquad $ Operator T erzeugt aus dem Eingangssignal $ x(t) $ d
 				\end{tabular}
 			\end{center}
 		\columnbreak
-
 		\textbf{Ideale Filter} sind nicht realisierbar, da sie akausal sind.\\ \\
 		\textbf{Kausale Filter} sind Ann\"ahrung an ideale Filter. \\ \\
 		\textbf{TODO: Bilder von Filterdurchlasskurve einfügen}
