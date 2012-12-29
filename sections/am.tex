@@ -66,11 +66,12 @@ m(t) \cos(-\phi)= \frac{1}{2} m(t) \cos(\phi) $
 Die gewöhnliche AM wird generiert, indem man dem DSB-Signal ein grosses Trägersignal dazuaddiert.
 
 \subsubsection{Modulation}
-
 $x_{AM}(t) = A_C (1 + \mu \cdot m(t)) \cos(\omega_c t)
-	\quad \laplace \quad X_{AM}(\omega) = \frac{1}{2}M(\omega - \omega_c) + \frac{1}{2}M(\omega + \omega_c) + \pi A_C [\delta (\omega - \omega_c) + \delta (\omega + \omega_c)]$
-	$m(t) \laplace M(\omega)$ \\
-	$\mu \cdot sin(\omega t) \laplace \pi \cdot \mu \cdot \delta(\omega)$
+	\quad \laplace \quad X_{AM}(\omega) = \frac{1}{2}M(\omega - \omega_c) + 
+	\frac{1}{2}M(\omega + \omega_c) + \pi A_C [\delta (\omega - \omega_c) + 
+	\delta (\omega + \omega_c)] $ \\
+$	\text{mit} \qquad m(t) \laplace M(\omega) $ \\
+$	\text{und}\qquad \mu \cdot sin(\omega t) \laplace \pi \cdot \mu \cdot \delta(\omega)$ \\
 
 \begin{minipage}[]{9cm}
 	\includegraphics[width=9cm]{bilder/am_oam_modulation.png}
@@ -90,16 +91,16 @@ sehr gering.\\
 \begin{center}	
       \includegraphics[width=14cm]{bilder/am_oam_enveloppeDetektor.png}
 \end{center}
-Damit der Envelope Detektor korrekt funktioniert müssen R und C korrekt gewählt werden, es gilt:
-$RC \leq \frac{\sqrt{1 - \mu^2}}{\omega_m \mu}$ \\
-In der Praxis genügt jedoch das Erfüllen der Bedingung $\frac{1}{\omega_c} \ll \frac{1}{W_M}$,
+Damit der Envelope Detektor korrekt funktioniert müssen R und C korrekt gewählt werden, es gilt: \\
+\framebox{$RC \leq \frac{\sqrt{1 - \mu^2}}{\omega_m \mu}$}  was gleichbedeutend ist mit: 
+$\frac{1}{RC} \geq \omega_m \frac{\mu \cdot \sin(\omega_m t_0)}{1+\mu\cdot\cos(\omega_mt_0)}$ \\
+In der Praxis genügt jedoch meist das Erfüllen der Bedingung $\frac{1}{\omega_c} \ll \frac{1}{W_M}$,
 wobei es sich bei $W_M$ um die Bandbreite des Nachrichtensignals handelt. 
 
 \paragraph{Mit kohärentem (synchronen) Demodulator}
-Ordinary AM kann auch mit dem kohärenten Demodulator demoduliert werden
-\verweis{am_dsb_modulation}{}:
+Ordinary AM kann auch mit dem kohärenten Demodulator demoduliert werden:
 $y(t) = \frac12 (A + m(t)) = \frac12 m(t) + \frac12 A$ mit nachfolgendem
-seriellem Kondensator (Hochpass).
+seriellem Kondensator (Hochpass zum Filtern des DC-Anteils).
 
 
 \subsubsection{Modulationsindex}
@@ -143,7 +144,7 @@ Einseitenband-AM. Deren Vorteil liegt in der Reduktion der Bandbreite, was aber 
 - Die Komplexität der Implementation - mit sich bringt.
 
 \subsubsection{Modulation}
-\textbf{Phasenverschiebung \formelbuch{59-3.8}}  \\
+\textbf{Phasenverschiebung}  \\
 \begin{minipage}[t][3.7cm][c]{7.5cm}
     \includegraphics[width=7cm]{bilder/am_ssb_modulationPhasenshifter.png}
 \end{minipage}
@@ -170,7 +171,9 @@ Einseitenband-AM. Deren Vorteil liegt in der Reduktion der Bandbreite, was aber 
 \end{minipage}
 
 \subsubsection{Demodulation}
-Diese erfolgt wie bei DSB-AM \verweis{am_dsb_modulation}{Modulation DSB-AM}.\\
+Zur Demodulation kann die gleiche Phasenschieber-Schaltung wie zur Modulation verwendet
+werden. Die Signale werden jedoch immer addiert, nie subtrahiert. \\
+Die Demodulation kann auch wie bei DSB-AM mit dem koheränten Demodulator erfolgen. \\
 
 
 \subsection{VSB: Restseitenband (Vestigial-Sideband)-AM)}
@@ -191,13 +194,12 @@ $ \qquad  W_{VSB} \approx 1.25 \cdot W_{SSB} $
 
 \subsubsection{Demodulation}
 Auch diese Art von AM kann mit einem kohärenten Demodulator demoduliert
-werden \verweis{am_dsb_modulation}{Modulation DSB-AM}.\\
-Für eine verzerrungsfreie Demodulation ist erforderlich, dass $H(\omega +
+werden. Für eine verzerrungsfreie Demodulation ist erforderlich, dass $H(\omega +
 \omega_c) + H(\omega - \omega_c) = const$ für $|\omega| \leq |\omega_m|_{max}$.
 
 
 
-\subsection{QAM: Quadratur(Quadrature)-AM}
+\subsection{QAM: Quadratur-AM}
 Hierbei werden zwei orthogonale Träger ($\sin, \cos$) verwendet, sodass zwei Nachrichtensignale
 zusammen übertragen werden können. Dies ist zwar technisch aufwendiger, jedoch wird die Bandbreite
 doppelt genutzt. \\

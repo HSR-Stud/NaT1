@@ -1,4 +1,4 @@
-\skriptsection{Winkelmodulation (FM/PM)}{68}
+\section{Winkelmodulation (FM/PM)}
 Obwohl Winkel- und Frequenzmodulation - im Vergleich zu AM - komplexer ist und mehr Bandbreite
 benötigt hat es einen erheblichen Vorteil, welcher die vorhin genannten Nachteile kompensiert.
 Nämlich ist die \textbf{Störanfälligkeit} und das \textbf{Rauschen} kleiner als bei AM. \\
@@ -28,26 +28,25 @@ $$\boxed{ x_c(t) = A \cos(w_c t + \phi(t)) = A \cos(\theta(t)) }$$
 \renewcommand{\arraystretch}{1}
 \end{center}
 
-
 \subsection{Momentanfrequenz, Frequenzabweichung}
 \begin{multicols}{2}
 	\begin{center}
 		$ w_i = \frac{d \theta(t)}{dt} = w_c + \frac{d \phi(t)}{dt} $\\
-		$ \Delta \omega = \left| \omega_i - \omega_c \right|_{max} $\\
+		$ \Delta \omega = |\omega_i - \omega_c|_{max} = |\phi'|_{max}$ \\
 		$ \Delta f_{FM} =  m_{pk} \cdot \frac{k_f}{2\pi}$\\
-		$ \Delta f_{PM} = m_{pk} \cdot \frac{k_p f_m}{2\pi}$
+		$ \Delta f_{PM} = m_{pk} \cdot \frac{k_p f_m}{2\pi}$ \\
 	\end{center}
 \columnbreak
-
-	$\omega_i$ Momentanfrequenz, $[\omega_i] = \frac{rad}{s}$ \\
-	$\omega_c$ Trägerfrequenz, $[\omega_c] = \frac{rad}{s}$ \\
-	$\Delta \omega$ maximale Frequenzabweichung, $[\Delta \omega] = \frac{rad}{s}$ \\
-	$\theta(t)$ momentane Phasenabweichung, $[\theta(t)] = \frac{rad}{s}$ \\
-	$m_{pk}$ Peak des Nachrichtensignals
+		$\omega_i$ Momentanfrequenz \\
+		$\omega_c$ Trägerfrequenz \\
+		$\Delta \omega$ maximale Frequenzabweichung \\
+		$\phi(t)$ momentane Phasenabweichung \\
+		$|\phi|_{max}$ maximale Phasenabweichung \\
+		$m_{pk}$ Peak des Nachrichtensignals
 \end{multicols}
 
 
-\skriptsubsection{Klein- und Grosshub}{70-4.5}
+\subsection{Klein- und Grosshub}
 Abhängig von der maximalen Phasenabeweichung sind zwei verschiedene Arten von Winkelmodulationnen zu
 unterscheiden. \\
 
@@ -65,9 +64,7 @@ unterscheiden. \\
 \end{tabular}
  
 
-
-\skriptsubsection{Einton (Sinusförmige)-Modulation (Sinusoidal
-Modulation)}{71-4.6}
+\subsection{Einton (Sinusförmige)-Modulation (Sinusoidal Modulation)}
 
 \subsubsection{Modulationsindex (Modulation Index)}
 \begin{minipage}[t][0.7cm][c]{10cm}
@@ -117,12 +114,11 @@ $
 \end{center}
 F\"ur Frequenzen in Zeitbereich ($Hz$) kann $\omega_m$ mit $f_m$ und
 $\omega_{\Delta}$ mit $f_{\Delta}$ ersetzt werden.\\
-\subsubsection{Leistung \formelbuch{78-4.6}}
+\subsubsection{Leistung}
 $$P = \frac12 A_C^2$$
 
 
-
-\subsection{Willkürliche-Modulation (Arbitrary Modulation) \formelbuch{72-4.7B}}
+\subsection{Willkürliche-Modulation (Arbitrary Modulation)}
 Anstelle von $\beta$ verwenden wir für willkürliche Nachrichtensignale $D$ für die
 Phasenabweichung.\\ 
 \begin{minipage}[t][2.7cm][c]{10cm}
@@ -148,7 +144,7 @@ Auch bei der Modulation muss zwischen Klein- und Grosshub FM/PM unterschieden we
 
 %pm_nbpm_modulator.png fm_nbfm_modulator.png
 
-\skriptsubsubsection{Kleinhub Modulation}{72-4.8A}
+\subsubsection{Kleinhub Modulation}
 Aus der trigonometrische Gleichung ($\cos(\beta + \alpha) = \cos(\alpha) \cdot \cos(\beta) -
 \sin(\alpha) \cdot \sin(\beta)$ mit $\cos(\alpha) \approx 1, \sin(\alpha) \approx \alpha$) ergibt
 sich: \\
@@ -168,7 +164,7 @@ $$\cos(\beta) - \alpha \cdot \sin(\beta) \quad \Rightarrow \quad \cos(\omega_c t
 	\end{center}
 \end{minipage}
 
-\skriptsubsubsection{Indirekte Grosshub Modulation}{73-4.8B1}
+\subsubsection{Indirekte Grosshub Modulation}
 \begin{minipage}[t][3cm][c]{10cm}	
 	Bei dieser Methode wir zuerst ein Kleinhub-Signal erzeugt und dann mittels einem
 	\textbf{Frequenzmultiplikator} in ein Grosshub-Signal gewandelt.
@@ -182,7 +178,7 @@ $$\cos(\beta) - \alpha \cdot \sin(\beta) \quad \Rightarrow \quad \cos(\omega_c t
 	\end{center}
 \end{minipage}
 
-\skriptsubsubsection{Direkte Grosshub Modulation}{74-4.8B2}
+\subsubsection{Direkte Grosshub Modulation}
 Dank der spannungsabhängigen Sperrschichtkapazität von Dioden (Varicap - Kapazitätsdiode,
 Dioden-Varaktor, MOS-Varaktor) ist es möglich spannungsabhängige Oszillatoren zu entwickeln. Diese \textbf{VCOs
 (Voltage Controlled Oscialltor)} können dann direkt ein Grosshub PM/FM Signal
@@ -228,9 +224,9 @@ Zur Synchronisation mit dem Demodulator dient der 19kHz Pilot Ton. \\
 Mit RDS (Radio Data System) werden Digitale Daten wie z.B. Senderinformationen (Sendername, Uhrzeit,
 \ldots) mit einer Datenrate von 1187.5 bit/s übertragen. \\
 \begin{minipage}{9cm}
-	\includegraphics[width=7cm]{bilder/ukw_blockdiagramm.png}
+	\includegraphics[width=6cm]{bilder/ukw_blockdiagramm.png}
 \end{minipage}
 \begin{minipage}{9cm} 
 	\textbf{Spektrum des UKW Nachrichtensignals} \\ \\
-    \includegraphics[width=8cm]{bilder/ukw_spektrum.png}
+    \includegraphics[width=7cm]{bilder/ukw_spektrum.png}
 \end{minipage}
