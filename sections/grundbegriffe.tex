@@ -1,39 +1,10 @@
 \section{Grundbegriffe}
-\subsection{Einfaches Kommunikationsmodell}
-\begin{center}
-	\input{tikzpictures/kommunikationsmodell}
-\end{center}
-
-\subsection{Pegel (Dezibel)}
-\textbf{Mit Dezibel (dB) vergleicht man Leistungspegel, nicht Amplituden!}
-
-\subsubsection{Relative Pegel}
-	\begin{tabbing}
-	xxxxxxxxxxxxxxxxxxxxxxxxx \= xxxxxxxxxxxxxxxxxxxxxxx  \= xxxxxxxxxxxxxxxxxxxxxxx \=\kill
-	\textbf{Spannungspegel} \> $L_U = 20 \cdot \log_{10} \frac{U_x}{U_0}$ \> $U_x = U_0 \cdot
-	10^{\frac{L_U}{20}} $ \> $[L_U] = dB$ \\ 
-	\textbf{Strompegel} \> $L_I  = 20 \cdot \log_{10} \frac{I_x}{I_0}$ \> $I_x = I_0 \cdot
-	10^{\frac{L_I}{20}} $ \> $[L_I] = dB$ \\ 
-	\textbf{Leistungspegel} \> $L_P = 10 \cdot \log_{10} \frac{P_x}{P_0}$ \> $P_x = P_0 \cdot
-	10^{\frac{L_U}{10}} $ \> $[L_P] = dB$
-	\end{tabbing}
-
-\subsubsection{Absolute Pegel}
-	\begin{tabbing}
-	xxxxxxxxxxxxxxxxxxxxxxxxx \= xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx  \= xxxxxxxxxxxxxxxxxxxxxxx \=\kill
-	\textbf{dBW} \> Leistungspegel mit Bezugsgrösse $P_0 = $1W \> $\Longrightarrow \: 0 \: dBW = 1W$\\
-	\textbf{dBm} \> Leistungspegel mit Bezugsgrösse $P_0 = $1mW \> $\Longrightarrow \: 0 \: dBm = 1mW$\\
-	\textbf{dBV} \> Spannungspegel mit Bezugsgrösse $U_0 = $1V \> $\Longrightarrow \: 0 \: dBV = (1V)^2/R_{ref}$\\
-	\textbf{dB}$\mu$V \> Spannungspegel mit Bezugsgrösse $U_0 = $1$\mu$V \> $\Longrightarrow \: 0 \: dB \mu V = (1 \mu V)^2/R_{ref}$
-	\end{tabbing}
-Bei \textbf{Spannungspegeln} (dBV, dB$\mu$V) muss immer der \textbf{Referenz-Widerstand} ($R_{ref}$) berücksichtigt werden: \\
-In der \textbf{HF-Technik} üblich, $R_{ref} = 50 \Omega \Rightarrow 0 dBV = 20 mW \qquad $
-In der \textbf{Telefonie} üblich, $R_{ref} = 600  \Omega \Rightarrow 0 dBV =
-1.67 mW$ 
-
+	\subsection{Einfaches Kommunikationsmodell}
+		\begin{center}
+			\input{tikzpictures/kommunikationsmodell}
+		\end{center}
 \subsection{Signalklassifizierungen}
-Absoluter Werte des Signals sind irrelevant - Physikalische Dimension wird weggelassen. \\
-Signal $x(t)$ wird auf $|x(t)| \leq 1$ normiert.
+
 
 \renewcommand{\arraystretch}{2}
 \begin{tabular}[c]{ | p{9cm} | p{9cm} | }
@@ -54,19 +25,19 @@ Signal $x(t)$ wird auf $|x(t)| \leq 1$ normiert.
 \hline
 
 	\begin{minipage}[t]{9cm}
-		\textbf{Energiesignal} - \textit{''Impuls'' bspw. Nachrichtensignal}\\
-		$ E < \infty $ \\
+		\textbf{Energiesignal} - \textit{''Impuls'' bspw. Nachrichtensignal}
 		\begin{center}
-			\includegraphics[width=6cm]{bilder/signal_energiesignal.png}
+			$ E < \infty $ \\
+			\includegraphics[width=4cm]{bilder/signal_energiesignal.png}
        	\end{center}
 
 	\end{minipage}
 	&
 	\begin{minipage}[t]{9cm}
-		\textbf{Leistungssignal} - \textit{''Dauersignal '' bspw. Trägersignal} \\
-		$ E = \infty \text{ und } P < \infty$ \\
+		\textbf{Leistungssignal} - \textit{''Dauersignal '' bspw. Trägersignal}
 		\begin{center}
-			\includegraphics[width=6cm]{bilder/signal_leistungssignal.png}
+			$ E = \infty \text{ und } P < \infty$\\
+			\includegraphics[width=4cm]{bilder/signal_leistungssignal.png}
        	\end{center}
 
 	\end{minipage} \\
@@ -96,16 +67,12 @@ Signal $x(t)$ wird auf $|x(t)| \leq 1$ normiert.
 	\end{minipage}
 \\
 \hline
-\end{tabular}
-\newpage
-\begin{tabular}[c]{ | p{9cm} | p{9cm} | }
-\hline
 
 	\begin{minipage}[t]{9cm}
 		\textbf{Zeitkontinuierlich} \\
 		$x(t) \text{ ist definiert } \forall t \in \mathbb{R}$
 		\begin{center}
-			\includegraphics[width=6cm]{bilder/signal_zeitkontinuierlich.png}
+			\includegraphics[width=4cm]{bilder/signal_zeitkontinuierlich.png}
        	\end{center}
 	\end{minipage}
 	&
@@ -114,23 +81,25 @@ Signal $x(t)$ wird auf $|x(t)| \leq 1$ normiert.
 		$x(t) \text{ nur definiert an Stellen } x(n \cdot T) $ \\
 		$  \text{ mit Abtastintervall } T \text { und } n \in \mathbb{Z}$
 		\begin{center}
-			\includegraphics[width=6cm]{bilder/signal_zeitdiskret.png}
+			\includegraphics[width=4cm]{bilder/signal_zeitdiskret.png}
        	\end{center}
 	\end{minipage}
 \\
 \hline
 
 	\begin{minipage}[t]{9cm}
-		\textbf{Amplitudenkontinuierlich}
+		\textbf{Amplitudenkontinuierlich}\\
+		$x(t) = y$ mit $y \in \mathbb{R}$
 		\begin{center}
-			\includegraphics[width=6cm]{bilder/signal_amplitudenkontinuierlich.png}
+			\includegraphics[width=4cm]{bilder/signal_amplitudenkontinuierlich.png}
        	\end{center}
 	\end{minipage}
 	&
 	\begin{minipage}[t]{9cm}
-		\textbf{Quantisiert}
+		\textbf{Quantisiert}\\
+		$x(t) = y_k$ mit $k \in \mathbb{K} \subset \mathbb{Z}$
 		\begin{center}
-			\includegraphics[width=6cm]{bilder/signal_quantisiert.png}
+			\includegraphics[width=4cm]{bilder/signal_quantisiert.png}
        	\end{center}
 	\end{minipage}
 \\
@@ -149,3 +118,57 @@ Signal $x(t)$ wird auf $|x(t)| \leq 1$ normiert.
 \hline
 \end{tabular}
 \renewcommand{\arraystretch}{\arraystretchOriginal}
+
+
+	\subsection{Amplituden und Leistungen}
+		\subsubsection{Normierte Signale}
+			\begin{itemize}
+				\item Absolute Werte des Signals sind irrelevant - Physikalische Dimension wird weggelassen.
+				\item Signal $x(t)$ wird auf $|x(t)| \leq 1$ normiert.
+			\end{itemize}
+		\subsubsection{Signalbeschreibung}
+			\begin{tabular}{p{4cm} p{4cm} p{4cm} p{4cm}}
+				\textbf{Effektivwert} & 
+				$x_{RMS} = \sqrt{P_x}$\\
+				\textbf{Crestfaktor} & 
+				$C = \dfrac{|x|_{pk}}{x_{RMS}}$\\
+				\textbf{physikalische Leistung} &
+				$P_{phys} = c \cdot P_x$\\
+				& Bsp. $x(t) = i(t) \quad [A]$&
+				$P_x = I_{RMS}^2 \quad [A^2]$&
+				$P_{phys} = R \cdot I_{RMS}^2 \quad [W]$
+			\end{tabular}
+			 
+			
+
+	\subsection{Pegel (Dezibel)}
+		\textbf{Mit Dezibel (dB) vergleicht man Leistungspegel, nicht Amplituden!}
+
+	\subsubsection{Relative Pegel}
+		\begin{tabbing}
+			xxxxxxxxxxxxxxxxxxxxxxxxx \= xxxxxxxxxxxxxxxxxxxxxxx  \= xxxxxxxxxxxxxxxxxxxxxxx \=\kill
+			\textbf{Spannungspegel} \> $L_U = 20 \cdot \log_{10} \frac{U_x}{U_0}$ \> $U_x = U_0 \cdot
+			10^{\frac{L}{20}} $ \> $[L_U] = dB$ \\ 
+			
+			\textbf{Strompegel} \> $L_I  = 20 \cdot \log_{10} \frac{I_x}{I_0}$ \> $I_x = I_0 \cdot
+			10^{\frac{L}{20}} $ \> $[L_I] = dB$ \\ 
+			
+			\textbf{Leistungspegel} \> $L_P = 10 \cdot \log_{10} \frac{P_x}{P_0}$ \> $P_x = P_0 \cdot
+			10^{\frac{L}{10}} $ \> $[L_P] = dB$
+		\end{tabbing}
+		Beachte: Jeder relative Pegel gilt für U, I \& P. (Bei gleicher Referenz)
+	
+
+\subsubsection{Absolute Pegel}
+	\begin{tabbing}
+	xxxxxxxxxxxxxxxxxxxxxxxxx \= xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx  \= xxxxxxxxxxxxxxxxxxxxxxx \=\kill
+	\textbf{dBW} \> Leistungspegel mit Bezugsgrösse $P_0 = $1W \> $\Longrightarrow \: 0 \: dBW = 1W = P_{0_{dBW}}$\\
+	\textbf{dBm} \> Leistungspegel mit Bezugsgrösse $P_0 = $1mW \> $\Longrightarrow \: 0 \: dBm = 1mW = P_{0_{dBm}}$\\
+	\textbf{dBV} \> Spannungspegel mit Bezugsgrösse $U_0 = $1V \> $\Longrightarrow \: 0 \: dBV = (1V)^2/R_{ref} = P_{0_{dBV}}$\\
+	\textbf{dB}$\mu$V \> Spannungspegel mit Bezugsgrösse $U_0 = $1$\mu$V \> $\Longrightarrow \: 0 \: dB \mu V = (1 \mu V)^2/R_{ref} = P_{0_{dB\mu V}}$
+	\end{tabbing}
+Bei Leistungen in Bezug zu absoluten \textbf{Spannungspegeln} (dBV, dB$\mu$V) muss immer der \textbf{Referenz-Widerstand} ($R_{ref}$) berücksichtigt werden: \\
+In der \textbf{HF-Technik} üblich, $R_{ref} = 50 \Omega \Rightarrow 0 dBV = 20 mW \qquad $
+In der \textbf{Telefonie} üblich, $R_{ref} = 600  \Omega \Rightarrow 0 dBV =
+1.67 mW$ 
+
