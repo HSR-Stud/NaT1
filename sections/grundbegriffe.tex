@@ -172,3 +172,20 @@ In der \textbf{HF-Technik} üblich, $R_{ref} = 50 \Omega \Rightarrow 0 dBV = 20 
 In der \textbf{Telefonie} üblich, $R_{ref} = 600  \Omega \Rightarrow 0 dBV =
 1.67 mW$ 
 
+\subsection{Fourier-Theorie}
+	Die ganze Theorie zu den Fourier-Reihen, sowie zu der Fourier-Transformation sind in der Zusammenfassung des Moduls \textbf{Integral Transformation} zu finden.
+
+\subsubsection{Ergänzung für NaT}
+	\textbf{Symmetrie-Eigenschaft}\\
+	Jedes Signal $x(t)$ kann aufgespaltet werden in:
+	\parbox{6.5cm}{
+		\begin{itemize}
+		\item einen geraden (even) Anteil $x_e(t)$
+		\item einen ungeraden (odd) Anteil $x_o(t)$
+		\end{itemize}
+	}
+	$\qquad \Rightarrow x(t) = x_e(t) + x_o(t)$\\
+	Es gilt:  $\quad$
+		\parbox[t]{7cm}{
+		$x_e(-t) = x_e(-t) : \qquad X_e(\omega)$ ist reellwertig\\
+		\hspace{1cm} $x_o(-t) = -x_o(t) : \qquad X_o(\omega)$ ist imaginär}
