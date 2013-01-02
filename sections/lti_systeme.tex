@@ -1,4 +1,4 @@
-\skriptsection{LTI-Systeme}{25}
+\section{LTI-Systeme}
 \begin{center}
 	\input{tikzpictures/lti_system}
 \end{center}
@@ -12,21 +12,21 @@ $ y(t) = T [ x(t)] \qquad $ Operator T erzeugt aus dem Eingangssignal $ x(t) $ d
 	Bedingung für Zeitinvarianz: & $y(t) = H(x(t))$ & $y(t-t_0) = H(x(t-t_0))$ \\
 \end{tabular}
 
-\paragraph{Kausalität} Ein System ist kausal, wenn jedes Ausgangsignal durch ein vorhergehendes Eingangsignal gebildet wird.
+	\paragraph{Kausalität} Ein System ist kausal, wenn jedes Ausgangsignal durch ein vorhergehendes Eingangsignal gebildet wird.
 \\
 
 \subsection{Schrittfunktion - unit step}
-\begin{minipage}{10cm}
-	$u(t) =	\begin{cases}
+	\begin{minipage}{10cm}
+		$u(t) =	\begin{cases}
 	  		 0 & \text{für } t < 0 \\
 	  		 \frac{1}{2} \text{(praxis)}  \text{ oder undef. (math.)} & \text{für } t = 0 \\
 	  		 1 & \text{für } t > 0
 	  	\end{cases}
-	$
-\end{minipage}
-\begin{minipage}{8cm}
-	\includegraphics[width=6cm]{bilder/unitstep.png}
-\end{minipage}
+		$
+	\end{minipage}
+	\begin{minipage}{8cm}
+		\includegraphics[width=6cm]{bilder/unitstep.png}
+	\end{minipage}
 
 
 \subsection{Impulsfunktion - dirac delta function}
@@ -35,16 +35,29 @@ $ y(t) = T [ x(t)] \qquad $ Operator T erzeugt aus dem Eingangssignal $ x(t) $ d
 		\text{und} \qquad \int\limits_{-\infty}^\infty \delta(t) \, \mathrm dt = 1 $\\
 		$$\frac{du(t)}{dt}=\delta(t) \qquad
 		\int\limits_{-\infty}^{\infty}\delta(t-t_0)f(t)dt=f(t_0)$$
+		$$ 1 \laplace 2\pi \delta(\omega) \qquad \delta(t) \laplace 1(\omega)$$
 	\end{minipage}
 	\begin{minipage}{8cm}
 		\includegraphics[width=6cm]{bilder/diracimpulse.png}
 	\end{minipage}
 
 
-\skriptsubsection{Impulsantwort}{25-2.2B}
-Siehe Signale \& Systeme Zusammenfassung.\\
-%$h(t) = T[\delta(t)] \qquad $
-
+	\subsection{Impulsantwort}
+		$h(t) = T[\delta(t)] \qquad $\\
+		Bei kausalen Systemen: $h(t) = 0$ für $t < 0$ \\   
+		Bei akausalen Systemen: $h(t) \neq 0$ für $t < 0$\\ 
+		Für weitere Details siehe Signale \& Systeme Zusammenfassung.
+		\subsubsection{Filtereigenschaft von $H(\omega)$}
+			$ Y(\omega) = X(\omega) \cdot X(\omega)
+				\qquad |Y(\omega)| = |X(\omega)| \cdot |X(\omega)|
+				\qquad \varphi_{_Y}(\omega) = \varphi_{_X}(\omega) + \varphi_{_H}(\omega)$
+		
+		\subsubsection{Logarithmische Darstellung des Amplitudengangs}
+			$ \qquad |H(\omega)| [dB] = 20 \cdot \log_{10}(|H(\omega)|)\qquad$
+			\parbox{10cm}{So vereinfacht sich Berechnung der 
+				Ausgangsamplitude:\\
+				\hspace*{0.5cm}$ |Y(\omega)| [dB] = |X(\omega)|[dB] + |H(\omega)| [dB]$
+			}
 
 \skriptsubsection{Verzerrungen}{26}
 \subsubsection{Amplitudenverzerrung}
