@@ -177,15 +177,32 @@ In der \textbf{Telefonie} üblich, $R_{ref} = 600  \Omega \Rightarrow 0 dBV =
 
 \subsubsection{Ergänzung für NaT}
 	\textbf{Symmetrie-Eigenschaft}\\
-	Jedes Signal $x(t)$ kann aufgespaltet werden in:
-	\parbox{6.5cm}{
-		\begin{itemize}
-		\item einen geraden (even) Anteil $x_e(t)$
-		\item einen ungeraden (odd) Anteil $x_o(t)$
-		\end{itemize}
-	}
-	$\qquad \Rightarrow x(t) = x_e(t) + x_o(t)$\\
-	Es gilt:  $\quad$
+		Jedes Signal $x(t)$ kann aufgespaltet werden in:
+		\parbox{6.5cm}{
+			\begin{itemize}
+				\item einen geraden (even) Anteil $x_e(t)$
+				\item einen ungeraden (odd) Anteil $x_o(t)$
+			\end{itemize}
+		}
+		$\qquad \Rightarrow x(t) = x_e(t) + x_o(t)$\\
+		Es gilt:  $\quad$
 		\parbox[t]{7cm}{
-		$x_e(-t) = x_e(-t) : \qquad X_e(\omega)$ ist reellwertig\\
-		\hspace{1cm} $x_o(-t) = -x_o(t) : \qquad X_o(\omega)$ ist imaginär}
+			$x_e(-t) = x_e(-t) : \qquad X_e(\omega)$ ist reellwertig\\
+			\hspace{1cm} $x_o(-t) = -x_o(t) : \qquad X_o(\omega)$ ist imaginär
+		}\\
+		
+	\begin{minipage}[t]{9cm}
+		\textbf{Sinusf\"ormige Funktionen im Frequenzbereich}\\ 
+			\hspace*{0.5cm}
+			\parbox{8cm}{
+				$\cos(\omega_0t) \laplace \pi \cdot (\delta(\omega - \omega_0)+ (\delta(\omega + \omega_0))$\\
+				$\sin(\omega_0t) \laplace -j\pi \cdot (\delta(\omega - \omega_0)+ (\delta(\omega + \omega_0))$	
+			}
+	\end{minipage}
+	\begin{minipage}[t]{9cm}
+		\textbf{Spektrum periodischer Leistungssignale}\\ 
+			\hspace*{0.5cm}
+			\parbox[b][1.2cm][c]{8cm}{
+				$$\sum_{n = -\infty}^{+\infty} c_n \cdot e^{jn\omega_0t} \laplace 2\pi \sum_{n = -\infty}^{+\infty} c_n\delta(\omega - n\omega_0)$$		
+			}
+	\end{minipage}
