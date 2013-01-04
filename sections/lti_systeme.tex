@@ -33,9 +33,14 @@ $ y(t) = T [ x(t)] \qquad $ Operator T erzeugt aus dem Eingangssignal $ x(t) $ d
 	\begin{minipage}{10cm}
 		$\delta (t)=\begin{cases} 0 & t\ne 0\\\infty & t=0\end{cases} \qquad
 		\text{und} \qquad \int\limits_{-\infty}^\infty \delta(t) \, \mathrm dt = 1 $\\
-		$$\frac{du(t)}{dt}=\delta(t) \qquad
-		\int\limits_{-\infty}^{\infty}\delta(t-t_0)f(t)dt=f(t_0)$$
-		$$ 1 \laplace 2\pi \delta(\omega) \qquad \delta(t) \laplace 1(\omega)$$
+		\[
+			\frac{du(t)}{dt}=\delta(t) \qquad
+			\int\limits_{-\infty}^{\infty}\delta(t-t_0)f(t)dt=f(t_0)
+		\]
+		\[
+			1 \FT 2\pi \delta(\omega) \qquad \delta(t) \FT 1(\omega)
+		\]
+		 
 	\end{minipage}
 	\begin{minipage}{8cm}
 		\includegraphics[width=6cm]{bilder/diracimpulse.png}
@@ -59,61 +64,102 @@ $ y(t) = T [ x(t)] \qquad $ Operator T erzeugt aus dem Eingangssignal $ x(t) $ d
 				\hspace*{0.5cm}$ |Y(\omega)| [dB] = |X(\omega)|[dB] + |H(\omega)| [dB]$
 			}
 
-\skriptsubsection{Verzerrungen}{26}
-\subsubsection{Amplitudenverzerrung}
-Falls das Amplitudenspektrum $|H(\omega)|$ im gewünschten Frequenzband nicht konstant ist,
-resultieren Amplitudenverzerrungen.
+\subsection{Verzerrungen}
+	Signale werden in \"Ubertragungssystemen in vielfacher Wiese verformt (z.B. gefiltert, moduliert, gedämpft, entzerrt).
+	\begin{multicols}{2}
+		\textbf{Lineare Verzerrungen}
+			\begin{itemize}
+				\item Verursacht durch lineare (LTI) Systeme
+				\item Das Superpositionsprinzip bleibt gültig
+			\end{itemize}
+			\columnbreak
+			
+		\textbf{Nicht-Lineare Verzerrungen}
+			\begin{itemize}
+				\item Verursacht durch nicht-lineare Systeme
+				\item Oft schwierig modellierbar
+				\item Oft nur numerisch berechenbar
+			\end{itemize}
+	\end{multicols}
+	
+	\subsubsection{Verzerrungsfreies LTI-System}
+		\begin{minipage}[c]{6cm}
+			Ein LTI-System ist verzerrungsfrei, wenn es das Eingangssignal zum Ausgang hin nur um $t_d$ verz\"ogert und/oder um einen Faktor K skaliert. 
+		\end{minipage}
+		$\quad \Longrightarrow \quad$
+		\begin{minipage}[c]{4cm}
+			$y(t) = K \cdot x(t-t_d)$  
+			\\[0.2cm]
+		%	\reflectbox{\rotatebox[origin=c]{270}{$\laplace$}}\\
+			$Y(\omega) = K \cdot e^{-j\omega t_d} \cdot X(\omega)$\\[0.2cm]
+			$\boxed{H(\omega) = K \cdot e^{-j\omega t_d}}$
+		\end{minipage}
+		$\Longrightarrow \quad$
+		\begin{minipage}[c]{5cm}
+			$|H(\omega)| = K$\\ \\
+			$\varphi_{_H}(\omega) = -t_d \cdot \omega$
+		\end{minipage}
+	
+	\subsubsection{Verzerrungen im LTI-System}
+		\begin{minipage}[t]{7cm}
+			\textbf{Amplitudenverzerrung}\\
+				$\Rightarrow |H(\omega)|$ ist nicht konstant 
+				
+		\end{minipage}
+		\begin{minipage}[t]{10cm}
+			\textbf{Phasenverzerrung}\\
+				$\Rightarrow \varphi_H (\omega)$ ist nicht linear von der Frequenz $\omega$ abhängig
+		\end{minipage}
 
-\subsubsection{Phasenverzerrung}
-Falls das Phasenspektrum $\Theta_h (\omega)$ nicht linear von der Frequenz abhängig ist, resultieren
-Phasenverzerrungen.\\
+
+	\subsection{Filter}
+		\begin{multicols}{2}
+			\begin{center}
+				\begin{tabular}{|c|c|c|}
+					\hline
+					Tiefpass & Lowpass Filter & LPF \\
+					\hline
+					Hochpass & Highpass Filter & HPF \\
+					\hline
+					Bandpass & Bandpass Filter & BPF \\
+					\hline
+					Bandsperre & Bandstop Filter & BSF \\
+					\hline
+				\end{tabular}
+			\end{center}
+		\columnbreak
+
+		\textbf{Ideale Filter} sind nicht realisierbar, da sie akausal sind.\\ \\
+		\textbf{Kausale Filter} sind Ann\"ahrung an ideale Filter. \\ \\
+		\textbf{TODO: Bilder von Filterdurchlasskurve einfügen}
+	\end{multicols}
+
+	\subsubsection{Bandbreite}
+	\begin{minipage}{7cm}
+		\includegraphics[width=6cm]{bilder/filter_bandbreite.png}
+	\end{minipage}
+	\begin{minipage}{11cm}
+		Die Bandbreite ist nur für Tief- und Bandpassfilter definiert und bezieht sich auf das \textbf{einseitige} (reelle) Spektrum.
+		\paragraph{LPF}	
+			Die Bandbreite $W_B = 2 \pi B$ eines LPF entspricht der Frequenz, bei der $|H(\omega)|$ gegenüber $|H(0)|$ um $3 dB$ gedämpft ist
+		\paragraph{BPF}	
+			Filterbandbreite $W_B = 2 \pi B$ bei BPF entspricht der Differenz der (Kreis-) Frequenzen, bei denen Amplitudengang $|H(\omega)|$ gegenüber $|H(\omega_c)|$ um $3 dB$ gedämpft ist
+	\end{minipage}
 
 
-
-\skriptsubsection{Filter}{27}
-\begin{multicols}{2}
-\begin{center}
-\begin{tabular}{|c|c|c|}
-\hline
-Tiefpass & Lowpass Filter & LPF \\
-\hline
-Hochpass & Heighpass Filter & HPF \\
-\hline
-Bandpass & Bandpass Filter & BPF \\
-\hline
-Bandsperre & Bandstop Filter & BSF \\
-\hline
-\end{tabular}
-\end{center}
-\columnbreak
-
-\textbf{Ideale Filter} sind nicht realisierbar, da sie akausal sind.
-\end{multicols}
-
-\skriptsubsubsection{Bandbreite}{28}
-\begin{minipage}{7cm}
-	\includegraphics[width=6cm]{bilder/filter_bandbreite.png}
-\end{minipage}
-\begin{minipage}{11cm}
-	Die Bandbreite ist nur für Tief- und Bandpassfilter definiert und bezieht sich auf das einseitige (reelle) Spektrum.
-	\paragraph{LPF}	Die Bandbreite $W_B = 2 \pi B$ eines LPF entspricht der Frequenz, bei der $|H(\omega)|$ gegenüber $|H(0)|$ um $3 dB$ gedämpft ist
-	\paragraph{BPF}	Filterbandbreite $W_B = 2 \pi B$ bei BPF entspricht der Differenz der (Kreis-) Frequenzen, bei denen Amplitudengang $|H(\omega)|$ gegenüber $|H(\omega_c)|$ um
-	$3 dB$ gedämpft ist
-\end{minipage}
-
-
-\skriptsubsubsection{Quadraturfilter,
-Hilberttransformation}{29}\label{lti_quadratur}\label{lti_hilbert}
-Quadraturfilter und Hilberttransformation sind Allpassfilter mit
-Phasendrehung um $-\frac{\pi}{2}\text{rad } (-90^\circ)$ \textbf{(differation)}.
-Ein Quadraturfilter ist technisch nur für einen beschränkten
-Bandbreitenbereich realisierbar.
-\[
-H(\omega) = \begin{cases}
+	\subsubsection{Quadraturfilter,Hilberttransformation}
+		\label{lti_quadratur}\label{lti_hilbert}
+		Quadraturfilter und Hilberttransformation sind Allpassfilter mit
+		Phasendrehung um $-\frac{\pi}{2};(-90^\circ)$ %\textbf{(differation)}
+		.\\
+		Ein Quadraturfilter ist technisch nur für einen beschränktenBandbreitenbereich realisierbar.
+		\[
+			H(\omega) = \begin{cases}
              	e^{-j \frac{\pi}{2}} & \omega > 0 \\
              	e^{j \frac{\pi}{2}} & \omega < 0
              \end{cases} =
--j \sgn(\omega)
-\]
-
-$\qquad \hat{X}(\omega) = H(\omega)X(\omega) = [-j \sgn(\omega)] X(\omega)$
+				-j \sgn(\omega)
+				\qquad \qquad
+				|H(\omega)| = 1 \quad \forall \; \omega 
+		\]
+		$\qquad \hat{X}(\omega) = H(\omega)X(\omega) = [-j \sgn(\omega)] X(\omega)$
