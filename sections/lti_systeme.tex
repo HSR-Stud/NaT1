@@ -1,4 +1,4 @@
-\section{LTI-Systeme}
+\section{LTI-Systeme \schaum{25}}
 \begin{center}
 	\input{tikzpictures/lti_system}
 \end{center}
@@ -47,7 +47,7 @@ $ y(t) = T [ x(t)] \qquad $ Operator T erzeugt aus dem Eingangssignal $ x(t) $ d
 	\end{minipage}
 
 
-	\subsection{Impulsantwort}
+	\subsection{Impulsantwort \schaum{25-2.2B}}
 		$h(t) = T[\delta(t)] \qquad $\\
 		Bei kausalen Systemen: $h(t) = 0$ für $t < 0$ \\   
 		Bei akausalen Systemen: $h(t) \neq 0$ für $t < 0$\\ 
@@ -64,7 +64,7 @@ $ y(t) = T [ x(t)] \qquad $ Operator T erzeugt aus dem Eingangssignal $ x(t) $ d
 				\hspace*{0.5cm}$ |Y(\omega)| [dB] = |X(\omega)|[dB] + |H(\omega)| [dB]$
 			}
 
-\subsection{Verzerrungen}
+\subsection{Verzerrungen \schaum{26}}
 	Signale werden in \"Ubertragungssystemen in vielfacher Wiese verformt (z.B. gefiltert, moduliert, gedämpft, entzerrt).
 	\begin{multicols}{2}
 		\textbf{Lineare Verzerrungen}
@@ -112,7 +112,7 @@ $ y(t) = T [ x(t)] \qquad $ Operator T erzeugt aus dem Eingangssignal $ x(t) $ d
 		\end{minipage}
 
 
-	\subsection{Filter}
+	\subsection{Filter \schaum{27}}
 		\begin{multicols}{2}
 			\begin{center}
 				\begin{tabular}{|c|c|c|}
@@ -134,7 +134,7 @@ $ y(t) = T [ x(t)] \qquad $ Operator T erzeugt aus dem Eingangssignal $ x(t) $ d
 		\textbf{TODO: Bilder von Filterdurchlasskurve einfügen}
 	\end{multicols}
 
-	\subsubsection{Bandbreite}
+	\subsubsection{Bandbreite \schaum{28}}
 	\begin{minipage}{7cm}
 		\includegraphics[width=6cm]{bilder/filter_bandbreite.png}
 	\end{minipage}
@@ -147,19 +147,21 @@ $ y(t) = T [ x(t)] \qquad $ Operator T erzeugt aus dem Eingangssignal $ x(t) $ d
 	\end{minipage}
 
 
-	\subsubsection{Quadraturfilter,Hilberttransformation}
+	\subsubsection{Quadraturfilter,Hilberttransformation \schaum{29}}
 		\label{lti_quadratur}\label{lti_hilbert}
-		Quadraturfilter und Hilberttransformation sind Allpassfilter mit
+		Quadraturfilter und Hilberttransformation sind Allpassfilter($ |H(\omega)| = 1 \quad \forall \; \omega $) mit
 		Phasendrehung um $-\frac{\pi}{2};(-90^\circ)$ %\textbf{(differation)}
 		.\\
-		Ein Quadraturfilter ist technisch nur für einen beschränktenBandbreitenbereich realisierbar.
+		Ein Quadraturfilter ist technisch nur für einen beschränkten Bandbreitenbereich realisierbar.
 		\[
 			H(\omega) = \begin{cases}
              	e^{-j \frac{\pi}{2}} & \omega > 0 \\
              	e^{j \frac{\pi}{2}} & \omega < 0
              \end{cases} =
 				-j \sgn(\omega)
-				\qquad \qquad
-				|H(\omega)| = 1 \quad \forall \; \omega 
+				\qquad \Laplace \qquad h(t) = \frac{1}{\pi \cdot t}
 		\]
-		$\qquad \hat{X}(\omega) = H(\omega)X(\omega) = [-j \sgn(\omega)] X(\omega)$
+		 \\
+		\[
+			\hat{X}(\omega) = H(\omega)X(\omega) = [-j \sgn(\omega)] X(\omega) \qquad \Laplace \qquad \hat{x}(t) = x(t) \ast \frac{1}{\pi \cdot t} = \frac{1}{\pi} \int\limits_{-\infty}^{+\infty} \frac{x(\tau)}{t-\tau} \diff \tau
+		\]
