@@ -1,5 +1,4 @@
-\newpage
-\section{Digitale Uebermittlung analoger Signale}
+\section{Digitale Uebermittlung analoger Signale \schaum{90}}
 
 %\subsection{PCM - Pulse Code Modulation}
 \begin{center}
@@ -12,22 +11,33 @@
 \end{enumerate}
 
 Einige Vorteile der Digitalisierung: bis 100\% Störungsfrei, Algorithmen
-einfach auf Signal anwendbar, Verschlüsselung leicht gemacht.\\
+einfach auf Signal anwendbar, Verschlüsselung leicht gemacht.
 
+\subsection{Bandbeschränkung}
+	Damit das Signal mit einer endlichen Abtastrate erfasst werden kann, muss es bandbeschr\"ankt sein.\\
+	F\"ur ideal band-beschränktes Basisbandsignal $m(t)$ gilt: $|M(\omega)| = 0$ für $\omega > 2\pi B_m$ 
+\subsubsection{Aliasing}
+	Bei nicht-bandbeschränkten Signalen treten bei der Abtastung \textit{zwingend} Aliasing-("Falschsignal-") Effekte auf.
 
 \subsection{Abtastung (Sampling)}
-Ein ideale Abtastung besteht theoretisch aus einer periodischen Abfolge von Dirac-Pulsen
-$\delta_{T_S}$ mit dem Abstand $T_s = \frac{1}{f_s}$. Dieses Spektrum erhält man mittels der
-Fourier-Reihe. \\ 
-%$$ c_n = \frac{1}{T} \int\limits_{-T/2}^{T/2} \delta_{T_S}(t) e^{-j n \omega n t} dt = 
-%\frac{1}{T} \quad \Rightarrow \quad X(j \omega) = \sum\limits_{n = -\infty}^{+\infty} c_n
-%\delta(\omega - n \omega_0) \qquad 
-$$ \delta_{T_S}(t) = \sum\limits_{n=-\infty}^{+\infty} \delta(t-nT_S) \laplace 
-\omega_S \delta_{\omega_S} (j \omega) = 
-\omega_S \sum\limits_{n=-\infty}^{+\infty} \delta(\omega - n \omega_S)$$
+	Ein ideale Abtastung besteht theoretisch aus einer periodischen Abfolge von Dirac-Pulsen
+	$\delta_{T_S}$ mit dem Abstand $T_s = \frac{1}{f_s}$. Dieses Spektrum erhält man mittels der Fourier-Reihe. \\ 
+	%$$ c_n = \frac{1}{T} \int\limits_{-T/2}^{T/2} \delta_{T_S}(t) e^{-j n \omega n t} dt = 
+	%\frac{1}{T} \quad \Rightarrow \quad X(j \omega) = \sum\limits_{n = -\infty}^{+\infty} c_n
+	%\delta(\omega - n \omega_0) \qquad 
+	$$ \text{Idealer Sampler:} \qquad \delta_{T_S}(t) = \sum\limits_{n=-\infty}^{+\infty} \delta(t-nT_S) \; \laplace \; \omega_S \cdot \delta_{\omega_S} (\omega) = \omega_S \sum\limits_{n=-\infty}^{+\infty} \delta(\omega - n \omega_S) \qquad \text{mit  } \omega_S = \frac{2\pi}{T_S}$$
 	\begin{center}
 		\includegraphics[width=10cm]{bilder/dig_sampler_ideal.png}
 	\end{center}
+
+	\begin{equation*}
+		\text{Idealer Abtaster:} \qquad m_s(t) = ...
+	\end{equation*}	 
+	\[\TransformVert\]
+	\begin{equation*}
+		M(\omega)
+	\end{equation*}
+
 
 \subsubsection{Abtasttheorem - Nyquist Theorem}
 Ein Nachrichtensignal muss mind. mit dem Doppelten seiner Eigenfrequenz abgetastet werden. \\
