@@ -21,36 +21,47 @@ einfach auf Signal anwendbar, Verschlüsselung leicht gemacht.
 
 \subsection{Abtastung (Sampling)}
 	Ein ideale Abtastung besteht theoretisch aus einer periodischen Abfolge von Dirac-Pulsen
-	$\delta_{T_S}$ mit dem Abstand $T_s = \frac{1}{f_s}$. Dieses Spektrum erhält man mittels der Fourier-Reihe. \\ 
+	$\delta_{T_S}$ mit dem Abstand $T_s = \frac{1}{f_s}$. Dieses Spektrum erhält man mittels der Fourier-Reihe. \\ \\
 	%$$ c_n = \frac{1}{T} \int\limits_{-T/2}^{T/2} \delta_{T_S}(t) e^{-j n \omega n t} dt = 
 	%\frac{1}{T} \quad \Rightarrow \quad X(j \omega) = \sum\limits_{n = -\infty}^{+\infty} c_n
 	%\delta(\omega - n \omega_0) \qquad 
-	$$ \text{Idealer Sampler:} \qquad \delta_{T_S}(t) = \sum\limits_{n=-\infty}^{+\infty} \delta(t-nT_S) \; \laplace \; \omega_S \cdot \delta_{\omega_S} (\omega) = \omega_S \sum\limits_{n=-\infty}^{+\infty} \delta(\omega - n \omega_S) \qquad \text{mit  } \omega_S = \frac{2\pi}{T_S}$$
+	\textbf{Idealer Sampler:}
+	$$\delta_{T_S}(t) = \sum\limits_{n=-\infty}^{+\infty} \delta(t-nT_S) \; \laplace \; \omega_S \cdot \delta_{\omega_S} (\omega) = \omega_S \sum\limits_{n=-\infty}^{+\infty} \delta(\omega - n \omega_S) \qquad \text{mit  } \omega_S = \frac{2\pi}{T_S}$$
 	\begin{center}
 		\includegraphics[width=10cm]{bilder/dig_sampler_ideal.png}
 	\end{center}
 
+	\textbf{Idealer Abtaster:}
 	\begin{equation*}
-		\text{Idealer Abtaster:} \qquad m_s(t) = ...
-	\end{equation*}	 
-	\[\TransformVert\]
-	\begin{equation*}
-		M(\omega)
+		 m_s(t) = m_s(t) \cdot \delta_{T_s} = \sum_{n=-\infty}^{+\infty} m(nT_s) \cdot \delta(t-nT_s) \quad \laplace \quad
+		M(\omega) = \frac{1}{2\pi}M(\omega)\ast (\omega_s\cdot\delta_{w_s}(\omega)) = \frac{1}{2\pi} \sum_{n=-\infty}^{+\infty}M(\omega-n\omega_s)
 	\end{equation*}
+	\begin{center}
+			\includegraphics[width=10cm]{bilder/dig_abtaster_ideal_spektrum.png}
+		\end{center}
+\subsection{Rekunstruktion}
+Falls das Abtasttheorem bei der Abtastung erf\"ullt war, kann das Basisbandsignal $m(t)$ durch ein Tiefpassfilter mit Eckfrequenz $f_c = \frac{1}{2T_s}$ und Verst\"arkungsfaktor $K=T_s$ rekonstruiert werden.  
 
+\begin{equation*}
+	m(t) = \left({\sum_{n=-\infty}^{+\infty}m(nT_s)\cdot\delta(t-nT_s)\ast\frac{\sin(\omega_ct)}{\omega_ct}}\right) = 
+	\sum_{n=-\infty}^{+\infty}m(nT_s)\cdot\frac{\sin(\omega_c(t-nT_s))}{\omega_c(t-nT_s)}
+\end{equation*}
+Dies entspricht einer Folge von gewichteten $\sinc$-Funktionen an den Stellen $nT_s$.
 
 \subsubsection{Abtasttheorem - Nyquist Theorem}
 Ein Nachrichtensignal muss mind. mit dem Doppelten seiner Eigenfrequenz abgetastet werden. \\
-Ansonsten können sich die Signale im Spektralbereich überlappen.  Um dies zu verhindern wird ein
-sogenannter \textbf{Anti-Aliasing Filter} der Abtastung vorgeschaltet.\\
-\begin{minipage}[t][2.7cm][c]{8cm}
-$ f_s \geq 2 f_M $ \\
-$ f_N = 2 \cdot B_M $ \\
-$ f_{Nyq} = \frac{f_s}{2}$ \\
-$ T_N = \frac{1}{2\cdot B_M} = \frac{1}{f_N} $
-
+Ansonsten können sich die Signale im Spektralbereich \text{\"uberlappen}.  
+%Um dies zu verhindern wird ein sogenannter \textbf{Anti-Aliasing Filter} der Abtastung vorgeschaltet.
+\\ \\
+\textbf{Bei Basisbandabtastung:}\\
+\hspace*{3cm}
+\begin{minipage}[t][2.0cm][c]{8cm}
+	$ f_s \geq 2 f_M  = f_N$ \\
+	$ f_N = 2 \cdot B_M $ \\
+	$ f_{Nyq} = \frac{f_s}{2}$ \\
+	$ T_N = \frac{1}{2\cdot B_M} = \frac{1}{f_N} $
 \end{minipage}
-\begin{minipage}[t][2.7cm][c]{10cm}
+\begin{minipage}[t][2.5cm][c]{10cm}
 	$f_s$ Samplingfrequenz, $[f_s] = Hz$ \\
 	$f_M$ Nachrichtenfrequenz, $[f_M] = Hz$ \\
 	$B_M$ Nachrichtenbandbreite, $[B_M] = Hz$ \\
@@ -59,7 +70,7 @@ $ T_N = \frac{1}{2\cdot B_M} = \frac{1}{f_N} $
 	$T_N$ Nyquistintervall, $[T_N] = s$ \\	
 \end{minipage}
 
-\subsubsection{Subsampling / Oversampling}
+\subsubsection{Subsampling/Bandpassabtastung}
 Handelt es sich bei dem Nachrichtensignal um ein \textbf{Bandpasssignal}, so kann mit einer noch
 kleiner Samplingfrequenz abgetastet werden, dies nennt man \textbf{Subsampling}. \\
 Vorgehen: 1. Alle möglichen $n$ bestimmen (ganzzahlig). 2. Alle möglichen Frequenzintervalle für
@@ -77,39 +88,70 @@ $$ \frac{2 \cdot f_u}{n} \leq f_s \leq \frac{2 \cdot f_l}{n-1}$$
 	$n \geq 2$ sonst kein Subsampling möglich
 \end{minipage}
 
+\subsubsection{Oversampling}
 Ein weiterer Begriff bezüglich Sampling ist das \textbf{Oversampling}, welches bei \textbf{DAC}s
 (Digital-Analog Converter) angewendet wird. \\
-Hierbei \textbf{interpoliert} ein DSP zusätzliche Samples, um die Sample-Rate der D/A-Wandlung zu
-erhöhen.\\
-Folgende Vorteile resultieren daraus: \textbf{Originalgetreueres} Nachrichtensignal, kleinere
-\textbf{Filtersteilheit} notwendig.
-	\begin{center}
+	\begin{minipage}{9cm}
+		Hierbei \textbf{interpoliert} ein DSP zusätzliche Samples, um die Sample-Rate der D/A-Wandlung zu erhöhen.\\
+		Folgende Vorteile resultieren daraus:\\ 
+		- \textbf{Originalgetreueres} Nachrichtensignal
+		- Aperture Effekt wird kleiner\\
+		- kleinere
+		\textbf{Filtersteilheit} notwendig.
+	\end{minipage}
+	\begin{minipage}{10cm}
 		\includegraphics[width=10cm]{bilder/dig_oversampling.png}
-	\end{center}
+	\end{minipage}
 
-\subsubsection{Natural Sampling}
+\subsubsection{Natural Sampling \schaum{111-5.9}}
 Signal mit Periodendauer $T_S$ wird für die Zeit $d$ geschlossen. Amplitude ist bleibt
-während Sample nicht konstant. \\
-%TODO : Checkliste berechnung des Spektrums für beliebiges Signal
+während Sample nicht konstant. Bei dieser Sampling-Art besteht \textbf{kein Aperture-Effekt}\\
 
+	\begin{minipage}{18cm}
+		\begin{equation*}
+			m_{ns} = m(t)\cdot\frac{1}{d}rect_{T_s}(t/d) \qquad \text{mit} \quad rect_{T_s}(t/d) = \sum_{n=-\infty}^{+\infty}rect((t-nT_s)/d)\qquad \text{mit} \quad rect(t/d) = \begin{cases}
+				1 & |t| < d/2\\
+				0 & |t| > d/2
+			\end{cases}
+		\end{equation*}
+	\end{minipage}
+	
+	\begin{minipage}{12cm}
+		\begin{equation*}
+			M_{ns} = \sum_{n=-\infty}^{+\infty}c_n \cdot M(\omega-n\omega s) \quad \text{mit $c_n$ von Rechteckimpuls}
+		\end{equation*}
+		\begin{equation*}
+			c_n = \frac{d\cdot A}{T_s}\frac{\sin(n\omega_s d/2)}{n \omega_s d/2}
+		\end{equation*}
+	\end{minipage}
+	\begin{minipage}{5cm}
+			\includegraphics[width=5cm]{bilder/dig_naturalsampling_spektrum}
+	\end{minipage}\\
 	\begin{center}
-		\includegraphics[width=10cm]{bilder/dig_naturalsampling.png}
+		\begin{minipage}{9cm}
+				\includegraphics[width=9cm]{bilder/dig_naturalsampling.png}
+			\end{minipage}
 	\end{center}
+\newpage
 
-\subsubsection{Flat-Top Sampling - Sample \& Hold}
+\subsubsection{Flat-Top Sampling - Sample \& Hold \schaum{112-5.10}}
 Das Sample hat die Breite $d$ und bleibt über diese Zeit konstant. \\
 Anwendungsbeispiel: A/D-Wandler, Sample \& Hold Schaltung. \\
-%TODO : Checkliste berechnung des Spektrums für beliebiges Signal
+	\begin{equation*}
+		m_{_{FT}}(t) = \overbrace{\left( \sum_{n=-\infty}^{+\infty} m(nT_s) \cdot \delta(t-nT_s)\right)}^{m_s(t)} \ast rect(t/d)
+		\quad \laplace \quad
+		M_{FT}(\omega) =\left(\frac{1}{T_s} \sum_{n=-\infty}^{+\infty} M(\omega -n\omega_s)\cdot d \frac{\sin(\omega \cdot d/2)}{\omega\cdot d/2}\right)
+	\end{equation*}
 	\begin{center}
 		\includegraphics[width=17.5cm]{bilder/dig_flattopsampling.png}
 	\end{center}
 Das Spektrum des gesampelten Signals wird bei \textbf{höheren Frequenzen} gedämpft, dieses Phänomen
-wird als \textbf{Aperture Effect} bezeichnet. Dies kann mit entsprechenden Filtern wieder
+wird als \textbf{Aperture Effect} bezeichnet. Dies kann mit entsprechenden Filtern, oder Vorkompensation 
 korrigiert werden.\\
-\includegraphics[width=17.5cm]{bilder/dig_sampling_spec.png}
+%\includegraphics[width=17.5cm]{bilder/dig_sampling_spec.png}
 \\
 
-\subsection{Quantisierung (Quantizing)}
+\subsection{Quantisierung (Quantizing)\schaum{93-5.6}}
 	\begin{center}	
 		\textbf{Gleichförmig} \hspace{3cm}
 		\textbf{Kompressor} \hspace{2.9cm}
@@ -123,16 +165,16 @@ korrigiert werden.\\
 	Vorteil: $C = \frac{\left|x\right|_{pk}}{x_{RMS}} =
 	\frac{\left|x\right|_{pk}}{\sqrt{x_{Leistung}}}$
 \renewcommand{\arraystretch}{1}
-\newpage
+
 \subsubsection{Gleichförmige(Uniform) Quantisierung}
 \begin{multicols}{2}
 	$ \Delta = \frac{A_{pk}}{2^{n-1}} = \frac{2 \cdot A_{pk}}{L} \qquad \qquad L =
 	2^n$\\
+	$q_e \leq |\frac{\Delta}{2}|$\\
 	$ N_q = \left< q_e^2 \right> = \frac{\Delta^2}{12} =
 	\frac{\left(2A_{pk}\right)^2}{L^2 \cdot 12}$ \\
 	$ S = \left( \frac{ A_{pk} }{C} \right)^2$ \\
-	$ \text{SNR}_{q} =\frac{S}{N_q}=\frac{S}{q_e^2} = \frac{3}{2}L^2
-	\approx 1.76 + 6.02 \cdot n \: dB$ \\
+	$ \text{SNR}_{q} =\frac{S}{N_q}=\frac{m^2(t)}{q_e^2}$\\
 	$\text{SNR}_{q} \left[dB\right] =10 \log(\text{SNR}) \cdot dB \approx n \cdot
 	6dB$ \\
 \columnbreak
@@ -151,7 +193,7 @@ korrigiert werden.\\
 \end{multicols}
 
 
-\skriptsubsubsection{Ungleichförmige(Nonuniform) Quantisierung}{95-9.5C}
+\subsubsection{Ungleichförmige(Nonuniform) Quantisierung \schaum{95-9.5C}}
 Bei tiefen Nutzsignalen hat die gleichförmige Quantisierung den Nachteil einer schlechten SNR
 (Signal - Geräusch Abstand). \\
 Beihilfe schafft die Ungleichförmige Quantisierung z.B. bei Telefonie
@@ -160,38 +202,58 @@ Praktisch wird dies mit einem sogenannten \textbf{Kompressor} und einem nachgesc
 gleichförmigen Quantisierer realsiert.
 
 \begin{minipage}{9cm}
-$$ f_{\mu-Law}(x) = \sgn(x) \frac{\ln(1+\mu\cdot|x|)}{\ln(1+\mu)}$$
+$$ y_{\mu-Law}(x) = \sgn(m) \frac{\ln(1+\mu\cdot|x|)}{\ln(1+\mu)} \qquad \text{mit} \quad
+x = \frac{m}{m_{pk}}$$
+\vspace*{-0.5cm}
 \begin{align*}\text{SNR}_{\mu-Law} &\approx 10 \log \dfrac{3 L^2}{[\ln(1 + \mu)]^2} \\
-	&\approx -10.1 + 6.20 \cdot n \: dB \end{align*}
+	&\approx -10.1 + 6.02 \cdot n \: dB \quad \text{f\"ur} \; \mu = 255 \end{align*}
 \end{minipage}
 \begin{minipage}{9cm}
-$$f_{A-Law}(x)=\begin{cases} \frac{A}{1+ \ln A} x & \mbox{wenn }0 \le x \le \frac{1}{A} \\
-	\frac{1}{1+ \ln A} + \frac{\ln Ax}{1+ \ln A}, & \mbox{wenn } \frac{1}{A} < x \le 1 \end{cases} $$
+$$y_{A-Law}(x)=\begin{cases} \frac{A}{1+ \ln A} x & \mbox{wenn } |x| \le \frac{1}{A} \\
+	\frac{1 + \ln A\cdot x}{1+ \ln A}\sgn(m) & \mbox{wenn } \frac{1}{A} < |x| \le 1 \end{cases} $$
 $$\text{SNR}_{A-Law} \approx 10 \log \dfrac{3 L^2}{(1+\ln A)^2}$$
 \end{minipage}
 
-\subsection{Codierung (Encoding)}
+\subsection{Codierung (Encoding) \schaum{96-5.8}}
 
-\subsubsection{Bandbreitenbedarf von PCM-Signalen}
+\subsubsection{PCM-Signale}
 \begin{minipage}{9cm}
 	$$ f_s > 2 \cdot B_m  \qquad \qquad n = \log_2 L$$ 
 	$$ R_B = f_s \cdot n > 2 \cdot n \cdot B_m $$ 
 	$$ B_{eff} > B_{PCM} = \frac{1}{2} n \cdot f_s > n \cdot B_m$$
+	$$(SNR)_0 = \frac{3}{2}L^2$$
+	$$(SNR)_{0dB}
+		= 1.76 + n \cdot  6dB$$
 \end{minipage}
 \begin{minipage}{9cm}
 	$f_s$ Samplingrate, $[f_s] = Hz$ \\
 	$n$ Bits pro Sample, \textcolor{red}{ganzzahlig} \\
 	$R_B$ Bitrate des PCM-Signals, $[R_B] = \frac{bit}{s}$ \\
 	$B_m$ Signalbandbreite, $[B_m] = Hz $ \\
-	$B_{PCM}$ Bandbreite PCM Signal, $[B_{PCM}] = Hz $
+	$B_{PCM}$ Bandbreite PCM Signal, $[B_{PCM}] = Hz $\\
+	$T_B$ Bitdauer = $\frac{1}{R_B}$
 \end{minipage}
 
 
-\subsubsection{Delta Modulation}
+\subsubsection{Delta Modulation \schaum{97-5.9}}
+\begin{minipage}{6cm}
+	Mit Summierer\\
+\includegraphics[width = 6cm]{bilder/dig_delta_modulator_schema_sum}
+\end{minipage}
+\hspace{0.5cm}
+\begin{minipage}{6cm}
+	Mit Integrierer\\
+	\includegraphics[width = 6cm] {bilder/dig_delta_modulator_schema_int}
+\end{minipage}
+\hspace{0.5cm}
+\begin{minipage}{4cm}
+\includegraphics[width = 4cm] {bilder/dig_delta_modulation}
+\end{minipage}
+
 \begin{minipage}{9cm}
 $$ \frac{\Delta}{T_s} = \Delta \cdot f_s > \left| \frac{d m(t)}{dt} \right|_{max}$$
-$$ (\text{SNR})_0 = 10 \cdot \log\left(\frac{3 f_s^3}{8 \pi^2 f_m^2 f_M}\right) \cdot dB$$ 
-$$ <q_e^2> = \frac{\Delta^2}{3} $$ 
+$$ (\text{SNR})_{0dB} = 10 \cdot \log\left(\frac{1}{2}\frac{3 f_s^3}{8 \pi^2 f_m^2 f_M}\right) dB$$ 
+$$ N_q = <q_e^2> = \frac{\Delta^2}{3}\left(\frac{f_M}{f_s/2} \right) $$ 
 \end{minipage}
 \begin{minipage}{9cm}
 	$f_s$ Samplingrate, $[f_s] = Hz$ \\
@@ -201,36 +263,44 @@ $$ <q_e^2> = \frac{\Delta^2}{3} $$
 	$B_{PCM}$ Bandbreite PCM Signal, $[B_{PCM}] = Hz $\\
 	$\Delta$ Schritthöhe\\
 	$<q_e^2>$ Quantisierungsrauschen \\
-	
 \end{minipage}
 
+\subsubsection{Delta-Sigma Modulation}
+\begin{minipage}{10cm}
+	\includegraphics[width=10cm]{bilder/dig_delta_sigma_modulator_schema}
+\end{minipage}
+\begin{minipage}{6cm}
+	\includegraphics[width=6cm]{bilder/dig_delta_sigma_modulation}
+\end{minipage}
+	
+
 \newpage
-\subsubsection{Leitungscodierung}
+\subsubsection{Leitungscodierung \schaum{99-5.10}}
 Je nach Anforderungen (DC-Freie Übertragung, Clock-Rückgewinnung, Störfestigkeit,
 Bandbreitenbedarf, Erkennung von Übertragungsfehlern) wird das zu übertragende Signal entsprechend
 codiert.
 
 \begin{minipage}{9cm}
-	\includegraphics[width=8.7cm]{bilder/dig_leitungscodierung.png}
+	\includegraphics[width=8cm]{bilder/dig_leitungscodierung.png}
 \end{minipage}
 \begin{minipage}{9cm}
 	\textbf{Unipolar NRZ(Nonreturn-to-Zero)} \\
-	1 = Puls, 0 = kein Puls \\ \\
+	1 = Puls, 0 = kein Puls \\[0.2cm]
 	\textbf{Bipolar NRZ(Nonreturn-to-Zero)} \\
-	1 = positiver Puls, 0 = negativer Puls \\ \\
+	1 = positiver Puls, 0 = negativer Puls \\[0.2cm]
 	\textbf{Unipolar (RZ)Return-to-Zero} \\
-	1 = Puls der wieder auf Null zurückspringt, 0 = kein Puls \\ \\
+	1 = Puls der wieder auf Null zurückspringt, 0 = kein Puls \\[0.2cm]
 	\textbf{Bipolar RZ} \\
 	1 = positiver Puls (kehrt wieder auf Null zurück), 0 = negativer Puls (kehrt wieder auf Null
-	zurück)\\ \\
+	zurück)\\[0.2cm]
 	\textbf{AMI (Alternate Mark Inversion) RZ} \\
-	1 = Abwechslungsweise positiver und negatier Puls, 0 = kein Puls. DC-frei\\ \\
+	1 = Abwechslungsweise positiver und negatier Puls, 0 = kein Puls. DC-frei\\[0.2cm]
 	\textbf{Split-Phase (Manchester)} \\
-	1 = Positiver Puls mit anschliessend Negativem, 0 = Negativer Puls mit anschliessendem Positivem. DC-frei, einfache Synchronisation
+	1 = Positiver Puls mit anschliessend Negativem, 0 = Negativer Puls mit anschliessendem Positivem. DC-frei, einfache Synchronisation (Taktr\"uckgewinnung)
 \end{minipage}
 
 
-\subsubsection{Pulse Shaping und ISI (Intersymbolic Interference)}
+\subsubsection{Pulse Shaping und ISI (Intersymbolic Interference) \schaum{101-5.13A}}
 Da Übertragungskanäle in der Praxis keine idealen Eigenschaften 
 (\textbf{limitierte Bandbreite}, Nichtlinearität, Verzerrungen) aufweisen,
 werden die - von uns als rechteckig
@@ -243,16 +313,19 @@ weist eine spezielle Impulsantwort auf, welche bei \textbf{gleichmässigen Zeita
 (Abtastzeiten) Null ist, ausser zum Zeitpunkt Null. Dadurch kann die ISI umgangen werden, wenn dann
 genau zu diesen Zeiten abgetastet wird. \\ 
 
-\textbf{Raised-Cosine Filter} \\
+\textbf{Raised-Cosine Filter\schaum{103}} \\
 Dieses Filter schafft Abhilfe bei ISI. Obwohl dies auch mit einem Idealen Filter
 (Sinc-Frequenzgang) möglich wäre, wird ein Raised-Cosine mit folgenden Vorteilen eingesetzt:
 \begin{itemize}
   \item Raised-Cosine-Puls fällt schneller ab als Sinc-Puls
-  \item Raised-Cosine ist zwar auch akausal, aber in der Praxis einfacher realisierbar 
+  \item Raised-Cosine ist zwar auch akausal, aber in der Praxis einfacher realisierbar
+  \item 1. Nyquist Kriterium wird von allen Raised-Cosine-Pulsen erfüllt
+  \item 2. Nyquist Kriterium wird nur von Raised-Cosine-Puls mit $\alpha$ = 1 erfüllt
 \end{itemize}
 
 \begin{minipage}{9cm}
 $$ f_B = \frac{1 + \alpha}{2 T} Hz \qquad \qquad \frac{1}{T} = \frac{2 f_B}{1 + \alpha}$$
+$$ W = \frac{\pi}{T_s}$$
 \end{minipage}
 \begin{minipage}{9cm}
 	$f_B$ benötigte Bandbreite, $[f_B] = Hz$ \\
@@ -260,13 +333,8 @@ $$ f_B = \frac{1 + \alpha}{2 T} Hz \qquad \qquad \frac{1}{T} = \frac{2 f_B}{1 + 
 	$\alpha$ roll-off-Faktor, $[\alpha] = 1$ 
 \end{minipage}
 
-\begin{center}  
-		\includegraphics[height=3.2cm]{bilder/dig_raisedcosinefilter.png}
-\end{center}
-
-
 $$ 
-h(t) = \frac{1}{T_s} = \left( \frac{\sin{W t}}{W t} \right) \left[ \frac{\cos{\alpha W t}}{1
+h(t) = \frac{1}{T_s} \cdot \left( \frac{\sin{W t}}{W t} \right) \left[ \frac{\cos{\alpha W t}}{1
 - (2 \alpha W t / \pi)^2}\right]
 \quad \laplace \quad
 H(\omega) = \begin{cases}
@@ -279,8 +347,12 @@ H(\omega) = \begin{cases}
             \end{cases}
 $$
 
+\begin{center}  
+		\includegraphics[height=3cm]{bilder/dig_raisedcosinefilter.png}
+\end{center}
 
-\subsubsection{Digitale Trägermodulation}
+
+\subsubsection{Digitale Trägermodulation \schaum{104-5.14}}
 \begin{minipage}{9cm}
 	\includegraphics[width=8.7cm]{bilder/dig_traegermodulation.png}
 \end{minipage}
