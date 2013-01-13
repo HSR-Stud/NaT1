@@ -52,8 +52,8 @@ $ y(t) = T [ x(t)] \qquad $ Operator T erzeugt aus dem Eingangssignal $ x(t) $ d
 		Für weitere Details siehe Signale \& Systeme Zusammenfassung.
 		
 		\subsubsection{Filtereigenschaft von $H(\omega)$}
-			$ Y(\omega) = X(\omega) \cdot X(\omega)
-				\qquad |Y(\omega)| = |X(\omega)| \cdot |X(\omega)|
+			$ Y(\omega) = X(\omega) \cdot H(\omega)
+				\qquad |Y(\omega)| = |X(\omega)| \cdot |H(\omega)|
 				\qquad \varphi_{_Y}(\omega) = \varphi_{_X}(\omega) + \varphi_{_H}(\omega)$
 		
 		\subsubsection{Logarithmische Darstellung des Amplitudengangs}
@@ -147,7 +147,7 @@ $ y(t) = T [ x(t)] \qquad $ Operator T erzeugt aus dem Eingangssignal $ x(t) $ d
 
 	\subsubsection{Quadraturfilter,Hilberttransformation \schaum{29}}
 		\label{lti_quadratur}\label{lti_hilbert}
-		Quadraturfilter und Hilberttransformation sind Allpassfilter($ |H(\omega)| = 1 \quad \forall \; \omega $) mit
+		Der Quadraturfilter ist ein Allpassfilter($ |H(\omega)| = 1 \quad \forall \; \omega $) mit
 		Phasendrehung um $-\frac{\pi}{2};(-90^\circ)$ %\textbf{(differation)}
 		.\\
 		Ein Quadraturfilter ist technisch nur für einen beschränkten Bandbreitenbereich realisierbar.
@@ -160,6 +160,7 @@ $ y(t) = T [ x(t)] \qquad $ Operator T erzeugt aus dem Eingangssignal $ x(t) $ d
 				\qquad \Laplace \qquad h(t) = \frac{1}{\pi \cdot t}
 		\]
 		 \\
+		 \textbf{Hilberttransformation} (Signal nach Quadraturfilter)
 		\[
 			\hat{X}(\omega) = H(\omega)X(\omega) = [-j \sgn(\omega)] X(\omega) \qquad \Laplace \qquad \hat{x}(t) = x(t) \ast \frac{1}{\pi \cdot t} = \frac{1}{\pi} \int\limits_{-\infty}^{+\infty} \frac{x(\tau)}{t-\tau} \diff \tau
 		\]
