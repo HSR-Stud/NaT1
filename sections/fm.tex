@@ -46,7 +46,7 @@ $$\boxed{ x_c(t) = A_c \cos(w_c t + \varphi(t)) = A_c \cos(\theta(t)) }$$
 \end{multicols}
 
 \subsection{Spektrum der Winkelmodulation}
-Durch die Potenzreihenentwicklung von $\e^{\im\varphi(t)}$ aus $x_{PM/FM} = A_c \cdot \Re(\e^{\im \omega_c t} \cdot \e^{\im\varphi(t)})$ wird sichtbar, dass die Spektren von $\varphi^n(t)$ um die Trägerfrequenz $\omega_c$ herum gruppiert sind.\\
+Durch die Potenzreihenentwicklung von $\e^{\im\varphi(t)}$ aus $x_{PM/FM} = A_c \cdot \Real(\e^{\im \omega_c t} \cdot \e^{\im\varphi(t)})$ wird sichtbar, dass die Spektren von $\varphi^n(t)$ um die Trägerfrequenz $\omega_c$ herum gruppiert sind.\\
 So ist daraus zu schliessen, dass \textbf{PM/FM nicht-lineare bzw. exponentielle Modulationen} sind.
 
 \subsection{Klein- und Grosshub \schaum{70-4.5}}
@@ -102,8 +102,8 @@ unterscheiden.
 
 \subsubsection{Spektrum Einton-Winkelmodulation}
 	\begin{equation*}
-		x_{st}(t) = A \cos(\omega_c t + \beta \sin(\omega_m t)) \quad \Rightarrow \quad 
-			\boxed{	x_{st}(t) = A \sum\limits_{n=-\infty}^{\infty} J_n(\beta) \cos((\omega_c + n \omega_m)t)}
+		x_{st}(t) = A_c \cos(\omega_c t + \beta \sin(\omega_m t)) \quad \Rightarrow \quad 
+			\boxed{	x_{st}(t) = A_c \sum\limits_{n=-\infty}^{\infty} J_n(\beta) \cos((\omega_c + n \omega_m)t)}
 	\end{equation*}
 	%%\paragraph{Bessel Funktion}
 	\textbf{$J_n(\beta)$} ist die \textbf{Bessel Funktion erster Art $n$-ter Ordnung} (Schaum
@@ -113,9 +113,9 @@ unterscheiden.
 	Grosshub) existieren jedoch einige signifikante Seitenbänder.\\
 	\textbf{Eigenschaft der Besselfunktion}\\
 	$J_{-n}(\beta) = (-1)^n \cdot J_n(\beta) \qquad
-	J_{n-1}(\beta) + J_{n+1}(\beta) = (\frac{2n}{\beta})\cdot J_n(\beta)$
+	J_{n-1}(\beta) + J_{n+1}(\beta) = (\frac{2n}{\beta})\cdot J_n(\beta) \qquad \sum J_n^2(\beta) = 1$
 
-\subsubsection{Bandbreite Einton-Winkelmodulation}
+\subsubsection{Bandbreite Einton-Winkelmodulation nach Carson}
 	Mit der Bedingung $J_n(\beta) \approx 0, \,\forall (n > \beta + 1)$ kann die Bandbreite approximativ berechnet werden. 98\% der durchschnittlichen Signalleistung sind in diesem Frequenzspektrum angesiedelt. 
 
 	\begin{center}
@@ -129,12 +129,12 @@ unterscheiden.
 	F\"ur Frequenzen in $Hz$:
 		$B_{PM/FM} = 2(\beta + 1) \cdot f_m = 2(\Delta f + f_m) = \frac{W}{2\pi}$
 
-	\subsubsection{Leistung einer Einton-Winkelmodulation \schaum{72-4.7B}}
-		$$P = \frac12 A_C^2$$
+	\subsubsection{Leistung einer Winkelmodulation \schaum{72-4.7B}}
+		$$P_{st} = \frac12 A_C^2 \approx P_{FM/AM}$$
 
 
 \subsection{Bandbreite für beliebige Modulation (Arbitrary Modulation) \schaum{72-4.7B}}
-	Anstelle von $\beta$ verwenden wir für willkürliche Nachrichtensignale $D$ für die Phasenabweichung.\\ 
+	Anstelle von $\beta$ verwenden wir für beliebige Nachrichtensignale $D$ für die Phasenabweichung.\\ 
 	\begin{minipage}[t][3.2cm][c]{9.5cm}
 		$$ D = \frac{\Delta \omega}{W_m} $$	
 		\[W_{PM/FM} \approx 2(D + 1) W_m = 2\cdot(\Delta \omega + W_m)\]

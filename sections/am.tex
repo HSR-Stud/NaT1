@@ -10,22 +10,22 @@
 	Durch die Multiplikation eines Signals $x(t)$ mit $\cos(\omega_0 t)$ verschiebt sich dessen Spetrum $X(\omega)$ nach $\pm \omega_0$, konkret:\\
 		$x(t) \cdot \cos(\omega_0 t) \FT \frac{1}{2} X(\omega - \omega_0) + \frac{1}{2} X(\omega + \omega_0) $
 
-	\subsection{Todo: Klassifizierung von AM}
+	%TODO: Klassifizierung von AM
 
 \subsection{DSB(-SC): Doppelseitenband (Double-Sideband)-AM \schaum{44}}
 	Bei der Doppelseitenband-Amplitudenmodulation ist das untere Seitenband (Lower Sideband) sowie das obere Seitenband (Upper Sideband) präsent. Da der Träger im Spektrum nicht präsent ist, ist bei dieser Art von AM auch von \textbf{DSB-SC (Double-Sideband Suppressed Carrier)} die Rede. \\ 
 	\begin{tabular}{l l l}
 		\textbf{Bandbreite}: & $B_{X(\omega)} = 2 \cdot B_{M(\omega)}$ & \\
-		\textbf{Leistung}: & $P_{DSB} = P_m \cdot \frac{A_c^2}{C}$ & $C$: Crest-Faktor d. \\
+		\textbf{Leistung}: & $P_{DSB} = P_m \cdot \frac{A_c^2}{2}$ & \\
 	\end{tabular}
 
-\subsubsection{Modulation}
+\subsubsection{Modulation DSB}
 \begin{minipage}[c][2.7cm][t]{6.5cm}
     \includegraphics[width=6cm]{bilder/am_dsb_modulation.png}
 \end{minipage}
 \begin{minipage}[c][2.7cm][t]{11.5cm}
 Bei der Doppelseitenband AM wird das Nachrichtensignal mit dem sinusförmigen Trägersignal
-multipliziert, wodurch sich dank dem Modulationssatz folgendes Spektrum ergibt. \\
+multipliziert, wodurch sich gemäss dem Modulationssatz folgendes Spektrum ergibt. \\
 	$ \boxed{x_{_{DSB}}(t) = m_n(t) \: A_c \: \cos(w_c t)} \: \laplace 
 	\: X_{DSB} = \frac{A_c}{2}M(\omega - \omega_c) + \frac{A_c}{2}M(\omega + \omega_c)$
 \end{minipage}
@@ -38,7 +38,7 @@ $\xrightarrow{\text{DSB-AM}}$
     \includegraphics[width=9cm]{bilder/am_dsb_spektrum.png}
 \end{minipage}
 
-\subsubsection{Demodulation} 
+\subsubsection{Demodulation DSB} 
 \label{am_dsb_modulation}
 \begin{minipage}[t][2.3cm][c]{6.5cm}
     \includegraphics[width=6cm]{bilder/am_dsb_demodulation}
@@ -67,12 +67,12 @@ $\xrightarrow{\text{DSB-AM}}$
 \subsection{AM: Gewöhnliche(Ordinary)-AM \schaum{45}}
 	Die gewöhnliche AM wird generiert, indem man vor der Multiplikation mit dem Trägersignal noch ein DC-Anteil dazugibt.
 
-\subsubsection{Modulation}
+\subsubsection{Modulation OAM}
 	$\boxed{x_{_{AM}}(t) = (1 + \mu \cdot m_n(t)) \cdot A_C \cdot  \cos(\omega_c t)}
-	\laplace X_{AM}(\omega) = \frac{1}{2} \mu A_c M(\omega - \omega_c) + 
+	\; \laplace \; X_{AM}(\omega) = \frac{1}{2} \mu A_c M(\omega - \omega_c) + 
 	\frac{1}{2} \mu A_c M(\omega + \omega_c) + \pi A_c [\delta (\omega - \omega_c) + 
 	\delta (\omega + \omega_c)] $ \\
-	$ \text{mit} \qquad m(t) \laplace M(\omega) $ \\
+	$ \text{mit} \qquad m(t) \; \laplace \; M(\omega) $ \\
 	
 \begin{minipage}[]{9cm}
 	\includegraphics[width=7cm]{bilder/am_oam_modulation.png}
@@ -86,7 +86,7 @@ Signalleistung im Träger. \\
 Diese Art von AM hat sich v.a. in füheren Zeiten durchgesetzt, weil die Demodulation mit sehr
 wenig Aufwand realisiert werden kann. 
 
-\subsubsection{Demodulation}
+\subsubsection{Demodulation OAM}
 \textbf{Mit Enveloppen Detektor}  \\
 Der Enveloppen Detektor braucht nur drei Bauteile, der Schaltungsaufwand ist entsprechend gering.\\ \\
 \begin{minipage}{7cm}	
@@ -127,16 +127,15 @@ Anbei zwei Fälle zur Veranschaulichung dieser Problematik: Links ($\mu \ll 1$),
 	\end{center}
 \end{minipage}
 
-\subsubsection{Effizienz / Wirkungsgrad \schaum{55-3.4}}
+\subsubsection{Effizienz / Wirkungsgrad OAM \schaum{55-3.4}}
 Unter der Effizienz $ \eta $ der gewöhnlichen AM versteht man das Verhältnis von der Signalleistung
-$P_s$ der beiden Seitenbänder zur Gesamtleistung $P_t$ des AM-Signals. $P_c$ entspricht der Leistung des Trägersignals.
+$P_s$ der beiden Seitenbänder zur Gesamtleistung $P_t$ des AM-Signals. $P_c$ entspricht der Leistung des Trägersignals und $P_m$ der des modulierenden Nachrichtensignals.
 
-\[ P_t = P_c + P_s = \frac{A_c^2}{2} + \frac{\mu^2 A_c^2}{4} = \frac{1}{2}(1 + \frac{\mu^2}{2})A_c^2 \quad 
+\[ P_t = \frac{1}{2}A_c^2(1 + \mu^2 \cdot P_m) =  \frac{A_c^2}{2} + \frac{\mu^2 A_c^2}{2}\cdot P_m = P_c + P_s  \quad 
 \Longrightarrow 
-\quad \eta = \frac{P_s}{P_t} = \frac{\frac{1}{4}\mu^2 A_c^2}{\frac{1}{2}(1 + \frac{\mu^2}{2})A_c^2} = \frac{\mu^2}{2 + \mu^2}\]
+\quad \eta = \frac{P_s}{P_t} = \frac{\frac{1}{2}A_c^2 \mu^2 P_m}{\frac{1}{2}A_c^2(1 + \mu^2 P_m)} = \frac{\mu^2 \cdot P_m}{1 + \mu^2 \cdot P_m}\]
 
-Die maximale Effizienz (bei $\mu = 100\% $) beträgt nur gerade $ \eta = 33\% $. Bei $\mu = 50\% $
-sind es noch bescheidene $\eta = 11.1\% $.
+Die maximale Effizienz (bei $\mu = 100\% $ und $P_m = 1/2$) beträgt nur gerade $ \eta = 33\% $. 
 
 \subsection{SSB: Einseitenband (Single-Sideband)-AM \schaum{47}}
 	\begin{minipage}{14cm}
@@ -147,7 +146,7 @@ sind es noch bescheidene $\eta = 11.1\% $.
 		\includegraphics[width = 4cm]{bilder/am_ssb_spektrum}
 	\end{minipage}
 
-\subsubsection{Modulation \schaum{57-3.7}}
+\subsubsection{Modulation SSB \schaum{57-3.7}}
 \textbf{Phasenverschiebung }  \\
 \begin{minipage}[t][3.7cm][c]{7.0cm}
     \includegraphics[width=6.5cm]{bilder/am_ssb_modulationPhasenshifter.png}
@@ -176,14 +175,14 @@ sind es noch bescheidene $\eta = 11.1\% $.
 	Nachrichtensignals.
 \end{minipage}
 
-\subsubsection{Demodulation}
+\subsubsection{Demodulation SSB}
 Zur Demodulation kann die gleiche Phasenschieber-Schaltung wie zur Modulation verwendet
 werden. Die Signale werden jedoch immer addiert, nie subtrahiert. \\
 Die Demodulation kann auch mit dem koheränten Demodulator (siehe DSB-AM) erfolgen,\\
  dabei entspricht $Y_{LPF}(\omega) = \frac{1}{4}M(\omega)$ \\
 
 
-\subsection{VSB: Restseitenband (Vestigial-Sideband)-AM)}
+\subsection{VSB: Restseitenband (Vestigial-Sideband)-AM}
 	\begin{minipage}{12cm}
 		Restseitenband-AM ist sozusagen die praktische Realisierung der Frequenzdiskriminierungsmethode bei
 		SSB. \\
@@ -196,7 +195,7 @@ Die Demodulation kann auch mit dem koheränten Demodulator (siehe DSB-AM) erfolg
 		\end{center}
 	\end{minipage}
 	
-	\subsubsection{Modulation}
+	\subsubsection{Modulation VSB}
 		\begin{minipage}[t][2.2cm][c]{5.5cm}
     		\includegraphics[width=5cm]{bilder/am_vsb_modulator.png}
 		\end{minipage}
@@ -211,7 +210,7 @@ Die Demodulation kann auch mit dem koheränten Demodulator (siehe DSB-AM) erfolg
 		\end{minipage}
 
 
-\subsubsection{Demodulation}
+\subsubsection{Demodulation VSB}
 	Auch diese Art von AM kann mit einem kohärenten Demodulator demoduliert werden. Dabei ist die antisymmetrie der Filterkurve für eine verzerrungsfreie Demodulation erforderlich.
 	Auch hier entspricht $Y_{LPF}(\omega) = \frac{1}{4}M(\omega)$
 

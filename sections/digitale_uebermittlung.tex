@@ -15,11 +15,11 @@ einfach auf Signal anwendbar, Verschlüsselung leicht gemacht.
 
 \subsection{Bandbeschränkung}
 	Damit das Signal mit einer endlichen Abtastrate erfasst werden kann, muss es bandbeschr\"ankt sein.\\
-	F\"ur ideal band-beschränktes Basisbandsignal $m(t)$ gilt: $|M(\omega)| = 0$ für $\omega > 2\pi B_m$ 
+	F\"ur ideal band-beschränktes Basisbandsignal $m(t)$ gilt: $|M(\omega)| = 0$ für $|\omega| > 2\pi B_m$ 
 \subsubsection{Aliasing}
 	Bei nicht-bandbeschränkten Signalen treten bei der Abtastung \textit{zwingend} Aliasing-("Falschsignal-") Effekte auf.
 
-\subsection{Abtastung (Sampling)}
+\subsection{Abtastung (Sampling) \schaum{91}}
 	Ein ideale Abtastung besteht theoretisch aus einer periodischen Abfolge von Dirac-Pulsen
 	$\delta_{T_S}$ mit dem Abstand $T_s = \frac{1}{f_s}$. Dieses Spektrum erhält man mittels der Fourier-Reihe. \\ \\
 	%$$ c_n = \frac{1}{T} \int\limits_{-T/2}^{T/2} \delta_{T_S}(t) e^{-j n \omega n t} dt = 
@@ -34,13 +34,13 @@ einfach auf Signal anwendbar, Verschlüsselung leicht gemacht.
 	\textbf{Idealer Abtaster:}
 	\begin{equation*}
 		 m_s(t) = m_s(t) \cdot \delta_{T_s} = \sum_{n=-\infty}^{+\infty} m(nT_s) \cdot \delta(t-nT_s) \quad \laplace \quad
-		M(\omega) = \frac{1}{2\pi}M(\omega)\ast (\omega_s\cdot\delta_{w_s}(\omega)) = \frac{1}{2\pi} \sum_{n=-\infty}^{+\infty}M(\omega-n\omega_s)
+		M(\omega) = \frac{1}{2\pi}M(\omega)\ast (\omega_s\cdot\delta_{w_s}(\omega)) = \frac{1}{T_s} \sum_{n=-\infty}^{+\infty}M(\omega-n\omega_s)
 	\end{equation*}
 	\begin{center}
 			\includegraphics[width=10cm]{bilder/dig_abtaster_ideal_spektrum.png}
 		\end{center}
-\subsection{Rekunstruktion}
-Falls das Abtasttheorem bei der Abtastung erf\"ullt war, kann das Basisbandsignal $m(t)$ durch ein Tiefpassfilter mit Eckfrequenz $f_c = \frac{1}{2T_s}$ und Verst\"arkungsfaktor $K=T_s$ rekonstruiert werden.  
+\subsection{Rekunstruktion von $m(t)$ aus $m_s(t)$}
+Falls das Abtasttheorem bei der Abtastung erf\"ullt war, kann das Basisbandsignal $m(t)$ durch ein Tiefpassfilter mit Eckfrequenz $\omega_c = \frac{\omega_s}{2} = \frac{\pi}{T_s} $ und Verst\"arkungsfaktor $K=T_s$ rekonstruiert werden.  
 
 \begin{equation*}
 	m(t) = \left({\sum_{n=-\infty}^{+\infty}m(nT_s)\cdot\delta(t-nT_s)\ast\frac{\sin(\omega_ct)}{\omega_ct}}\right) = 
@@ -56,15 +56,15 @@ Ansonsten können sich die Signale im Spektralbereich \text{\"uberlappen}.
 \textbf{Bei Basisbandabtastung:}\\
 \hspace*{3cm}
 \begin{minipage}[t][2.0cm][c]{8cm}
-	$ f_s \geq 2 f_M  = f_N$ \\
-	$ f_N = 2 \cdot B_M $ \\
+	$ f_s \geq 2 f_m  = f_N$ \\
+	$ f_N = 2 \cdot B_m $ \\
 	$ f_{Nyq} = \frac{f_s}{2}$ \\
-	$ T_N = \frac{1}{2\cdot B_M} = \frac{1}{f_N} $
+	$ T_N = \frac{1}{2\cdot B_m} = \frac{1}{f_N} $
 \end{minipage}
 \begin{minipage}[t][2.5cm][c]{10cm}
 	$f_s$ Samplingfrequenz, $[f_s] = Hz$ \\
-	$f_M$ Nachrichtenfrequenz, $[f_M] = Hz$ \\
-	$B_M$ Nachrichtenbandbreite, $[B_M] = Hz$ \\
+	$f_m$ Nachrichtenfrequenz, $[f_m] = Hz$ \\
+	$B_m$ Nachrichtenbandbreite, $[B_m] = Hz$ \\
 	$f_N$ Nyquistrate, $[f_N] = Hz$ \\
 	$f_{Nyq}$ Nyquistfrequenz, $[f_{Nyq}] = Hz$ \\
 	$T_N$ Nyquistintervall, $[T_N] = s$ \\	
@@ -76,11 +76,11 @@ kleiner Samplingfrequenz abgetastet werden, dies nennt man \textbf{Subsampling}.
 Vorgehen: 1. Alle möglichen $n$ bestimmen (ganzzahlig). 2. Alle möglichen Frequenzintervalle für
 $f_s$ bestimmen.
 
-\begin{minipage}[t][2cm][c]{10cm}
+\begin{minipage}[t][2.2cm][c]{8cm}
 $$ 1 \leq n \leq \frac{f_u}{f_u - f_l} $$
 $$ \frac{2 \cdot f_u}{n} \leq f_s \leq \frac{2 \cdot f_l}{n-1}$$
 \end{minipage}
-\begin{minipage}[t][2cm][c]{8cm}
+\begin{minipage}[t][2.2cm][c]{9cm}
 	$f_s$ Samplingfrequenz, $[f_s] = Hz$ \\
 	$f_l$ Minimale (lower) Nachrichtenfrequenz, $[f_l] = Hz$ \\
 	$f_u$ Maximale (upper) Nachrichtenfrequenz, $[f_u] = Hz$ \\
@@ -96,8 +96,9 @@ Ein weiterer Begriff bezüglich Sampling ist das \textbf{Oversampling}, welches 
 		Folgende Vorteile resultieren daraus:\\ 
 		- \textbf{Originalgetreueres} Nachrichtensignal
 		- Aperture Effekt wird kleiner\\
-		- kleinere
-		\textbf{Filtersteilheit} notwendig.
+		- kleinere \textbf{Filtersteilheit} notwendig.
+		- verbessert SNR
+		
 	\end{minipage}
 	\begin{minipage}{10cm}
 		\includegraphics[width=10cm]{bilder/dig_oversampling.png}
@@ -128,8 +129,8 @@ während Sample nicht konstant. Bei dieser Sampling-Art besteht \textbf{kein Ape
 			\includegraphics[width=5cm]{bilder/dig_naturalsampling_spektrum}
 	\end{minipage}\\
 	\begin{center}
-		\begin{minipage}{9cm}
-				\includegraphics[width=9cm]{bilder/dig_naturalsampling.png}
+		\begin{minipage}{12cm}
+				\includegraphics[width=12cm]{bilder/dig_naturalsampling.png}
 			\end{minipage}
 	\end{center}
 \newpage
@@ -154,7 +155,7 @@ korrigiert werden.\\
 \subsection{Quantisierung (Quantizing)\schaum{93-5.6}}
 	\begin{center}	
 		\textbf{Gleichförmig} \hspace{3cm}
-		\textbf{Kompressor} \hspace{2.9cm}
+		\textbf{Ungelichgörmig} \hspace{2.9cm}
 		\textbf{$\mu$-Law} \hspace{3cm}
 		\textbf{A-Law}  \\
 		\includegraphics[height=4cm]{bilder/dig_quant_gleichfoermig.png} \hspace{0.5cm}
@@ -168,31 +169,34 @@ korrigiert werden.\\
 
 \subsubsection{Gleichförmige(Uniform) Quantisierung}
 \begin{multicols}{2}
-	$ \Delta = \frac{A_{pk}}{2^{n-1}} = \frac{2 \cdot A_{pk}}{L} \qquad \qquad L =
+	$ \Delta = \frac{m_{pk}}{2^{n-1}} = \frac{2 \cdot m_{pk}}{L} \qquad \qquad L =
 	2^n$\\
 	$q_e \leq |\frac{\Delta}{2}|$\\
 	$ N_q = \left< q_e^2 \right> = \frac{\Delta^2}{12} =
-	\frac{\left(2A_{pk}\right)^2}{L^2 \cdot 12}$ \\
+	\frac{m_{pk}^2}{L^2 \cdot 3}$ \\
 	$ S = \left( \frac{ A_{pk} }{C} \right)^2$ \\
-	$ \text{SNR}_{q} =\frac{S}{N_q}=\frac{m^2(t)}{q_e^2}$\\
+	$ \text{SNR}_{q} =\frac{S}{N_q}=\frac{m_{pk}^2}{q_e^2C^2} = \frac{12\cdot m_{pk}^2}{\Delta^2\cdot C^2}$\\
 	$\text{SNR}_{q} \left[dB\right] =10 \log(\text{SNR}) \cdot dB \approx n \cdot
-	6dB$ \\
+	6.02dB$ \\ \\
+	\textbf{S nach TP-Filter:}\\
+	$S_{TP} = \sum\limits_{n=-k}^{k} |c_n|^2 $
 \columnbreak
 
 	\begin{tabular}{l l}
 		$\Delta$ & Intervallbreite \\
 		$L$ & Anzahl Intervalle \\
 		$n$ & Wortlänge der Samples, [Anzahl Bit] \\
-		$A_{pk}$ & Amplitude des Nachrichtensignals \\
+		$m_{pk}$ & Amplitude des Nachrichtensignals \\
+		$C$ & Crestfaktor des Nachrichtensignals \\
 		$q_e$ & Quantisierungsfehler \\
 		$<q_e^2>$ & Quantisierungsrauschen \\
 		$S$ & Signalleistung\\
 		$\text{SNR}_{q}$ & Signal-to-Noise Ratio, $[\text{SNR}] = dB$ \\
-		$C$ & Crestfaktor \\
+		$k$ & Anzahl durchgelassene Harmonische
 	\end{tabular}
 \end{multicols}
 
-
+\newpage
 \subsubsection{Ungleichförmige(Nonuniform) Quantisierung \schaum{95-9.5C}}
 Bei tiefen Nutzsignalen hat die gleichförmige Quantisierung den Nachteil einer schlechten SNR
 (Signal - Geräusch Abstand). \\
@@ -202,28 +206,36 @@ Praktisch wird dies mit einem sogenannten \textbf{Kompressor} und einem nachgesc
 gleichförmigen Quantisierer realsiert.
 
 \begin{minipage}{9cm}
-$$ y_{\mu-Law}(x) = \sgn(m) \frac{\ln(1+\mu\cdot|x|)}{\ln(1+\mu)} \qquad \text{mit} \quad
-x = \frac{m}{m_{pk}}$$
+\[ y_{\mu-Law}(x) = \sgn(m) \frac{\ln(1+\mu\cdot|x|)}{\ln(1+\mu)} \qquad \text{mit} \quad
+x = \frac{m}{m_{pk}}\]
 \vspace*{-0.5cm}
 \begin{align*}\text{SNR}_{\mu-Law} &\approx 10 \log \dfrac{3 L^2}{[\ln(1 + \mu)]^2} \\
-	&\approx -10.1 + 6.02 \cdot n \: dB \quad \text{f\"ur} \; \mu = 255 \end{align*}
+	&\approx -10.1 + 6.02 \cdot n \: dB \quad \text{f\"ur} \; \mu = 255 
+\end{align*}
+	\[ \Delta y_{min_{\mu-Law}} \text{bei 8 bit} = \frac{1}{127}
+	\]
+	
 \end{minipage}
 \begin{minipage}{9cm}
-$$y_{A-Law}(x)=\begin{cases} \frac{A}{1+ \ln A} x & \mbox{wenn } |x| \le \frac{1}{A} \\
-	\frac{1 + \ln A\cdot x}{1+ \ln A}\sgn(m) & \mbox{wenn } \frac{1}{A} < |x| \le 1 \end{cases} $$
-$$\text{SNR}_{A-Law} \approx 10 \log \dfrac{3 L^2}{(1+\ln A)^2}$$
+\[y_{A-Law}(x)=\begin{cases} \frac{A}{1+ \ln A} x & \mbox{wenn } |x| \le \frac{1}{A} \\
+	\frac{1 + \ln A\cdot |x|}{1+ \ln A}\sgn(m) & \mbox{wenn } \frac{1}{A} < |x| \le 1 \end{cases} \]
+\[\text{SNR}_{A-Law} \approx 10 \log \dfrac{3 L^2}{(1+\ln A)^2}\]
+
+	\[ \Delta y_{min_{A-Law}} \text{bei 8 bit} = \frac{1}{128}
+		\]
 \end{minipage}
 
 \subsection{Codierung (Encoding) \schaum{96-5.8}}
 
 \subsubsection{PCM-Signale}
 \begin{minipage}{9cm}
-	$$ f_s > 2 \cdot B_m  \qquad \qquad n = \log_2 L$$ 
-	$$ R_B = f_s \cdot n > 2 \cdot n \cdot B_m $$ 
-	$$ B_{eff} > B_{PCM} = \frac{1}{2} n \cdot f_s > n \cdot B_m$$
-	$$(SNR)_0 = \frac{3}{2}L^2$$
-	$$(SNR)_{0dB}
-		= 1.76 + n \cdot  6dB$$
+	\[f_s > 2 \cdot B_m  \qquad \qquad n = \log_2L\]  
+	\[R_B = f_s \cdot n > 2 \cdot n \cdot B_m\] 
+	\[B_{eff} > B_{PCM} = \frac{1}{2} n \cdot f_s > n \cdot B_m\]
+	SNR für vollausgesteuerten Sinus:	
+	\[(SNR)_0 = \frac{3}{2}L^2\]
+	\[(SNR)_{0dB}
+		= 1.76 + n \cdot  6.02dB\]
 \end{minipage}
 \begin{minipage}{9cm}
 	$f_s$ Samplingrate, $[f_s] = Hz$ \\
@@ -251,14 +263,15 @@ $$\text{SNR}_{A-Law} \approx 10 \log \dfrac{3 L^2}{(1+\ln A)^2}$$
 \end{minipage}
 
 \begin{minipage}{9cm}
-$$ \frac{\Delta}{T_s} = \Delta \cdot f_s > \left| \frac{d m(t)}{dt} \right|_{max}$$
-$$ (\text{SNR})_{0dB} = 10 \cdot \log\left(\frac{1}{2}\frac{3 f_s^3}{8 \pi^2 f_m^2 f_M}\right) dB$$ 
-$$ N_q = <q_e^2> = \frac{\Delta^2}{3}\left(\frac{f_M}{f_s/2} \right) $$ 
+	\[\frac{\Delta}{T_s} = \Delta \cdot f_s > \left| \frac{d m(t)}{dt} \right|_{max}\]
+	\[(\text{SNR})_{0dB} = 10 \cdot \log\left(\frac{1}{2}\frac{3 f_s^3}{8 \pi^2 f_m^2 f_M}\right) dB\]
+	\[N_q = <q_e^2> = \frac{\Delta^2}{3}\left(\frac{f_M}{f_s/2} \right)\] 
 \end{minipage}
 \begin{minipage}{9cm}
 	$f_s$ Samplingrate, $[f_s] = Hz$ \\
 	$f_m$ Signalfrequenz, $[f_m] = Hz$ \\
 	$f_M$ Grenzfrequenz des TP-Filters, $[f_M] = Hz$ \\
+	$ \quad \text{Dabei gilt: }f_M \geqq f_m \quad \& \quad f_M \ll f_s$
 	$B_m$ Signalbandbreite, $[B_m] = Hz $ \\
 	$B_{PCM}$ Bandbreite PCM Signal, $[B_{PCM}] = Hz $\\
 	$\Delta$ Schritthöhe\\
@@ -278,7 +291,7 @@ $$ N_q = <q_e^2> = \frac{\Delta^2}{3}\left(\frac{f_M}{f_s/2} \right) $$
 \subsubsection{Leitungscodierung \schaum{99-5.10}}
 Je nach Anforderungen (DC-Freie Übertragung, Clock-Rückgewinnung, Störfestigkeit,
 Bandbreitenbedarf, Erkennung von Übertragungsfehlern) wird das zu übertragende Signal entsprechend
-codiert.
+codiert. \textbf{1 = Mark, 0 = Space}
 
 \begin{minipage}{9cm}
 	\includegraphics[width=8cm]{bilder/dig_leitungscodierung.png}
@@ -309,7 +322,7 @@ benachbarte Pulse, sodass beim Empfänger eine Unterscheidung der verschiedenen 
 fällt. 
 Das oben erwähnte Phänomen wird \textbf{intersymbolic interference} genannt.
 Abhilfe schafft ein passendes Filter, welches dem Übertragungskanal vorgeschaltet wird. Das Filter
-weist eine spezielle Impulsantwort auf, welche bei \textbf{gleichmässigen Zeitabständen}
+weist eine spezielle Impulsantwort auf, welche bei \textbf{gleichmässigen Zeitabständen} $T_s$
 (Abtastzeiten) Null ist, ausser zum Zeitpunkt Null. Dadurch kann die ISI umgangen werden, wenn dann
 genau zu diesen Zeiten abgetastet wird. \\ 
 
@@ -324,8 +337,8 @@ Dieses Filter schafft Abhilfe bei ISI. Obwohl dies auch mit einem Idealen Filter
 \end{itemize}
 
 \begin{minipage}{9cm}
-$$ f_B = \frac{1 + \alpha}{2 T} Hz \qquad \qquad \frac{1}{T} = \frac{2 f_B}{1 + \alpha}$$
-$$ W = \frac{\pi}{T_s}$$
+$$ f_B = \frac{1 + \alpha}{2 T_s} Hz \qquad \qquad \frac{1}{T_s} = \frac{2 f_B}{1 + \alpha}$$
+$$ W = \frac{\omega_s}{2} = \frac{\pi}{T_s}$$
 \end{minipage}
 \begin{minipage}{9cm}
 	$f_B$ benötigte Bandbreite, $[f_B] = Hz$ \\
@@ -351,6 +364,23 @@ $$
 		\includegraphics[height=3cm]{bilder/dig_raisedcosinefilter.png}
 \end{center}
 
+\subsubsection{1. Nyquistkriterium}
+	\[h(n\cdot T_s-t_0) = 
+		\begin{cases}
+			h_0 & n= 0\\
+			0 & n \neq 0
+		\end{cases}
+		\quad \laplace \quad
+		\frac{1}{T_s} \cdot \sum\limits_{n = -\infty}^{+ \infty} H(\omega - n\frac{2\pi}{T_s}) = \underbrace{h_0}_{\text{Konstantes Spektrum}}
+		\]
+	Aus dem 1. Nyquistkriterium folgt die minimal benötigte Bandbreite um ISI zu verhindern: $B_{min} = 1/2 f_s$\\
+	$\Rightarrow$ Dadurch wird das Augendiagramm bzgl. der Amplitude maximal geöffnet.
+	
+\subsubsection{2. Nyquistkriterium}
+	Zusätzlich zu den Nullstellen bei $n\cdot T_s$ (1. Nyquistkriterium) muss $h(t)$ auch an den Stellen $\pm 3/2 T_s$, $\pm 5/2T_s$, $\pm 7/2 T_s$, etc. eine Nullstelle aufweisen.\\
+	$\Rightarrow$ So wird das Augendiagramm auch auf Zeitachse maximal geöffnet.
+
+%TODO Augenmuster
 
 \subsubsection{Digitale Trägermodulation \schaum{104-5.14}}
 \begin{minipage}{9cm}
@@ -391,7 +421,8 @@ $$
     \begin{center}
 	PSK-8\\
 	\includegraphics[width=6cm]{bilder/psk_8.png}\\
-	Amplituden sind konstant nur Winkel ändern sich.
+	Amplituden sind konstant nur Winkel ändern sich.\\
+	Es gilt: $B_{PSK} = 2\cdot B_m$
 	\end{center} 
 
 \end{multicols}
