@@ -2,8 +2,9 @@
 % Dokumentinformationen %
 %%%%%%%%%%%%%%%%%%%%%%%%%
 \newcommand{\titleinfo}{Nachrichtentechnik 1 - Formelsammlung}
-\newcommand{\authorinfo}{Braun \& Co, J$\dot{u}$rg \& DIE Schweisser}
-\newcommand{\versioninfo}{$Revision: HelenasHeisseH\dot{o}sschen$}
+\newcommand{\authorinfo}{Braun \& Co, J$\dot{u}$rg \& DIE Schweisser,  K\"orner, Gwerder, Hannes}
+\newcommand{\versioninfo}{$ Revision: 0.1 $ | 
+							gem\"ass Unterricht Thomas Kneub\"uhler/HS2012}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Standard projektübergreifender Header für
@@ -13,7 +14,9 @@
 %
 % DORT NUR ERGÄNZEN, NICHTS LÖSCHEN
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Sobald möglich header Version 2.0 einbinden, damit unter anderem fleqn aus documentclass entfernt werden kann.
 \include{header/header}
+
 \usepackage{tikz}
 \usetikzlibrary{chains}
 \input{tikzpictures/tikzstyles}
@@ -21,18 +24,30 @@
 % Möglichst keine Ergänzungen hier, sondern in header.tex
 \begin{document}
 
+\title{\Huge{NaT 1}}
+\maketitle
+\setcounter{tocdepth}{1}
+\tableofcontents
+\newpage
+
 \input{sections/grundbegriffe}
 \input{sections/lti_systeme}
 \input{sections/am}
 \input{sections/fm}
+\newpage
 \input{sections/multiplex}
 \input{sections/digitale_uebermittlung}
-\input{sections/uebungen}
-\input{sections/pruefungen}
+\newpage
 \section{Idiotenseite}
 \input{idiotenseite/elektrotechnik/subsections/signalformen}
 \input{idiotenseite/trigo/trigoInclude}
 \input{idiotenseite/diverses/subsections/kurven}
 \input{idiotenseite/elektrotechnik/subsections/zeitabhaengigeGroesse}
-
+\input{sections/uebungen}
+\input{sections/pruefungen}
+\section{Tabellen}
+\begin{center}
+\includegraphics[width=7cm]{bilder/fouriertabelle} \\ \vspace{1cm}
+\includegraphics[width=12cm]{bilder/besseltabelle}
+\end{center}
 \end{document}

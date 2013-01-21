@@ -1,0 +1,7 @@
+.DS_STORE
+*.aux
+*.out
+*.log
+*.synctex.gz
+*.toc
+NaT1.pdf
