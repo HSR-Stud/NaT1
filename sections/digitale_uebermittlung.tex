@@ -294,7 +294,9 @@ Bandbreitenbedarf, Erkennung von Übertragungsfehlern) wird das zu übertragende
 codiert. \textbf{1 = Mark, 0 = Space}
 
 \begin{minipage}{9cm}
-	\includegraphics[width=8cm]{bilder/dig_leitungscodierung.png}
+	\includegraphics[width=8cm]{bilder/dig_leitungscodierung.png}\\[0.3cm]
+	\textbf{NRZ Mark} \\
+		1 = Zustandswechsel, 0 = kein Zustandswechsel.
 \end{minipage}
 \begin{minipage}{9cm}
 	\textbf{Unipolar NRZ(Nonreturn-to-Zero)} \\
@@ -302,14 +304,16 @@ codiert. \textbf{1 = Mark, 0 = Space}
 	\textbf{Bipolar NRZ(Nonreturn-to-Zero)} \\
 	1 = positiver Puls, 0 = negativer Puls \\[0.2cm]
 	\textbf{Unipolar (RZ)Return-to-Zero} \\
-	1 = Puls der wieder auf Null zurückspringt, 0 = kein Puls \\[0.2cm]
+	1 = Puls der auf Null zurückspringt, 0 = kein Puls \\[0.2cm]
 	\textbf{Bipolar RZ} \\
 	1 = positiver Puls (kehrt wieder auf Null zurück), 0 = negativer Puls (kehrt wieder auf Null
 	zurück)\\[0.2cm]
 	\textbf{AMI (Alternate Mark Inversion) RZ} \\
 	1 = Abwechslungsweise positiver und negatier Puls, 0 = kein Puls. DC-frei\\[0.2cm]
 	\textbf{Split-Phase (Manchester)} \\
-	1 = Positiver Puls mit anschliessend Negativem, 0 = Negativer Puls mit anschliessendem Positivem. DC-frei, einfache Synchronisation (Taktr\"uckgewinnung)
+	1 = Positiver Puls mit anschliessend Negativem, 0 = Negativer Puls mit anschliessendem Positivem. DC-frei, einfache Synchronisation \\[0.2cm]
+	\textbf{NRZ Space} \\
+	1 = kein Zustandswechsel, 0 = Zustandswechsel.
 \end{minipage}
 
 
@@ -345,9 +349,8 @@ $$ W = \frac{\omega_s}{2} = \frac{\pi}{T_s}$$
 	$\frac{1}{T}$ Pulsrate, $[\frac{1}{T}] = $ "Pulse pro Sekunde" \\
 	$\alpha$ roll-off-Faktor, $[\alpha] = 1$ 
 \end{minipage}
-
-$$ 
-h(t) = \frac{1}{T_s} \cdot \left( \frac{\sin{W t}}{W t} \right) \left[ \frac{\cos{\alpha W t}}{1
+ 
+\[h(t) = \frac{1}{T_s} \cdot \left( \frac{\sin{W t}}{W t} \right) \left[ \frac{\cos{\alpha W t}}{1
 - (2 \alpha W t / \pi)^2}\right]
 \quad \laplace \quad
 H(\omega) = \begin{cases}
@@ -357,8 +360,8 @@ H(\omega) = \begin{cases}
 		&	(1-\alpha) W \leq | \omega | \leq (1+\alpha) W       \\
 	0
 		& 	| \omega | > (1+\alpha) W
-            \end{cases}
-$$
+            \end{cases}\]
+
 
 \begin{center}  
 		\includegraphics[height=3cm]{bilder/dig_raisedcosinefilter.png}

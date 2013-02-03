@@ -3,5 +3,6 @@
 *.out
 *.log
 *.synctex.gz
+*.toc
 NaT1.pdf
 *.toc

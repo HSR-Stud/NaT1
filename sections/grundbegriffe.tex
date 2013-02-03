@@ -19,7 +19,7 @@
 		\textbf{Leistung} \\
 		$ P = \lim \limits_{T \to \infty} {\frac{1}{T} \int\limits_{-T/2}^{T/2} {|x(t)|^2 dt}} 
 		= \frac{1}{2 \pi} \int\limits_{-\infty}^{\infty} \left( \lim\limits_{T
-	\rightarrow \infty} \frac{|X(j \omega)|^2}{T} \right) d \omega	$ \\
+	\rightarrow \infty} \frac{|X(j \omega)|^2}{T} \right) d \omega \\= \sum_{n=-\infty}^{\infty} |c_n|^2	$  (Parsevalsches Theorem) \\
 	\end{minipage}
 	\\
 \hline
@@ -45,24 +45,24 @@
 \hline
 
 	\begin{minipage}[t]{9cm}
-		\textbf{Aperiodisch} \\
+		\textbf{Aperiodisch} 
 		$x(t) \neq x(t + n \cdot T)$
 	\end{minipage}
 	&
 	\begin{minipage}[t]{9cm}
-		\textbf{Periodisch} \\
-		$x(t) = x(t + n \cdot T) \qquad \text{ mit Periodendauer } T \text { und } n \in \mathbb{Z}$
+		\textbf{Periodisch} 
+		$x(t) = x(t + n \cdot T) \qquad \text{ Periodendauer } T \text {; } n \in \mathbb{Z}$
 	\end{minipage}
 \\
 \hline
 
 	\begin{minipage}[t]{9cm}
-		\textbf{Deterministisch} - \textit{mit vorbestimmten Verlauf} \\
+		\textbf{Deterministisch} - \textit{mit vorbestimmten Verlauf} 
 		$x(t) = f(t)$
 	\end{minipage}
 	&
 	\begin{minipage}[t]{9cm}
-		\textbf{Stochastisch} - \textit{ohne vorbestimmten Verlauf} \\
+		\textbf{Stochastisch} - \textit{ohne vorbestimmten Verlauf} 
 		$x(t) = ?$
 	\end{minipage}
 \\
@@ -196,14 +196,14 @@ In der \textbf{Telefonie} üblich, $R_{ref} = 600  \Omega \Rightarrow 0 dBV =
 		\textbf{Sinusf\"ormige Funktionen im Frequenzbereich}\\ 
 			\hspace*{0.5cm}
 			\parbox{8cm}{
-				$\cos(\omega_0t) \laplace \pi \cdot (\delta(\omega - \omega_0)+ (\delta(\omega + \omega_0))$\\
-				$\sin(\omega_0t) \laplace -j\pi \cdot (\delta(\omega - \omega_0)- (\delta(\omega + \omega_0))$	
+				$\cos(\omega_0t) \; \laplace \; \pi \cdot (\delta(\omega - \omega_0)+ (\delta(\omega + \omega_0))$\\
+				$\sin(\omega_0t) \; \laplace \; -j\pi \cdot (\delta(\omega - \omega_0)- (\delta(\omega + \omega_0))$	
 			}
 	\end{minipage}
 	\begin{minipage}[t]{9cm}
 		\textbf{Spektrum periodischer Leistungssignale}\\ 
 			\hspace*{0.5cm}
 			\parbox[b][1.2cm][c]{8cm}{
-				$$\sum_{n = -\infty}^{+\infty} c_n \cdot e^{jn\omega_0t} \laplace 2\pi \sum_{n = -\infty}^{+\infty} c_n\delta(\omega - n\omega_0)$$		
+				$$\sum_{n = -\infty}^{+\infty} c_n \cdot e^{jn\omega_0t} \; \laplace \; 2\pi \sum_{n = -\infty}^{+\infty} c_n\delta(\omega - n\omega_0)$$		
 			}
 	\end{minipage}
