@@ -94,9 +94,9 @@ Ein weiterer Begriff bezüglich Sampling ist das \textbf{Oversampling}, welches 
 	\begin{minipage}{9cm}
 		Hierbei \textbf{interpoliert} ein DSP zusätzliche Samples, um die Sample-Rate der D/A-Wandlung zu erhöhen.\\
 		Folgende Vorteile resultieren daraus:\\ 
-		- \textbf{Originalgetreueres} Nachrichtensignal
+		- \textbf{Originalgetreueres} Nachrichtensignal \\
 		- Aperture Effekt wird kleiner\\
-		- kleinere \textbf{Filtersteilheit} notwendig.
+		- kleinere \textbf{Filtersteilheit} notwendig.\\
 		- verbessert SNR
 		
 	\end{minipage}
@@ -174,7 +174,7 @@ korrigiert werden.\\
 	$q_e \leq |\frac{\Delta}{2}|$\\
 	$ N_q = \left< q_e^2 \right> = \frac{\Delta^2}{12} =
 	\frac{m_{pk}^2}{L^2 \cdot 3}$ \\
-	$ S = \left( \frac{ A_{pk} }{C} \right)^2$ \\
+	$ S = \left( \frac{ m_{pk} }{C} \right)^2$ \\
 	$ \text{SNR}_{q} =\frac{S}{N_q}=\frac{m_{pk}^2}{q_e^2C^2} = \frac{12\cdot m_{pk}^2}{\Delta^2\cdot C^2}$\\
 	$\text{SNR}_{q} \left[dB\right] =10 \log(\text{SNR}) \cdot dB \approx n \cdot
 	6.02dB$ \\ \\
@@ -232,10 +232,10 @@ x = \frac{m}{m_{pk}}\]
 	\[f_s > 2 \cdot B_m  \qquad \qquad n = \log_2L\]  
 	\[R_B = f_s \cdot n > 2 \cdot n \cdot B_m\] 
 	\[B_{eff} > B_{PCM} = \frac{1}{2} n \cdot f_s > n \cdot B_m\]
-	SNR für vollausgesteuerten Sinus:	
+	SNR für vollausgesteuerten Sinus ($C = \sqrt{2}$):	
 	\[(SNR)_0 = \frac{3}{2}L^2\]
 	\[(SNR)_{0dB}
-		= 1.76 + n \cdot  6.02dB\]
+		= 1.76dB + n \cdot  6.02dB\]
 \end{minipage}
 \begin{minipage}{9cm}
 	$f_s$ Samplingrate, $[f_s] = Hz$ \\
@@ -374,11 +374,13 @@ $$
 		\frac{1}{T_s} \cdot \sum\limits_{n = -\infty}^{+ \infty} H(\omega - n\frac{2\pi}{T_s}) = \underbrace{h_0}_{\text{Konstantes Spektrum}}
 		\]
 	Aus dem 1. Nyquistkriterium folgt die minimal benötigte Bandbreite um ISI zu verhindern: $B_{min} = 1/2 f_s$\\
-	$\Rightarrow$ Dadurch wird das Augendiagramm bzgl. der Amplitude maximal geöffnet.
+	$\Rightarrow$ Dadurch wird das Augendiagramm bzgl. der Amplitude maximal geöffnet. \\
+	$\Rightarrow$ Kein ISI beim Abtastzeitpunkt
 	
 \subsubsection{2. Nyquistkriterium}
 	Zusätzlich zu den Nullstellen bei $n\cdot T_s$ (1. Nyquistkriterium) muss $h(t)$ auch an den Stellen $\pm 3/2 T_s$, $\pm 5/2T_s$, $\pm 7/2 T_s$, etc. eine Nullstelle aufweisen.\\
-	$\Rightarrow$ So wird das Augendiagramm auch auf Zeitachse maximal geöffnet.
+	$\Rightarrow$ So wird das Augendiagramm auch auf Zeitachse maximal geöffnet. \\
+	$\Rightarrow$ Kein ISI beim Nulldurchgang
 
 %TODO Augenmuster
 
@@ -389,22 +391,23 @@ $$
 \begin{minipage}{9cm}
 	Weil Binäre Nachrichtensignale selbst zu kleine Frequenzen aufweisen, sind sie nicht geeignet um
 	z.B. über den Äther zu schicken. Abhilfe schafft die binäre Trägermodulation. 
-	\vspace{1cm}  \\
-	\textbf{ASK - Amplitude-Shift Keying} \\
-	$$x_c(t) = \begin{cases}
-           A \cos(\omega_c t) & \textbf{symbol 1} \\
-           0 & \textbf{symbol 0}
-           \end{cases} $$ \\
-	\textbf{FSK - Frequency-Shift Keying} \\
-	$$x_c(t) = \begin{cases}
+	\vspace{0.1cm}  \\
+	\textbf{ASK - Amplitude-Shift Keying}
+	\[x_c(t) = \begin{cases}
+           A_1 \cos(\omega_c t) & \textbf{symbol 1} \\
+           A_2 \cos(\omega_c t) & \textbf{symbol 0}
+           \end{cases} \]
+    OOK - On Off Keying, wenn $A_2 = 0$\\ \\
+	\textbf{FSK - Frequency-Shift Keying}
+	\[x_c(t) = \begin{cases}
            A \cos(\omega_{c1} t) & \textbf{symbol 1}     \\         
            A \cos(\omega_{c2} t) & \textbf{symbol 0}
-           \end{cases} $$ \\
+           \end{cases} \]
 	\textbf{PSK - Phase-Shift Keying} \\
-	$$x_c(t) = \begin{cases}
+	\[x_c(t) = \begin{cases}
            A \cos(\omega_{c} t) & \textbf{symbol 1}        \\      
            A \cos(\omega_{c} t + \pi) & \textbf{symbol 0}
-           \end{cases} $$ \\
+           \end{cases}\] \\
 \end{minipage}
 
 \subsubsection{mehrwertige Signale}
