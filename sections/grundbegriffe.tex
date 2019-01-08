@@ -11,7 +11,7 @@
 \hline
 	\begin{minipage}[t]{9cm}
 		\textbf{Energie} \\
-		$ E = W = \lim\limits_{T\rightarrow\infty}\int\limits_{-T/2}^{T/2} |x(t)|^2dt\label{SIG_FORM_01}
+		$ E = W = \int\limits_{-\infty}^{\infty} |x(t)|^2dt\label{SIG_FORM_01}
 		 = \frac{1}{2 \pi} \int\limits_{-\infty}^{\infty} |X(j \omega)|^2 d \omega$ \\
 	\end{minipage}
 	&
@@ -127,39 +127,72 @@
 				\item Signal $x(t)$ wird auf $|x_n(t)| \leq 1$ normiert.
 			\end{itemize}
 		\subsubsection{Signalbeschreibung}
-			\begin{tabular}{p{4cm} p{4cm} p{4cm} p{4cm}}
-				\textbf{Effektivwert} & 
-				$x_{RMS} = \sqrt{P_x}$\\
-				\textbf{Crestfaktor} & 
-				$C = \dfrac{|x|_{pk}}{x_{RMS}}$ &
-				\multicolumn{2}{l}{, sinusförmige Signale $C = \sqrt{2}$}\\
-				\textbf{physikalische Leistung} &
+			\begin{tabular}{p{4cm} p{7cm} p{7cm}}
+				\hline
+				\textbf{Linearer zeitlicher Mittelwert} & 
+				$\bar{x}=\langle x(t)\rangle = \lim \limits_{T \to \infty} {\frac{1}{T} \int\limits_{-T/2}^{T/2} {x(t) dt}} $\\ \hline
+				
+				
+				\textbf{Effektivwert}&
+				$x_{RMS} = \sqrt{P_x} = \sqrt{\lim \limits_{T \to \infty} {\frac{1}{T} \int\limits_{-T/2}^{T/2} {|x(t)|^2 dt}}}$\\\hline
+				
+				\textbf{Crestfaktor / Scheitelfaktor} & 
+				$C = \dfrac{|x|_{pk}}{x_{RMS}} = \dfrac{max(|x(t)|)}{\sqrt{Px}}$ &
+				sinusförmige Signale $C = \sqrt{2}$\\\hline
+				
+				
+				\textbf{Physikalische Leistung} &
 				$P_{phys} = c \cdot P_x$\\
 				& Bsp. $x(t) = i(t) \quad [A]$&
-				$P_x = I_{RMS}^2 \quad [A^2]$&
-				$P_{phys} = R \cdot I_{RMS}^2 \quad [W]$
+				$P_x = I_{RMS}^2 \quad [A^2]$ \qquad
+				$P_{phys} = R \cdot I_{RMS}^2 \quad [W]$\\
+				\hline
 			\end{tabular}
 			 
 			
 
 	\subsection{Pegel (Dezibel)}
 		\textbf{Mit Dezibel (dB) vergleicht man Leistungspegel, nicht Amplituden!}
-
-	\subsubsection{Relative Pegel}
-		\begin{tabbing}
-			xxxxxxxxxxxxxxxxxxxxxxxxx \= xxxxxxxxxxxxxxxxxxxxxxx  \= xxxxxxxxxxxxxxxxxxxxxxx \=\kill
-			\textbf{Spannungspegel} \> $L_U = 20 \cdot \log_{10} \frac{U_x}{U_0}$ \> $U_x = U_0 \cdot
-			10^{\frac{L}{20}} $ \> $[L_U] = dB$ \\ 
-			
-			\textbf{Strompegel} \> $L_I  = 20 \cdot \log_{10} \frac{I_x}{I_0}$ \> $I_x = I_0 \cdot
-			10^{\frac{L}{20}} $ \> $[L_I] = dB$ \\ 
-			
-			\textbf{Leistungspegel} \> $L_P = 10 \cdot \log_{10} \frac{P_x}{P_0}$ \> $P_x = P_0 \cdot
-			10^{\frac{L}{10}} $ \> $[L_P] = dB$
-		\end{tabbing}
-		Beachte: Jeder relative Pegel gilt für U, I \& P. (Bei gleicher Referenz)
+		
+\begin{minipage}{14.5cm}
 	
+		\subsubsection{Relative Pegel}
+		\begin{tabular}{p{3cm} p{5.5cm} p{2.5cm} p{3cm}}
+			\textbf{Spannungspegel}&  
+			$L_U = 20 \cdot \log_{10} \frac{U_x}{U_0}= 10 \cdot \log_{10} (\frac{U_x}{U_0})^2$ &
+			$U_x = U_0 \cdot 10^{\frac{L}{20}} $ &
+			$[L_U] = dB$\\
+			
+			\textbf{Strompegel}& $L_I  = 20 \cdot \log_{10} \frac{I_x}{I_0}$& $I_x = I_0 \cdot
+			10^{\frac{L}{20}} $ & $[L_I] = dB$\\
+			
+			\textbf{Leistungspegel} & $L_P = 10 \cdot \log_{10} \frac{P_x}{P_0}$ & $P_x = P_0 \cdot
+			10^{\frac{L}{10}} $ & $[L_P] = dB$ \\
+			
+			
+			
+	\end{tabular}
 
+\end{minipage}
+\scalebox{0.7}{\begin{minipage}[c]{4cm}
+		%	\begin{right}
+		\begin{tabular}{|r|r|r||r|r|r|}
+			\hline
+			dB & $\dfrac{P_{y}}{P_{x}}$ & $\dfrac{y_{rms}}{x_{rms}}$&dB & $\dfrac{P_{y}}{P_{x}}$ & $\dfrac{y_{rms}}{x_{rms}}$\\
+			\hline
+			20	&	100	&	10 &-20	& 	$\dfrac{1}{100}$	&	$\dfrac{1}{10}$	\\
+			10	&	10	&$\sqrt{10}$& -10	& 	$\dfrac{1}{10}$	&	$\dfrac{1}{\sqrt{10}}$\\
+			6	& 	4	&	2	&-6	& 	$\dfrac{1}{4}$	&	$\dfrac{1}{2}$\\
+			3	& 	2	&	$\sqrt{2}$ & & &	\\
+			0	& 	1	&	1 & -3	&	$\dfrac{1}{2}$	&	$\dfrac{1}{\sqrt{2}}$	\\
+			
+			\hline
+		\end{tabular}
+		%\end{center}
+\end{minipage}}
+
+
+		Beachte: Jeder relative Pegel gilt für U, I \& P. (Bei gleicher Referenz)
 \subsubsection{Absolute Pegel}
 	\begin{tabbing}
 	xxxxxxxxxxxxxxxxxxxxxxxxx \= xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx  \= xxxxxxxxxxxxxxxxxxxxxxx \=\kill
@@ -174,7 +207,7 @@ In der \textbf{Telefonie} üblich, $R_{ref} = 600  \Omega \Rightarrow 0 dBV =
 1.67 mW$ 
 
 \subsection{Fourier-Theorie}
-	Die ganze Theorie zu den Fourier-Reihen, sowie zu der Fourier-Transformation sind in der Zusammenfassung des Moduls \textbf{Integral Transformation} zu finden.
+	 \textbf{Siehe Zusammenfassung Integral Transformation}
 
 \subsubsection{Ergänzung für NaT}
 	\textbf{Symmetrie-Eigenschaft}\\
