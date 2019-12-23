@@ -33,14 +33,17 @@ $$\boxed{ x_c(t) = A_c \cos(w_c t + \varphi(t)) = A_c \cos(\theta(t)) }$$
 \subsection{Momentanfrequenz, Frequenzabweichung}
 \begin{multicols}{2}
 	\begin{center}
-
 		$ \omega_i = \frac{d \theta(t)}{dt} = \omega_c + \frac{d \varphi(t)}{dt} $\\
 		$\omega_{i_{FM}} = w_c + k_f m(t)$\\
 		$\omega_{i_{PM}} = w_c + k_p m'(t)$\\
-		$ \Delta \omega = |\omega_i - \omega_c|_{max} = |\frac{\diff \varphi}{\diff t}|_{max}$ \\
-	%	$ \Delta f_{FM} =  m_{pk} \cdot \frac{k_f}{2\pi}$\\
-	%	$ \Delta f_{PM} = m_{pk} \cdot \frac{k_p f_m}{2\pi}$ \\
+		$\Delta \omega = |\omega_i - \omega_c|_{max} = |\frac{\diff \varphi}{\diff t}|_{max}$ \\
+		$\varphi_{FM}(t) = k_f \int\limits_{- \infty}^{t} m(\tau)
+		d\tau$\\
+		$\varphi_{PM}(t) = k_pm(t)$
+		%	$ \Delta f_{FM} =  m_{pk} \cdot \frac{k_f}{2\pi}$\\
+		%	$ \Delta f_{PM} = m_{pk} \cdot \frac{k_p f_m}{2\pi}$ \\
 	\end{center}
+
 \columnbreak
 		$\omega_i$ Momentanfrequenz \\
 		$\omega_c$ Trägerfrequenz \\
@@ -89,18 +92,21 @@ unterscheiden.
 		\begin{cases}
 			k_p \cdot A_m & \textbf{PM}  \\
 			\frac{k_f \cdot A_m}{\omega_m} & \textbf{FM}
-		\end{cases} 
-		$
+		\end{cases}$ \\
 	\end{minipage}
 	\begin{minipage}[t][0.7cm][c]{8cm}
 		$\beta$ Modulationsindex (max. Phasenabw.), $[\beta] = rad$ \\
 		$A_m$ Amplitude des Nachrichtensignals, $[A_m] = 1$ \\
-		$\Delta \omega = 2\pi \Delta f$\\
-		$\Delta f$ Frequenzhubkonstante \\
-		$k_f$ Frequenzabweichungskonstante, $[k_f] = 1$ \\
-		$k_p$ Phasenabweichungskonstante, $[k_p] = 1$
-	\end{minipage}\\
+		$\Delta \omega$ maximale Frequenzabweichung $[\Delta \omega] = rad/s$ \\
+		$k_f$ Frequenzhubkonstante, $[k_f] = rad/s$ \\
+		$k_p$ Phasenhubkonstante, $[k_p] = rad$
+	\end{minipage}\\ \\ \\
 
+	%$\qquad \beta \ll 1 \text{ (NB)} \qquad \Rightarrow \qquad W_{PM/FM} \approx 2 \omega_m$
+	
+	%$\qquad \beta \le 0.2 \qquad \qquad \Rightarrow \qquad \text{Kleinhubmodulation (Narrowband Angle Modulation)}$
+	
+	%$\qquad \beta > 1 \qquad \qquad \quad \Rightarrow \qquad \text{Grosshubmodulation (Wideband Angle Modulation)}$
 
 
 \subsubsection{Spektrum Einton-Winkelmodulation}
@@ -113,26 +119,33 @@ unterscheiden.
 	S. 323f). Das Spektrum besteht aus dem Trägersignal plus einer unendlichen Anzahl Spektrallinien,
 	wobei $J_n(\beta)$ sehr klein ist für grosse $n$. \\
 	Für ($\beta \ll 1$, Kleinhub) sind nur $J_0$, $J_1$ und $ J_{-1}$ relevant. Bei ($\beta \gg 1$,
-	Grosshub) existieren jedoch einige signifikante Seitenbänder.\\
+	Grosshub) existieren jedoch einige signifikante Seitenbänder.\\ \\
 	\textbf{Eigenschaft der Besselfunktion}\\
 	$J_{-n}(\beta) = (-1)^n \cdot J_n(\beta) \qquad
-	J_{n-1}(\beta) + J_{n+1}(\beta) = (\frac{2n}{\beta})\cdot J_n(\beta) \qquad \sum J_n^2(\beta) = 1$
+	J_{n-1}(\beta) + J_{n+1}(\beta) = (\frac{2n}{\beta})\cdot J_n(\beta) \qquad \sum J_n^2(\beta) = 1$\\ \\
+	\includegraphics[width=13cm]{bilder/Besselfunktionen.png}
+	\includegraphics[width=6cm]{bilder/Besselfunktionen_Spektrum.png}
 
+\newpage
 \subsubsection{Bandbreite Einton-Winkelmodulation nach Carson}
 	Mit der Bedingung $J_n(\beta) \approx 0, \,\forall (n > \beta + 1)$ kann die Bandbreite approximativ berechnet werden. 98\% der durchschnittlichen Signalleistung sind in diesem Frequenzspektrum angesiedelt. 
 
-	\begin{center}
-		$\boxed{W_{PM/FM} = 2(\beta + 1) \cdot \omega_m} = 2(\Delta \omega + \omega_m) =
-		\begin{cases}
-  			2(k_p A_m + 1)\cdot \omega_m & \textbf{PM},\, W_{PM} \sim \omega_m \\
-  			2(k_f A_m + \omega_m) & \textbf{FM},\, W_{FM} \nsim \omega_m \end{cases} \qquad
-  			\qquad \beta \ll 1 \text{ (NB)}: \quad W_{B} \approx 2 \omega_m
-		$
-	\end{center}
-	F\"ur Frequenzen in $Hz$:
-		$B_{PM/FM} = 2(\beta + 1) \cdot f_m = 2(\Delta f + f_m) = \frac{W}{2\pi}$
+	%\begin{center}
+	Für Kreisfrequenzen in $rad/s$: \quad $\boxed{W_{PM/FM} = 2(\beta + 1) \cdot \omega_m} = 2(\Delta \omega + \omega_m) =
+	\begin{cases}
+		2(k_p A_m + 1)\cdot \omega_m & \textbf{PM},\, W_{PM} \sim \omega_m \\
+		2(k_f A_m + \omega_m) & \textbf{FM},\, W_{FM} \nsim \omega_m
+	\end{cases}$
+	%\end{center}
+	
+	Für Frequenzen in $Hz$: \qquad $\boxed{B_{PM/FM} = 2(\beta + 1) \cdot \frac{\omega_m}{2 \pi}} = \frac{W}{2\pi} = 2(\frac{\Delta \omega + \omega_m}{2 \pi}) =
+	\begin{cases}
+		2(k_p A_m + 1)\cdot \frac{\omega_m}{2 \pi} & \textbf{PM},\, W_{PM} \sim \omega_m \\
+		2(k_f A_m + \omega_m) \cdot \frac{1}{2 \pi} & \textbf{FM},\, W_{FM} \nsim \omega_m
+	\end{cases}$ \\ \\
 
-	\subsubsection{Leistung einer Winkelmodulation \schaum{72-4.7B}}
+
+\subsubsection{Leistung einer Winkelmodulation \schaum{72-4.7B}}
 		$$P_{st} = \frac12 A_C^2 \approx P_{FM/AM}$$
 
 
