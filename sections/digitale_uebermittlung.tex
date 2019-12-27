@@ -56,7 +56,7 @@ Ansonsten können sich die Signale im Spektralbereich \text{\"uberlappen}.
 \textbf{Bei Basisbandabtastung:}\\
 \hspace*{3cm}
 \begin{minipage}[t][2.0cm][c]{8cm}
-	$ f_s \geq 2 f_m  = f_N$ \\
+	$ f_s > 2 f_m  = f_N$ \\
 	$ f_N = 2 \cdot B_m $ \\
 	$ f_{Nyq} = \frac{f_s}{2}$ \\
 	$ T_N = \frac{1}{2\cdot B_m} = \frac{1}{f_N} $
@@ -402,33 +402,7 @@ codiert. \textbf{1 = Mark, 0 = Space}
 	\hline
 \end{longtable}
 
-
-
-
-%\begin{minipage}{9cm}
-%	\includegraphics[width=8cm]{bilder/dig_leitungscodierung.png}\\[0.3cm]
-%	\textbf{NRZ Mark} \\
-%		1 = Zustandswechsel, 0 = kein Zustandswechsel.
-%\end{minipage}
-%\begin{minipage}{9cm}
-%	\textbf{Unipolar NRZ(Nonreturn-to-Zero)} \\
-%	1 = Puls, 0 = kein Puls \\[0.2cm]
-%	\textbf{Bipolar NRZ(Nonreturn-to-Zero)} \\
-%	1 = positiver Puls, 0 = negativer Puls \\[0.2cm]
-%	\textbf{Unipolar (RZ)Return-to-Zero} \\
-%	1 = Puls der auf Null zurückspringt, 0 = kein Puls \\[0.2cm]
-%	\textbf{Bipolar RZ} \\
-%	1 = positiver Puls (kehrt wieder auf Null zurück), 0 = negativer Puls (kehrt wieder auf Null
-%	zurück)\\[0.2cm]
-%	\textbf{AMI (Alternate Mark Inversion) RZ} \\
-%	1 = Abwechslungsweise positiver und negatier Puls, 0 = kein Puls. DC-frei\\[0.2cm]
-%	\textbf{Split-Phase (Manchester)} \\
-%	1 = Positiver Puls mit anschliessend Negativem, 0 = Negativer Puls mit anschliessendem Positivem. DC-frei, einfache Synchronisation \\[0.2cm]
-%	\textbf{NRZ Space} \\
-%	1 = kein Zustandswechsel, 0 = Zustandswechsel.
-%\end{minipage}
-
-
+\newpage
 \subsubsection{Pulse Shaping und ISI (Intersymbolic Interference) \schaum{101-5.13A}}
 Da Übertragungskanäle in der Praxis keine idealen Eigenschaften 
 (\textbf{limitierte Bandbreite}, Nichtlinearität, Verzerrungen) aufweisen,
@@ -498,34 +472,73 @@ H(\omega) = \begin{cases}
 	$\Rightarrow$ Kein ISI beim Nulldurchgang
 
 %TODO Augenmuster
-
-\subsubsection{Digitale Trägermodulation \schaum{104-5.14}}
-\begin{minipage}{9cm}
-	\includegraphics[width=8.7cm]{bilder/dig_traegermodulation.png}
-\end{minipage}
-\begin{minipage}{9cm}
-	Weil Binäre Nachrichtensignale selbst zu kleine Frequenzen aufweisen, sind sie nicht geeignet um
-	z.B. über den Äther zu schicken. Abhilfe schafft die binäre Trägermodulation. 
-	\vspace{0.1cm}  \\
-	\textbf{ASK - Amplitude-Shift Keying}
-	\[x_c(t) = \begin{cases}
-           A_1 \cos(\omega_c t) & \textbf{symbol 1} \\
-           A_2 \cos(\omega_c t) & \textbf{symbol 0}
-           \end{cases} \]
-    OOK - On Off Keying, wenn $A_2 = 0$\\ \\
-	\textbf{FSK - Frequency-Shift Keying}
-	\[x_c(t) = \begin{cases}
-           A \cos(\omega_{c1} t) & \textbf{symbol 1}     \\         
-           A \cos(\omega_{c2} t) & \textbf{symbol 0}
-           \end{cases} \]
-	\textbf{PSK - Phase-Shift Keying} \\
-	\[x_c(t) = \begin{cases}
-           A \cos(\omega_{c} t) & \textbf{symbol 1}        \\      
-           A \cos(\omega_{c} t + \pi) & \textbf{symbol 0}
-           \end{cases}\] \\
-\end{minipage}
-
 \newpage
+\subsubsection{Digitale Trägermodulation \schaum{104-5.14}}
+Weil Binäre Nachrichtensignale selbst zu kleine Frequenzen aufweisen, sind sie nicht geeignet um
+z.B. über den Äther zu schicken. Abhilfe schafft die binäre Trägermodulation.\\
+Vorteile der Übertragung mit Trägersignal:
+\begin{itemize}
+	\setlength\itemsep{0.5pt}
+	\item Physikalische Anpassung an Kanal (z.B. Funk)
+	\item Mehrfache Nutzung des Kanals (Frequenzmultiplex)
+	\item Erhöhung der Störfestigkeit der Übertragung
+\end{itemize}
+
+\begin{longtable}{|p{9cm}|p{9cm}|}
+	\hline
+	\textbf{Amplitude Shift Keying (ASK)}\newline
+	\includegraphics[width=8cm]{bilder/DigitaleTraegermodulation/ASK.png}
+	\begin{itemize}[noitemsep]
+		\item Trägeramplitude entspricht dem Wert des zu übertragenden Symbols (auch mehr als zwei Werte möglich)
+		\item Binärer Fall: \textbf{Mark:} $A_c \cdot m(t) = A_1$, \newline \textbf{Space:} $A_c \cdot m(t) = A_0$
+	\end{itemize}
+	&
+	\textbf{On-Off-Keying (OOK)}\newline
+	\includegraphics[width=8cm]{bilder/DigitaleTraegermodulation/OOK.png}
+	\begin{itemize}[noitemsep]
+		\item Binäre Variante von ASK: Amplitude vom Trägersignal wird durch Bitwerte ein- bzw. ausgeschaltet
+		\item \textbf{Mark:} $A_c \cdot m(t) = A_1$, \textbf{Space:} $A_c \cdot m(t) = 0$
+		\item vergleichbar mit unipolarem NRZ-Signal
+	\end{itemize}\\
+	
+	\hline
+	
+	\textbf{Binary Phase Shift Keying (BPSK)}\newline
+	\includegraphics[width=8cm]{bilder/DigitaleTraegermodulation/BPSK.png}
+	\begin{itemize}[noitemsep]
+		\item Symbolwerte werden auf verschiedene Phasenlagen des Trägers abgebildet
+		\item Binärer Fall: Phasenverschiebung des Trägers um 180\textdegree
+		\item vergleichbar mit DSB-SC Modulation mit bipolarem NRZ-Signal
+	\end{itemize}
+	&
+	\textbf{Differential BPSK (DBPSK)}\newline
+	\includegraphics[width=8cm]{bilder/DigitaleTraegermodulation/DBPSK.png}
+	\begin{itemize}[noitemsep]
+		\item Problem bei BPSK: ohne zusätzliche Synchronisation sind Mark und Space nicht unterscheidbar
+		\item Lösung von DBPSK: modulierendes Signal ist bipolares NRZ-I
+		\item Nachteil: leicht höhere Fehlerrate
+	\end{itemize}\\
+	
+	\hline
+	
+	\textbf{Frequency Shift Keying (FSK)}\newline
+	\includegraphics[width=8cm]{bilder/DigitaleTraegermodulation/FSK.png}
+	\begin{itemize}[noitemsep]
+		\item Jeder Symbolwert erzeugt eigene Trägerfrequenz
+		\item Wenn Phasensprünge erlaubt: FSK kann durch Kombination mehrerer OOK-Signale gebildet werden
+		\item keine Phasensprünge (continuous phase modulation): mit NRZ moduliertes FM-Signal (Vorteil: kleinere Bandbreite)
+	\end{itemize}
+	&
+	\textbf{Minimum Shift Keying (MSK)}\newline
+	\includegraphics[width=8cm]{bilder/DigitaleTraegermodulation/MSK.png}
+	\begin{itemize}[noitemsep]
+		\item Binäre continuous phase FSK, bei welcher die über die Symbolzeit integrierte Phasenabweichung gegenüber dem nicht-modulierten Träger $\pm \pi/2$ beträgt
+		\item Vorteil zu continuous phase FSK: Signale für Mark und Space sind zueinander orthogonal, womit die Bitfehlerrate beim Empfänger reduziert werden kann
+	\end{itemize}\\
+	
+	\hline
+\end{longtable}
+
 \subsubsection{mehrwertige Signale}
 \begin{multicols}{2}
     \begin{center}
