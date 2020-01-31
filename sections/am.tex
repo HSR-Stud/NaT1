@@ -1,5 +1,5 @@
 \section{AM (Amplitudenmodulation) \schaum{43}}
-	Bei der Amplitudenmodulation ist die Amplitude des Trägersignals $A(t)$ linear von der dem Nachrichtensignal $m(t)$ abhängig. Daher wird die Amplitudenmodulation oftmals als lineare Modulation bezeichnet.\\ 
+	Bei der Amplitudenmodulation ist die Amplitude des Trägersignals $A(t)$ linear vom Nachrichtensignal $m(t)$ abhängig. Daher wird die Amplitudenmodulation oftmals als lineare Modulation bezeichnet.\\ 
 	\begin{tabular}{l l l}
 		Trägersignal & carrier & $A(t)=A_c \cdot \cos(\omega_c t)$ \\
 		Nachrichtensignal & message & $m(t)$, oft normiert als $m_n(t)$: $|m_n(t)| < 1$  \\
@@ -12,7 +12,7 @@
 
 	%TODO: Klassifizierung von AM
 
-\subsection{DSB(-SC): Doppelseitenband (Double-Sideband)-AM \schaum{44}}
+\subsection{DSB(-SC): Doppelseitenband (Double-Sideband)-AM \schaum{44}} \label{am_dsb}
 	Bei der Doppelseitenband-Amplitudenmodulation ist das untere Seitenband (Lower Sideband) sowie das obere Seitenband (Upper Sideband) präsent. Da der Träger im Spektrum nicht präsent ist, ist bei dieser Art von AM auch von \textbf{DSB-SC (Double-Sideband Suppressed Carrier)} die Rede. \\ 
 	\begin{tabular}{l l l}
 		\textbf{Bandbreite}: & $B_{X(\omega)} = 2 \cdot B_{M(\omega)}$ & \\
@@ -39,7 +39,7 @@ $\xrightarrow{\text{DSB-AM}}$
 \end{minipage}
 
 \subsubsection{Demodulation DSB} 
-\label{am_dsb_modulation}
+\label{am_dsb_demodulation}
 \begin{minipage}[t][2.3cm][c]{6.5cm}
     \includegraphics[width=6cm]{bilder/am_dsb_demodulation}
 \end{minipage}
@@ -178,7 +178,7 @@ Die maximale Effizienz (bei $\mu = 100\% $ und $P_m = 1/2$) beträgt nur gerade 
 \subsubsection{Demodulation SSB}
 Zur Demodulation kann die gleiche Phasenschieber-Schaltung wie zur Modulation verwendet
 werden. Die Signale werden jedoch immer addiert, nie subtrahiert. \\
-Die Demodulation kann auch mit dem koheränten Demodulator (siehe DSB-AM) erfolgen,\\
+Die Demodulation kann auch mit dem koheränten Demodulator (siehe \ref{am_dsb_demodulation} \nameref{am_dsb_demodulation}) erfolgen,\\
  dabei entspricht $Y_{LPF}(\omega) = \frac{1}{4}M(\omega)$ \\
 
 
