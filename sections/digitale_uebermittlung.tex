@@ -267,7 +267,7 @@ x = \frac{m}{m_{pk}}\]
 \begin{minipage}{9cm}
 	\[\frac{\Delta}{T_s} = \Delta \cdot f_s > \left| \frac{d m(t)}{dt} \right|_{max}\]
 	\[(\text{SNR})_{0dB} = 10 \cdot \log\left(\frac{1}{2}\frac{3 f_s^3}{8 \pi^2 f_m^2 f_M}\right) dB\]
-	\[N_q = <q_e^2> = \frac{\Delta^2}{3}\left(\frac{f_M}{f_s/2} \right)\] 
+	\[N_q = <q_e^2> = \frac{\Delta^2}{3}\] 
 \end{minipage}
 \begin{minipage}{9cm}
 	$f_s$ Samplingrate, $[f_s] = Hz$ \\
@@ -295,30 +295,114 @@ Je nach Anforderungen (DC-Freie Übertragung, Clock-Rückgewinnung, Störfestigk
 Bandbreitenbedarf, Erkennung von Übertragungsfehlern) wird das zu übertragende Signal entsprechend
 codiert. \textbf{1 = Mark, 0 = Space}
 
-\begin{minipage}{9cm}
-	\includegraphics[width=8cm]{bilder/dig_leitungscodierung.png}\\[0.3cm]
-	\textbf{NRZ Mark} \\
-		1 = Zustandswechsel, 0 = kein Zustandswechsel.
-\end{minipage}
-\begin{minipage}{9cm}
-	\textbf{Unipolar NRZ(Nonreturn-to-Zero)} \\
-	1 = Puls, 0 = kein Puls \\[0.2cm]
-	\textbf{Bipolar NRZ(Nonreturn-to-Zero)} \\
-	1 = positiver Puls, 0 = negativer Puls \\[0.2cm]
-	\textbf{Unipolar (RZ)Return-to-Zero} \\
-	1 = Puls der auf Null zurückspringt, 0 = kein Puls \\[0.2cm]
-	\textbf{Bipolar RZ} \\
-	1 = positiver Puls (kehrt wieder auf Null zurück), 0 = negativer Puls (kehrt wieder auf Null
-	zurück)\\[0.2cm]
-	\textbf{AMI (Alternate Mark Inversion) RZ} \\
-	1 = Abwechslungsweise positiver und negatier Puls, 0 = kein Puls. DC-frei\\[0.2cm]
-	\textbf{Split-Phase (Manchester)} \\
-	1 = Positiver Puls mit anschliessend Negativem, 0 = Negativer Puls mit anschliessendem Positivem. DC-frei, einfache Synchronisation \\[0.2cm]
-	\textbf{NRZ Space} \\
-	1 = kein Zustandswechsel, 0 = Zustandswechsel.
-\end{minipage}
+\begin{longtable}{|p{9cm}|p{9cm}|}
+	\hline
+	\textbf{Unipolar NRZ-Signal (NRZ, NRZ Level, NRZ-L)}\newline
+	\includegraphics[width=8cm]{bilder/DigitaleBasisbandSignale/UnipolarNRZ.png}\newline
+	\begin{itemize}[noitemsep]
+		\item \textbf{Mark:} Amplitude A, \textbf{Space:} Amplitude 0
+		\item \textbf{Aufwand (De-)Codierung:} sehr klein
+		\item \textbf{Taktrückgewinnung:} ohne zusätzliche Codierung unsicher
+		\item \textbf{DC-Freiheit:} sehr schlecht, viel DC-Anteil
+		\item \textbf{Bandbreitenbedarf:} mittel
+	\end{itemize}
+	&
+	\textbf{Bipolar NRZ-Signal}\newline
+	\includegraphics[width=8cm]{bilder/DigitaleBasisbandSignale/BipolarNRZ.png}\newline
+	\begin{itemize}[noitemsep]
+		\item \textbf{Mark:} Amplitude A, \textbf{Space:} Amplitude -A
+		\item \textbf{Aufwand (De-)Codierung:} sehr klein
+		\item \textbf{Taktrückgewinnung:} ohne zusätzliche Codierung unsicher
+		\item \textbf{DC-Freiheit:} Abhängig vom Verhältnis von Mark und Space
+		\item \textbf{Bandbreitenbedarf:} mittel (wie unipolares NRZ)
+	\end{itemize}\\
+	
+	\hline
+	
+	\textbf{NRZ-Inverted-Signal (NRZI)}\newline
+	\includegraphics[width=8cm]{bilder/DigitaleBasisbandSignale/NRZInverted.png}\newline
+	\begin{itemize}[noitemsep]
+		\item \textbf{Bei NRZI, NRZ-M:} \textbf{Mark:} Amplitudenwechsel, \textbf{Space:} kein Amplitudenwechsel
+		\item \textbf{Bei NRZ-S:} \textbf{Mark:} kein Amplitudenwechsel, \textbf{Space:} Amplitudenwechsel
+		\item \textbf{Aufwand (De-)Codierung:} gering
+		\item \textbf{Taktrückgewinnung:} ohne zusätzliche Codierung unsicher
+		\item \textbf{DC-Freiheit:} sehr schlecht, viel DC-Anteil
+		\item \textbf{Bandbreitenbedarf:} mittel
+	\end{itemize}
+	&
+	\textbf{Unipolar RZ-Signal}\newline
+	\includegraphics[width=8cm]{bilder/DigitaleBasisbandSignale/UnipolarRZ.png}\newline
+	\begin{itemize}[noitemsep]
+		\item \textbf{Mark:} Amplitude A (nach halber Bitzeit 0), \textbf{Space:} Amplitude 0
+		\item \textbf{Aufwand (De-)Codierung:} gering
+		\item \textbf{Taktrückgewinnung:} besser als NRZ, Space-Folgen immer noch heikel
+		\item \textbf{DC-Freiheit:} sehr schlecht, viel DC-Anteil
+		\item \textbf{Bandbreitenbedarf:} grösser als NRZ
+	\end{itemize}\\
+	
+	\hline
+	
+	\textbf{Bipolares RZ-Signal}\newline
+	\includegraphics[width=8cm]{bilder/DigitaleBasisbandSignale/BipolarRZ.png}\newline
+	\begin{itemize}[noitemsep]
+		\item \textbf{Mark:} Amplitude A (nach halber Bitzeit 0), \textbf{Space:} Amplitude -A (nach halber Bitzeit 0)
+		\item \textbf{Aufwand (De-)Codierung:} mittel
+		\item \textbf{Taktrückgewinnung:} sehr gut
+		\item \textbf{DC-Freiheit:} Abhängig vom Verhältnis von Mark und Space
+		\item \textbf{Bandbreitenbedarf:} grösser als NRZ
+		\item pseudoternäres Signal
+	\end{itemize}
+	&
+	\textbf{Alternate Mark Inversion (AMI-NRZ, AMI-RZ)}\newline
+	\includegraphics[width=8cm]{bilder/DigitaleBasisbandSignale/AMI.png}\newline
+	\begin{itemize}[noitemsep]
+		\item \textbf{Mark, Space:} Wie unipolares NRZ, doch mit alternierenden Amplituden $\pm$A für Mark
+		\item \textbf{Aufwand (De-)Codierung:} mittel
+		\item \textbf{Taktrückgewinnung:} besser als NRZ, Space-Folgen immer noch heikel
+		\item \textbf{DC-Freiheit:} sehr gut
+		\item \textbf{Bandbreitenbedarf:} sehr schlecht, viel DC-Anteil
+		\item pseudoternäres Signal
+	\end{itemize}\\
+	
+	\hline
+	
+	\textbf{Manchaster Code}\newline
+	\includegraphics[width=8cm]{bilder/DigitaleBasisbandSignale/Manchaster.png}\newline
+	\begin{itemize}[noitemsep]
+		\item \textbf{Mark:} Übergang in Symbolmitte von +A nach -A, \textbf{Space:} Übergang in Symbolmitte von -A nach +A
+		\item \textbf{Aufwand (De-)Codierung:} mittel
+		\item \textbf{Taktrückgewinnung:} sehr gut
+		\item \textbf{DC-Freiheit:} sehr gut
+		\item \textbf{Bandbreitenbedarf:} grösser als NRZ
+		\item pseudoternäres Signal
+	\end{itemize}
+	&
+	\textbf{Multi-Level Transmit (MLT-3)}\newline
+	\includegraphics[width=8cm]{bilder/DigitaleBasisbandSignale/MultiLevelTransmit3.png}\newline
+	\begin{itemize}[noitemsep]
+		\item Pseudoternäres Signal mit 3 Amplitudenwerten +A, 0, -A (\textbf{Mark:} Amplitudenübergang, \textbf{Space:} konstante Amplitude)
+		\item \textbf{Ablauf der Übergänge:} 0, +A, 0, -A, 0, +A, 0 etc.
+		\item \textbf{Taktrückgewinnung:} heikel bei langen Space-Folgen
+		\item \textbf{DC-Freiheit:} heikel bei langen Space-Folgen
+		\item \textbf{Bandbreitenbedarf:} ca. halb so gross wie NRZ
+	\end{itemize}\\
+	
+	\hline
+	
+	\textbf{Pulse Amplitude Modulation 5 (PAM-5)}\newline
+	\includegraphics[width=8cm]{bilder/DigitaleBasisbandSignale/PulseAmplitudeModulation5.png}\newline
+	\begin{itemize}[noitemsep]
+		\item Mehrwertiges Signal mit fünf Amplitudenwerten: +A, +A/2, 0, -A/2, -A
+		\item \textbf{Ablauf der Übergänge:} 0, +A, 0, -A, 0, +A, 0 etc.
+		\item \textbf{Taktrückgewinnung:} heikel bei langen Space-Folgen
+		\item \textbf{DC-Freiheit:} heikel bei langen Space-Folgen
+		\item \textbf{Bandbreitenbedarf:} ca. halb so gross wie NRZ
+	\end{itemize}
+	&\\
+	\hline
+\end{longtable}
 
-
+\newpage
 \subsubsection{Pulse Shaping und ISI (Intersymbolic Interference) \schaum{101-5.13A}}
 Da Übertragungskanäle in der Praxis keine idealen Eigenschaften 
 (\textbf{limitierte Bandbreite}, Nichtlinearität, Verzerrungen) aufweisen,
