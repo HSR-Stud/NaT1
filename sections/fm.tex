@@ -43,12 +43,12 @@ $$\boxed{ x_c(t) = A_c \cos(w_c t + \varphi(t)) = A_c \cos(\theta(t)) }$$
 		%	$ \Delta f_{FM} =  m_{pk} \cdot \frac{k_f}{2\pi}$\\
 		%	$ \Delta f_{PM} = m_{pk} \cdot \frac{k_p f_m}{2\pi}$ \\
 	\end{center}
-	
-	\columnbreak
-	$\omega_i$ Momentanfrequenz \\
-	$\omega_c$ Trägerfrequenz \\
-	$\Delta \omega$ maximale Frequenzabweichung \\
-	$\varphi(t)$ momentane Phasenabweichung \\
+
+\columnbreak
+		$\omega_i$ Momentanfrequenz \\
+		$\omega_c$ Trägerfrequenz \\
+		$\Delta \omega$ maximale Frequenzabweichung \\
+		$\varphi(t)$ momentane Phasenabweichung \\
 \end{multicols}
 
 \subsection{Spektrum der Winkelmodulation}
@@ -85,28 +85,28 @@ unterscheiden.
 
 
 \subsubsection{Modulationsindex (Modulation Index)}
-\textbf{Nur für Einton-Signale definiert}\\
-\begin{minipage}[t][0.7cm][c]{8cm}
-	$ \qquad
-	\beta = \dfrac{\Delta \omega}{\omega_m} =
-	\begin{cases}
-	k_p \cdot A_m & \textbf{PM}  \\
-	\frac{k_f \cdot A_m}{\omega_m} & \textbf{FM}
-	\end{cases}$ \\
-\end{minipage}
-\begin{minipage}[t][0.7cm][c]{8cm}
-	$\beta$ Modulationsindex (max. Phasenabw.), $[\beta] = rad$ \\
-	$A_m$ Amplitude des Nachrichtensignals, $[A_m] = 1$ \\
-	$\Delta \omega$ maximale Frequenzabweichung $[\Delta \omega] = rad/s$ \\
-	$k_f$ Frequenzhubkonstante, $[k_f] = rad/s$ \\
-	$k_p$ Phasenhubkonstante, $[k_p] = rad$
-\end{minipage}\\ \\ \\
+	\textbf{Nur für Einton-Signale definiert}\\
+	\begin{minipage}[t][0.7cm][c]{8cm}
+		$ \qquad
+		\beta = \dfrac{\Delta \omega}{\omega_m} =
+		\begin{cases}
+			k_p \cdot A_m & \textbf{PM}  \\
+			\frac{k_f \cdot A_m}{\omega_m} & \textbf{FM}
+		\end{cases}$ \\
+	\end{minipage}
+	\begin{minipage}[t][0.7cm][c]{8cm}
+		$\beta$ Modulationsindex (max. Phasenabw.), $[\beta] = rad$ \\
+		$A_m$ Amplitude des Nachrichtensignals, $[A_m] = 1$ \\
+		$\Delta \omega$ maximale Frequenzabweichung $[\Delta \omega] = rad/s$ \\
+		$k_f$ Frequenzhubkonstante, $[k_f] = rad/s$ \\
+		$k_p$ Phasenhubkonstante, $[k_p] = rad$
+	\end{minipage}\\ \\ \\
 
-%$\qquad \beta \ll 1 \text{ (NB)} \qquad \Rightarrow \qquad W_{PM/FM} \approx 2 \omega_m$
-
-%$\qquad \beta \le 0.2 \qquad \qquad \Rightarrow \qquad \text{Kleinhubmodulation (Narrowband Angle Modulation)}$
-
-%$\qquad \beta > 1 \qquad \qquad \quad \Rightarrow \qquad \text{Grosshubmodulation (Wideband Angle Modulation)}$
+	%$\qquad \beta \ll 1 \text{ (NB)} \qquad \Rightarrow \qquad W_{PM/FM} \approx 2 \omega_m$
+	
+	%$\qquad \beta \le 0.2 \qquad \qquad \Rightarrow \qquad \text{Kleinhubmodulation (Narrowband Angle Modulation)}$
+	
+	%$\qquad \beta > 1 \qquad \qquad \quad \Rightarrow \qquad \text{Grosshubmodulation (Wideband Angle Modulation)}$
 
 
 \subsubsection{Spektrum Einton-Winkelmodulation}
@@ -125,7 +125,7 @@ unterscheiden.
 	J_{n-1}(\beta) + J_{n+1}(\beta) = (\frac{2n}{\beta})\cdot J_n(\beta) \qquad \sum J_n^2(\beta) = 1$\\ \\
 	\includegraphics[width=13cm]{bilder/Besselfunktionen.png}
 	\includegraphics[width=6cm]{bilder/Besselfunktionen_Spektrum.png}
-	
+
 \newpage
 \subsubsection{Bandbreite Einton-Winkelmodulation nach Carson}
 	Mit der Bedingung $J_n(\beta) \approx 0, \,\forall (n > \beta + 1)$ kann die Bandbreite approximativ berechnet werden. 98\% der durchschnittlichen Signalleistung sind in diesem Frequenzspektrum angesiedelt. 
@@ -146,7 +146,7 @@ unterscheiden.
 
 
 \subsubsection{Leistung einer Winkelmodulation \schaum{72-4.7B}}
-$$P_{st} = \frac12 A_C^2 \approx P_{FM/AM}$$
+		$$P_{st} = \frac12 A_C^2 \approx P_{FM/AM}$$
 
 
 \subsection{Bandbreite für beliebige Modulation (Arbitrary Modulation) \schaum{72-4.7B}}
